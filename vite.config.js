@@ -1,8 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// Replace 'your-username' and 'repo-name'
 export default defineConfig({
   plugins: [react()],
-  base: '/my-portfolio/', 
-})
+  base: process.env.NODE_ENV === 'production' ? '/my-portfolio/' : '/',
+});
