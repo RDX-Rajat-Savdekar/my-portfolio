@@ -3,14 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://your-username.github.io/my-portfolio",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
-  },
+  "homepage": "https://rajatsavdekar.dev",
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "vite build && cp dist/index.html dist/404.html && echo rajatsavdekar.dev > dist/CNAME",
+  "deploy": "gh-pages -d dist -b gh-pages"
+}
+,
   "dependencies": {
     "framer-motion": "^12.18.1",
     "prop-types": "^15.8.1",
