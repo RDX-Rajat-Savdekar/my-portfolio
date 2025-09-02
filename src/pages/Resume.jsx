@@ -1,223 +1,204 @@
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+// src/pages/Resume.jsx
 import { motion } from 'framer-motion';
 import StickySectionHeader from '../components/StickySectionHeader';
 import SectionBlock from '../components/SectionBlock';
 import ContactMe from '../components/ContactMeComponent';
+import pdfUrl from '/Rajat_Resume.pdf?url'; // ensures correct path in prod
 
+const cardStyle = {
+  background: 'rgba(255, 255, 255, 0.05)',
+  padding: '1.5rem',
+  borderRadius: '12px',
+  border: '1px solid rgba(255,255,255,0.1)',
+  backdropFilter: 'blur(6px)',
+  WebkitBackdropFilter: 'blur(6px)',
+  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+};
 
+const fadeUp = (i = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay: i * 0.1 },
+});
 
 export default function Resume() {
   return (
-    <div
-      style={{
-        padding: '2rem',
-        maxWidth: '900px',
-        margin: '0 auto',
-      }}
-    >
-      {/* Centered Download Button */}
-      <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+    <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+      {/* Header */}
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <h1 style={{ marginBottom: '1rem' }}>Resume</h1>
         <a
-          href="/Rajat_Resume.pdf"
+          href={pdfUrl}
           download
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: 'inline-block',
-            padding: '0.75rem 1.5rem',
-            fontSize: '1rem',
-            fontWeight: '600',
-            color: '#fff',
-            background: 'rgba(255, 255, 255, 0.1)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            borderRadius: '12px',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.2)',
+            padding: '0.7rem 1.1rem',
+            fontWeight: 700,
+            borderRadius: 10,
             textDecoration: 'none',
-            transition: 'all 0.3s ease-in-out',
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-            e.target.style.transform = 'scale(1.05)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-            e.target.style.transform = 'scale(1)';
+            color: '#0b1020',
+            background: 'linear-gradient(135deg,#9ae6b4,#63b3ed)',
           }}
         >
-          ⬇️ Download Resume
+          ⬇️ Download Resume (PDF)
         </a>
       </div>
 
-<SectionBlock></SectionBlock>
+      <SectionBlock />
 
-      {/* Education */}
+      {/* === Education === */}
       <StickySectionHeader label="Education" />
-      <VerticalTimeline lineColor="#888">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            contentStyle={{ background: 'rgba(26, 32, 44, 0.9)', color: '#fff', backdropFilter: 'blur(4px)' }}
-            date="Aug 2024 – May 2026"
-            iconStyle={{ background: '#6b46c1', color: '#fff' }}
-          >
-            <h3>Masters of Science in Computer Science</h3>
-            <h4>University of Southern California</h4>
-            <p>Courses: Algorithms, Web Tech, ML, Advanced Game Design</p>
-          </VerticalTimelineElement>
+      <div style={{ display: 'grid', gap: '1.25rem', marginBottom: '2rem' }}>
+        <motion.div {...fadeUp(0)} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+            <div>
+              <h3 style={{ margin: 0 }}>Master of Science in Computer Science</h3>
+              <p style={{ margin: '0.25rem 0', color: '#aaa' }}>
+                University of Southern California • Los Angeles, CA
+              </p>
+              <p style={{ margin: 0, color: '#bbb', fontSize: '0.95rem' }}>
+                Relevant Coursework: Algorithms, Web Technology, Data Science/ML, Game Design, NLP • GPA: 3.6
+              </p>
+            </div>
+            <span style={{ fontSize: '0.9rem', color: '#ccc', whiteSpace: 'nowrap' }}>Aug 2024 – May 2026</span>
+          </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <VerticalTimelineElement
-          position="right"
-            className="vertical-timeline-element--education"
-            contentStyle={{ background: 'rgba(26, 32, 44, 0.9)', color: '#fff', backdropFilter: 'blur(4px)' }}
-            date="Aug 2019 – May 2023"
-            iconStyle={{ background: '#319795', color: '#fff' }}
-          >
-            <h3>Bachelor of Engineering in Computer Engineering</h3>
-            <h4>University of Mumbai</h4>
-            <p>Courses: Networks, Software Engg, DSA, AR/VR</p>
-            <p>GPA: 9.4 / 10</p>
-          </VerticalTimelineElement>
+        <motion.div {...fadeUp(1)} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+            <div>
+              <h3 style={{ margin: 0 }}>Bachelor of Engineering in Computer Engineering</h3>
+              <p style={{ margin: '0.25rem 0', color: '#aaa' }}>
+                University of Mumbai • Mumbai, India
+              </p>
+              <p style={{ margin: 0, color: '#bbb', fontSize: '0.95rem' }}>
+                Relevant Coursework: Computer Networks, Software Engineering, Data Structures, AR/VR • GPA: 3.7
+              </p>
+            </div>
+            <span style={{ fontSize: '0.9rem', color: '#ccc', whiteSpace: 'nowrap' }}>Aug 2019 – May 2023</span>
+          </div>
         </motion.div>
-      </VerticalTimeline>
+      </div>
 
-<SectionBlock></SectionBlock>
+      {/* === Experience === */}
+      <StickySectionHeader label="Experience" />
+      <div style={{ display: 'grid', gap: '1.25rem', marginBottom: '2rem' }}>
+        <motion.div {...fadeUp(0)} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h3 style={{ margin: 0 }}>Frontend Developer Intern — World Salon</h3>
+            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>Jun 2025 – Aug 2025</span>
+          </div>
+          <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Los Angeles, CA</p>
+          <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+            <li>Built end-to-end Speaker Portal (login, profile, events, invitations), streamlining scheduling for ~500 speakers and reducing manual coordination by ~30%.</li>
+            <li>Integrated 20 REST APIs with Swagger/OpenAPI and secure auth, cutting API-related bugs by ~40% during QA.</li>
+            <li>Optimized frontend with Vite (code splitting, asset preloading) and enforced quality via PR workflows and linting.</li>
+          </ul>
+        </motion.div>
 
+        <motion.div {...fadeUp(1)} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h3 style={{ margin: 0 }}>Teaching Assistant — USC Summer Programs</h3>
+            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>May 2025 – Jun 2025</span>
+          </div>
+          <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Los Angeles, CA</p>
+          <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+            <li>Supported an intensive 4-week “Discover Engineering” program for ~160 high-school students.</li>
+            <li>Led hands-on workshops (Arduino, LEDs, design sprints) to teach practical problem solving.</li>
+          </ul>
+        </motion.div>
 
-      {/* Technical Experience */}
-      <StickySectionHeader label="Technical Experience" />
-      <VerticalTimeline lineColor="#888">
+        <motion.div {...fadeUp(2)} style={cardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h3 style={{ margin: 0 }}>Software Engineer — Jalgaon Fruits Sales Cooperative</h3>
+            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>May 2023 – May 2024</span>
+          </div>
+          <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Jalgaon, India</p>
+          <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+            <li>Digitized procurement and inventory workflows for ~150 daily users, reducing errors and enabling faster farmer payments.</li>
+            <li>Refactored legacy PHP monolith into Flask microservices, improving responsiveness and simplifying maintenance of procurement and approval processes.</li>
+            <li>Introduced Docker and CI/CD (GitHub Actions), stabilizing deployments and accelerating releases by ~30%.</li>
+            <li>Built React + Flask dashboards with analytics on stock, demand trends, and payments to reduce spoilage and improve transparency.</li>
+          </ul>
+        </motion.div>
+      </div>
+
+      {/* === Projects (optional on resume page) === */}
+      <StickySectionHeader label="Projects" />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '1.25rem',
+          marginBottom: '2rem',
+        }}
+      >
         {[
           {
-            title: 'Frontend Developer Intern',
-            org: 'World Salon – Tech platform',
-            date: 'May 2025 – Present',
-            points: [
-              'Built 8+ React components to improve UX',
-              'Implemented Redux + REST APIs for data flow',
-              'Collaborated with designers & backend engineers'
+            title: 'E-Commerce Product Discovery Platform',
+            date: 'Aug 2025',
+            type: 'Personal Project',
+            bullets: [
+              'Designing global-scale discovery app with search, filtering, recommendations, and product pages.',
+              'Planning bundle-size reduction, code splitting, and accessibility for high-performance UX.',
             ],
-            color: '#d69e2e'
+            tools: 'React · Redux · Node.js · Webpack · MongoDB',
           },
           {
-            title: 'Software Engineer Intern',
-            org: 'JFSS – Enterprise Software',
-            date: 'Jan 2023 – Oct 2023',
-            points: [
-              'Contributed to 5+ projects in 9 months',
-              'Improved delivery speed by 20%'
+            title: 'DSA Visualizer Series',
+            date: 'May 2025',
+            type: 'Personal Project',
+            bullets: [
+              '10 animated explainers for algorithms and data structures with step-by-step visual clarity.',
+              'Motion graphics to improve comprehension and retention.',
             ],
-            color: '#2b6cb0'
+            tools: 'Manim · Python',
           },
           {
-            title: 'Software Engineer Intern',
-            org: 'Softaid Computers',
-            date: 'Jul 2021 – Dec 2021',
-            points: [
-              'Built & deployed E-Attendance, E-Vikas',
-              '100+ daily users, used PHP, MySQL',
-              'Trained in Flutter & IoT (ESP8266)'
+            title: 'Full Stack Weather Tracker',
+            date: 'Dec 2024',
+            type: 'Course Project',
+            bullets: [
+              'Web + iOS weather apps with autocomplete search, forecast visualization, and favorites.',
+              'REST backends (Node.js/Flask) deployed on GCP.',
             ],
-            color: '#718096'
-          }
-        ].map(({ title, org, date, points, color }, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.1 }}
-          >
-           <VerticalTimelineElement
-  position={i % 2 === 0 ? 'left' : 'right'}  // <-- this is new
-  className="vertical-timeline-element--work"
-  contentStyle={{
-    background: 'rgba(26, 32, 44, 0.9)',
-    color: '#fff',
-    backdropFilter: 'blur(4px)',
-  }}
-  date={date}
-  iconStyle={{ background: color, color: '#fff' }}
->
-  <h3>{title}</h3>
-  <h4>{org}</h4>
-  <ul>
-    {points.map((p, j) => (
-      <li key={j}>{p}</li>
-    ))}
-  </ul>
-</VerticalTimelineElement>
-
+            tools: 'Angular · Node.js · Flask · SwiftUI · GCP',
+          },
+        ].map((p, i) => (
+          <motion.div key={i} {...fadeUp(i)} style={cardStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <h3 style={{ margin: 0 }}>{p.title}</h3>
+              <span style={{ fontSize: '0.9rem', color: '#ccc' }}>{p.date}</span>
+            </div>
+            <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>{p.type}</p>
+            <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+              {p.bullets.map((b, j) => <li key={j}>{b}</li>)}
+            </ul>
+            <div style={{ fontSize: '0.85rem', color: '#bbb' }}>Tools: {p.tools}</div>
           </motion.div>
         ))}
-      </VerticalTimeline>
+      </div>
 
+      {/* === Skills + Quick Links === */}
+      <StickySectionHeader label="Skills & Links" />
+      <motion.div {...fadeUp(0)} style={{ ...cardStyle, marginBottom: '2rem' }}>
+        <ul style={{ margin: 0, paddingLeft: '1rem', lineHeight: 1.6 }}>
+          <li><b>Languages:</b> Python, JavaScript/TypeScript, C++, Java</li>
+          <li><b>Frontend:</b> React, Angular, Redux, Tailwind, Vite</li>
+          <li><b>Backend:</b> Node.js, Flask, Django, REST/OpenAPI</li>
+          <li><b>Databases/Infra:</b> MySQL, MongoDB, PostgreSQL, GCP, Docker, GitHub Actions</li>
+          <li><b>Testing:</b> Jest, React Testing Library, Postman</li>
+        </ul>
+        <div style={{ marginTop: '0.75rem' }}>
+          <a href="https://www.linkedin.com/in/rajatsavdekar" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>LinkedIn</a>
+          <span style={{ opacity: 0.5, margin: '0 0.5rem' }}>•</span>
+          <a href="https://github.com/RDX-Rajat-Savdekar" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>GitHub</a>
+        </div>
+      </motion.div>
 
-
-
-<SectionBlock></SectionBlock>
-
-      {/* Outreach & Teaching */}
-      <StickySectionHeader label="Outreach & Teaching" />
-      <VerticalTimeline lineColor="#888">
-        {[
-          {
-            title: 'Teaching Assistant',
-            org: 'Discover Engineering – USC Viterbi',
-            date: 'May 2025 – July 2025',
-            points: [
-              'Led weekly workshops for 60 high school students',
-              'Guided hands-on STEM activities and prototyping'
-            ]
-          },
-          {
-            title: 'Teaching Assistant',
-            org: 'Energy of STEM – USC Viterbi',
-            date: 'July 2025 – Aug 2025',
-            points: [
-              'Taught 100+ students about circuits and energy systems',
-              'Facilitated teamwork and troubleshooting in daily projects'
-            ]
-          }
-        ].map(({ title, org, date, points }, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.1 }}
-          >
-            <VerticalTimelineElement
-  position={i % 2 === 0 ? 'left' : 'right'}  // 👈 Add this line
-  className="vertical-timeline-element--work"
-  contentStyle={{
-    background: 'rgba(26, 32, 44, 0.9)',
-    color: '#fff',
-    backdropFilter: 'blur(4px)',
-  }}
-  date={date}
-  iconStyle={{ background: '#38a169', color: '#fff' }}
->
-  <h3>{title}</h3>
-  <h4>{org}</h4>
-  <ul>
-    {points.map((p, j) => (
-      <li key={j}>{p}</li>
-    ))}
-  </ul>
-</VerticalTimelineElement>
-
-          </motion.div>
-        ))}
-      </VerticalTimeline>
       <ContactMe />
     </div>
   );

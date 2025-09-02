@@ -61,7 +61,7 @@ export default function DevLog() {
             position: 'absolute',
             top: '1.2rem',
             right: '1.5rem',
-            fontSize: '1.3rem',
+            fontSize: '1.1rem',
             color: '#aaa'
           }}>
             {log.date}
@@ -82,7 +82,7 @@ export default function DevLog() {
               style={{
                 display: 'inline-block',
                 marginTop: '0.8rem',
-                color: '#38b2ac',
+                color: '#00c3ffff',
                 fontWeight: 'bold',
                 fontSize: '0.9rem',
                 textDecoration: 'none'

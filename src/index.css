@@ -1,10 +1,10 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #ffffff;
-  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0c29);
-  background-size: 300% 300%;
-  animation: gradientShift 5s ease-in-out infinite;
+  color: #e6e6e6;
+  background: linear-gradient(-45deg, #111111, #330000, #990000, #222222, #ffcc00);
+  background-size: 400% 400%;
+  animation: gradientShift 40s ease-in-out infinite;
   background-attachment: fixed;
 }
 
@@ -13,6 +13,7 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
 
 #root {
   position: relative;
@@ -28,4 +29,15 @@ main {
   padding: 2rem;
   max-width: 1000px;
   margin: auto;
+}
+a {
+  color: #FFCC00; /* USC Gold */
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffd633; /* lighter gold on hover */
+  text-decoration: underline;
 }

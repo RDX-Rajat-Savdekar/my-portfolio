@@ -100,7 +100,7 @@ export default function Projects() {
                 style={{
                   display: 'inline-block',
                   marginTop: '1rem',
-                  color: '#38b2ac',
+                  color: '#00c3ffff',
                   fontWeight: 'bold',
                   textDecoration: 'none',
                 }}
