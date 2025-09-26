@@ -1,7 +1,6 @@
 // src/pages/Resume.jsx
 import { motion } from 'framer-motion';
 import StickySectionHeader from '../components/StickySectionHeader';
-import SectionBlock from '../components/SectionBlock';
 import ContactMe from '../components/ContactMeComponent';
 import pdfUrl from '/Rajat_Resume.pdf?url'; // ensures correct path in prod
 
@@ -47,20 +46,18 @@ export default function Resume() {
         </a>
       </div>
 
-      <SectionBlock />
-
       {/* === Education === */}
       <StickySectionHeader label="Education" />
       <div style={{ display: 'grid', gap: '1.25rem', marginBottom: '2rem' }}>
         <motion.div {...fadeUp(0)} style={cardStyle}>
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
             <div>
-              <h3 style={{ margin: 0 }}>Master of Science in Computer Science</h3>
+              <h3 style={{ margin: 0 }}>Masters of Science in Computer Science</h3>
               <p style={{ margin: '0.25rem 0', color: '#aaa' }}>
                 University of Southern California • Los Angeles, CA
               </p>
               <p style={{ margin: 0, color: '#bbb', fontSize: '0.95rem' }}>
-                Relevant Coursework: Algorithms, Web Technology, Data Science/ML, Game Design, NLP • GPA: 3.6
+                Relevant Coursework: Algorithms, Web Technology, Data Science/ML, Databases, Multimedia System • GPA: 3.6
               </p>
             </div>
             <span style={{ fontSize: '0.9rem', color: '#ccc', whiteSpace: 'nowrap' }}>Aug 2024 – May 2026</span>
@@ -83,50 +80,39 @@ export default function Resume() {
         </motion.div>
       </div>
 
-      {/* === Experience === */}
-      <StickySectionHeader label="Experience" />
+      {/* === Work Experience === */}
+      <StickySectionHeader label="Work Experience" />
       <div style={{ display: 'grid', gap: '1.25rem', marginBottom: '2rem' }}>
         <motion.div {...fadeUp(0)} style={cardStyle}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <h3 style={{ margin: 0 }}>Frontend Developer Intern — World Salon</h3>
-            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>Jun 2025 – Aug 2025</span>
+            <h3 style={{ margin: 0 }}>Teaching Assistant — USC Summer Programs</h3>
+            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>May 2025 – July 2025</span>
           </div>
           <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Los Angeles, CA</p>
           <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
-            <li>Built end-to-end Speaker Portal (login, profile, events, invitations), streamlining scheduling for ~500 speakers and reducing manual coordination by ~30%.</li>
-            <li>Integrated 20 REST APIs with Swagger/OpenAPI and secure auth, cutting API-related bugs by ~40% during QA.</li>
-            <li>Optimized frontend with Vite (code splitting, asset preloading) and enforced quality via PR workflows and linting.</li>
+            <li>Led Arduino-based coding sessions for ∼160 students, improving programming logic and circuit design.</li>
+            <li>Co-designed energy and electronics projects for over 100 participants, integrating coding with sustainability concepts.</li>
+            <li>Mentored student teams in engineering challenges, fostering teamwork, iterative problem-solving, and confidence.</li>
+            <li>Coordinated with 54 SoCalGas and USC staff volunteers to deliver seamless hands-on STEM workshops.</li>
           </ul>
         </motion.div>
 
         <motion.div {...fadeUp(1)} style={cardStyle}>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <h3 style={{ margin: 0 }}>Teaching Assistant — USC Summer Programs</h3>
-            <span style={{ fontSize: '0.9rem', color: '#ccc' }}>May 2025 – Jun 2025</span>
-          </div>
-          <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Los Angeles, CA</p>
-          <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
-            <li>Supported an intensive 4-week “Discover Engineering” program for ~160 high-school students.</li>
-            <li>Led hands-on workshops (Arduino, LEDs, design sprints) to teach practical problem solving.</li>
-          </ul>
-        </motion.div>
-
-        <motion.div {...fadeUp(2)} style={cardStyle}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <h3 style={{ margin: 0 }}>Software Engineer — Jalgaon Fruits Sales Cooperative</h3>
             <span style={{ fontSize: '0.9rem', color: '#ccc' }}>May 2023 – May 2024</span>
           </div>
           <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>Jalgaon, India</p>
           <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
-            <li>Digitized procurement and inventory workflows for ~150 daily users, reducing errors and enabling faster farmer payments.</li>
-            <li>Refactored legacy PHP monolith into Flask microservices, improving responsiveness and simplifying maintenance of procurement and approval processes.</li>
-            <li>Introduced Docker and CI/CD (GitHub Actions), stabilizing deployments and accelerating releases by ~30%.</li>
-            <li>Built React + Flask dashboards with analytics on stock, demand trends, and payments to reduce spoilage and improve transparency.</li>
+            <li>Digitized procurement and inventory workflows, replacing manual logs with a web-based system for 150 daily users, reducing errors and enabling faster farmer payments.</li>
+            <li>Refactored legacy PHP modules into Flask microservices, improving responsiveness, simplifying maintenance, and strengthening reliability of core workflows.</li>
+            <li>Introduced Docker containerization and CI/CD pipelines (GitHub Actions) to stabilize deployments and accelerate release cycles by ∼30%, ensuring reliability during peak harvest periods.</li>
+            <li>Built React + Flask dashboards with real-time analytics, providing data-driven insights that reduced spoilage and improved transparency for 150+ daily users.</li>
           </ul>
         </motion.div>
       </div>
 
-      {/* === Projects (optional on resume page) === */}
+      {/* === Projects === */}
       <StickySectionHeader label="Projects" />
       <div
         style={{
@@ -138,64 +124,127 @@ export default function Resume() {
       >
         {[
           {
-            title: 'E-Commerce Product Discovery Platform',
-            date: 'Aug 2025',
-            type: 'Personal Project',
+            title: 'Resume Tailor (Free)',
+            date: '',
+            type: 'Next.js, React, Tailwind CSS, PDF.js, Vercel',
             bullets: [
-              'Designing global-scale discovery app with search, filtering, recommendations, and product pages.',
-              'Planning bundle-size reduction, code splitting, and accessibility for high-performance UX.',
+              'Built an open-source tool that tailors resumes to job descriptions using keyword extraction and document comparison.',
+              'Implemented PDF parsing with pdf.js and designed a responsive UI for side-by-side resume vs JD review.',
+              'Deployed on Vercel with a modular React + Tailwind architecture for maintainability and fast iteration.',
             ],
-            tools: 'React · Redux · Node.js · Webpack · MongoDB',
+            links: [{ label: 'GitHub', url: 'https://github.com/RDX-Rajat-Savdekar/resume-tailor-free' }],
           },
           {
-            title: 'DSA Visualizer Series',
-            date: 'May 2025',
-            type: 'Personal Project',
+            title: 'Retrieval-Augmented Generation System',
+            date: '',
+            type: 'Python, LLMs, Vector Search',
             bullets: [
-              '10 animated explainers for algorithms and data structures with step-by-step visual clarity.',
-              'Motion graphics to improve comprehension and retention.',
+              'Engineered a modular RAG pipeline integrating vector retrieval with LLMs for context-aware generation.',
+              'Improved query precision through similarity search with relevance ranking, enhancing downstream response quality.',
             ],
-            tools: 'Manim · Python',
+            links: [{ label: 'GitHub', url: 'https://github.com/GurpreetKukkar15/rag-system' }],
           },
           {
-            title: 'Full Stack Weather Tracker',
-            date: 'Dec 2024',
-            type: 'Course Project',
+            title: 'Multi-modal Search Engine Using CLIP',
+            date: '',
+            type: 'Python, PyTorch, OpenAI CLIP',
             bullets: [
-              'Web + iOS weather apps with autocomplete search, forecast visualization, and favorites.',
-              'REST backends (Node.js/Flask) deployed on GCP.',
+              'Implemented a search engine leveraging joint text and image embeddings for natural language image retrieval.',
+              'Evaluated system with precision@5 and recall metrics, refining cosine similarity thresholds for balanced relevance and diversity.',
             ],
-            tools: 'Angular · Node.js · Flask · SwiftUI · GCP',
+            links: [{ label: 'GitHub', url: 'https://github.com/GurpreetKukkar15/Multi-modal-Search-Engine-Using-CLIP' }],
+          },
+          {
+            title: 'Manim-DSA-SD-Concepts',
+            date: '',
+            type: 'Python, Manim',
+            bullets: [
+              'Designed and developed animated visualizations of core data structures, algorithms, and system design concepts, aiding conceptual clarity for learners.',
+              'Engineered a modular rendering pipeline with caching and lazy loading, reducing build time by ∼30%.',
+            ],
+            links: [{ label: 'GitHub', url: 'https://github.com/RDX-Rajat-Savdekar/Manim-DSA-SD-Concepts' }],
+          },
+          {
+            title: 'Typing Speed Web App',
+            date: '',
+            type: 'React, JavaScript',
+            bullets: [
+              'Built a responsive typing-test web app delivering real-time speed/accuracy feedback with adjustable difficulty modes.',
+              'Optimized UI for cross-browser compatibility and mobile responsiveness, improving accessibility for 50+ test users.',
+            ],
+            links: [{ label: 'GitHub', url: 'https://github.com/RDX-Rajat-Savdekar/react-typing-mvp' }],
+          },
+          {
+            title: 'Image Texture Analysis with GLCM',
+            date: '',
+            type: 'MATLAB, Image Processing [Publication]',
+            bullets: [
+              'Developed a GUI tool to compute texture features (contrast, entropy, homogeneity, correlation) from images.',
+              'Cited in 10+ IEEE and Springer Nature papers, demonstrating research impact and academic relevance.',
+            ],
+            links: [{ label: 'Publication', url: 'https://ijnrd.org/viewpaperforall.php?paper=IJNRD2202021' }],
           },
         ].map((p, i) => (
           <motion.div key={i} {...fadeUp(i)} style={cardStyle}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h3 style={{ margin: 0 }}>{p.title}</h3>
-              <span style={{ fontSize: '0.9rem', color: '#ccc' }}>{p.date}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <h3 style={{ margin: 0, flex: 1 }}>{p.title}</h3>
+              {p.date && <span style={{ fontSize: '0.9rem', color: '#ccc' }}>{p.date}</span>}
             </div>
             <p style={{ fontStyle: 'italic', margin: '0.5rem 0', color: '#aaa' }}>{p.type}</p>
-            <ul style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+            <ul style={{ marginLeft: '1rem', marginBottom: '1rem' }}>
               {p.bullets.map((b, j) => <li key={j}>{b}</li>)}
             </ul>
-            <div style={{ fontSize: '0.85rem', color: '#bbb' }}>Tools: {p.tools}</div>
+            {p.links && (
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                {p.links.map((link, k) => (
+                  <a
+                    key={k}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      padding: '0.5rem 1rem',
+                      backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                      color: '#38bdf8',
+                      borderRadius: '20px',
+                      textDecoration: 'none',
+                      fontSize: '0.85rem',
+                      fontWeight: '500',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
 
-      {/* === Skills + Quick Links === */}
-      <StickySectionHeader label="Skills & Links" />
+      {/* === Skills === */}
+      <StickySectionHeader label="Skills" />
       <motion.div {...fadeUp(0)} style={{ ...cardStyle, marginBottom: '2rem' }}>
         <ul style={{ margin: 0, paddingLeft: '1rem', lineHeight: 1.6 }}>
-          <li><b>Languages:</b> Python, JavaScript/TypeScript, C++, Java</li>
-          <li><b>Frontend:</b> React, Angular, Redux, Tailwind, Vite</li>
-          <li><b>Backend:</b> Node.js, Flask, Django, REST/OpenAPI</li>
-          <li><b>Databases/Infra:</b> MySQL, MongoDB, PostgreSQL, GCP, Docker, GitHub Actions</li>
-          <li><b>Testing:</b> Jest, React Testing Library, Postman</li>
+          <li><b>Languages:</b> Python, Java, JavaScript, C++, C#</li>
+          <li><b>Databases:</b> MySQL, PostgreSQL, MongoDB, SQL, Vector</li>
+          <li><b>Frontend:</b> React, Angular, HTML, CSS, Vite, Next.js</li>
+          <li><b>Backend:</b> Node.js, Flask, OpenAPI, REST APIs, PDF.js</li>
+          <li><b>ML / AI Tools:</b> PyTorch, OpenAI CLIP, Embeddings, Similarity Metrics, Multimodal Learning</li>
+          <li><b>Cloud / DevOps:</b> AWS, Azure, Google Cloud Platform, Firebase, Vercel, Docker, GitHub Actions, CI/CD</li>
+          <li><b>Performance & UX:</b> Animation / Visualization (Manim), Responsive Design, Cross-browser Compatibility</li>
+          <li><b>Tools & Workflow:</b> Git, Figma, Jest, Postman, Swagger</li>
         </ul>
         <div style={{ marginTop: '0.75rem' }}>
-          <a href="https://www.linkedin.com/in/rajatsavdekar" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>LinkedIn</a>
+          <a href="https://linkedin.com/in/rajatsavdekar" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>LinkedIn</a>
           <span style={{ opacity: 0.5, margin: '0 0.5rem' }}>•</span>
           <a href="https://github.com/RDX-Rajat-Savdekar" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>GitHub</a>
+          <span style={{ opacity: 0.5, margin: '0 0.5rem' }}>•</span>
+          <a href="https://rajatsavdekar.dev" target="_blank" rel="noreferrer" style={{ color: '#FFCC00', fontWeight: 600, textDecoration: 'none' }}>Portfolio</a>
         </div>
       </motion.div>
 

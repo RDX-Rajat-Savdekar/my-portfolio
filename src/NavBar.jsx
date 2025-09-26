@@ -5,12 +5,10 @@ export default function NavBar() {
   const location = useLocation();
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
     { name: 'Resume', path: '/resume' },
-    { name: 'DevLog', path: '/log' },
+    { name: 'DevLogs', path: '/log' },
     { name: 'Articles', path: '/articles' },
-    { name: 'Community', path: '/community' },
-    { name: 'Contact Me', path: '/contact' }
+    { name: 'Community', path: '/community' }
   ];
 
   return (
