@@ -1,65 +1,73 @@
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 export default function NavBar() {
   const location = useLocation();
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Resume', path: '/resume' },
-    { name: 'DevLogs', path: '/log' },
-    { name: 'Articles', path: '/articles' },
-    { name: 'Community', path: '/community' }
+    { name: 'Work', path: '/work' },
+    { name: 'Writing', path: '/writing' },
+    { name: 'Community', path: '/community' },
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+    <nav
       style={{
         position: 'sticky',
         top: 0,
-        zIndex: 100,
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '1rem',
-        padding: '1rem 2rem',
-        backgroundColor: 'rgba(18, 18, 18, 0.6)',
+        zIndex: 50,
+        borderBottom: '1px solid #27272a',
+        backgroundColor: 'rgba(9, 9, 11, 0.9)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
       }}
     >
-      {navItems.map((item) => (
+      <div
+        style={{
+          maxWidth: '672px',
+          margin: '0 auto',
+          padding: '0 1.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '56px',
+        }}
+      >
         <Link
-          key={item.path}
-          to={item.path}
+          to="/"
           style={{
-            position: 'relative',
-            padding: '0.5rem 1rem',
-            color: location.pathname === item.path ? '#38bdf8' : '#fff',
-            textDecoration: 'none',
-            fontWeight: 500,
-            transition: 'color 0.2s ease-in-out',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '0.8rem',
+            color: '#71717a',
+            letterSpacing: '0.025em',
+            transition: 'color 0.15s',
           }}
+          onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
+          onMouseLeave={(e) => (e.target.style.color = '#71717a')}
         >
-          {item.name}
-          {/* Underline on hover */}
-          <span
-            style={{
-              position: 'absolute',
-              left: 0,
-              bottom: 0,
-              height: '2px',
-              width: '100%',
-              backgroundColor: '#38bdf8',
-              transform: location.pathname === item.path ? 'scaleX(1)' : 'scaleX(0)',
-              transformOrigin: 'left',
-              transition: 'transform 0.3s ease',
-            }}
-          />
+          rajatsavdekar.dev
         </Link>
-      ))}
-    </motion.nav>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                style={{
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  color: isActive ? '#f59e0b' : '#a1a1aa',
+                  transition: 'color 0.15s',
+                }}
+                onMouseEnter={(e) => { if (!isActive) e.target.style.color = '#fafafa'; }}
+                onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#a1a1aa'; }}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </nav>
   );
 }

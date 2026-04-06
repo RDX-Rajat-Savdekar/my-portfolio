@@ -1,154 +1,173 @@
-// src/pages/Community.jsx
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
 
-const cardStyle = {
-  background: 'rgba(255, 255, 255, 0.04)',
-  padding: '2rem',
-  borderRadius: '16px',
-  border: '1px solid rgba(255,255,255,0.08)',
-  marginBottom: '2rem',
-};
-
 const events = [
   {
-    title: "May 2025 Sola Con Finals",
-    folder: "may-2025-sola-con-finals",
-    files: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg"],
-    caption: "Organizing the finals pushed me to coordinate under pressure and connect deeply with the community. It taught me leadership, and I hope my work inspired participants to take pride in their achievements."
+    title: 'May 2025 — Sola Con Finals',
+    folder: 'may-2025-sola-con-finals',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg'],
+    caption:
+      'Organized the finals — coordinating under pressure, connecting with the community. It taught me leadership, and I hope the work inspired participants to take pride in what they built.',
   },
   {
-    title: "April 2025 MESA Fair",
-    folder: "april-2025-mesa-fair",
-    files: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.mp4", "6.mp4", "7.mp4"],
-    caption: "Volunteering at MESA Fair opened my eyes to the joy of science outreach — seeing young students’ faces light up when they grasp a concept was deeply rewarding. I hope my guidance gave them confidence to pursue STEM."
+    title: 'April 2025 — MESA Fair',
+    folder: 'april-2025-mesa-fair',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.mp4', '6.mp4', '7.mp4'],
+    caption:
+      'STEM outreach for K-12 students. Seeing a kid\'s face light up when they get a concept is a feeling I\'d chase over most other things.',
   },
   {
-    title: "Jan 2025 Sola Con",
-    folder: "jan-2025-sola-con",
-    files: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg", "10.jpeg"],
-    caption: "At Sola Con, I helped build exhibits and run talks — collaborating with creators broadened my perspective and sharpened my event skills. I aim to have left attendees more curious and inspired."
+    title: 'Jan 2025 — Sola Con',
+    folder: 'jan-2025-sola-con',
+    files: [
+      '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg',
+      '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg',
+    ],
+    caption:
+      'Helped build exhibits and run talks. Collaborating with creators from different disciplines broadened how I think about problems.',
   },
   {
-    title: "Dec 2024 HustNCode",
-    folder: "dec-2024-hustncode",
-    files: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg"],
-    caption: "Mentoring at HustNCode influenced me to condense complex ideas into accessible lessons. Watching participants grow over the hackathon motivates me to keep teaching and coding."
+    title: 'Dec 2024 — HustNCode Hackathon',
+    folder: 'dec-2024-hustncode',
+    files: [
+      '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg',
+      '5.jpeg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg',
+    ],
+    caption:
+      'Mentored teams through the hackathon. Watching someone go from stuck to shipping in 24 hours is a better feedback loop than most.',
   },
   {
-    title: "Nov 2024 Sola Con",
-    folder: "nov-2024-sola-con",
-    files: ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg"],
-    caption: "Helping with Sola Con demos and workshops taught me patience in explaining to diverse audiences. I hope the hands-on work elevated the experience for others and built community ties."
-  }
+    title: 'Nov 2024 — Sola Con',
+    folder: 'nov-2024-sola-con',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg'],
+    caption:
+      'Demos and workshops for diverse audiences. Patience and clarity — the same skills that make a good engineer make a good mentor.',
+  },
 ];
 
 export default function Community() {
   return (
-    <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '4rem 1.5rem 2rem' }}>
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ textAlign: 'center', marginBottom: '3rem' }}
+        transition={{ duration: 0.45 }}
+        style={{ marginBottom: '3rem' }}
       >
         <h1
           style={{
-            fontSize: '2.5rem',
-            marginBottom: '1rem',
-            background: 'linear-gradient(135deg, #10b981, #3b82f6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            fontSize: '1.75rem',
+            fontWeight: 700,
+            letterSpacing: '-0.025em',
+            color: '#fafafa',
+            marginBottom: '0.75rem',
           }}
         >
-          Community Impact
+          Community
         </h1>
-        <p
-          style={{
-            fontSize: '1.1rem',
-            color: '#ccc',
-            maxWidth: '700px',
-            margin: '0 auto',
-            lineHeight: '1.6',
-          }}
-        >
-          Showcasing volunteering and community events through photos and videos.
+        <p style={{ fontSize: '0.9375rem', color: '#71717a', lineHeight: 1.65, maxWidth: '480px' }}>
+          Volunteering, mentoring, and organizing events in the LA tech and science community.
+          The work that doesn't show up on a resume but shapes how I think.
         </p>
       </motion.div>
 
       {/* Events */}
-      {events.map((event, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-          style={cardStyle}
-        >
-          <h3 style={{ color: '#10b981', marginBottom: '0.5rem' }}>{event.title}</h3>
-          <p style={{ color: '#ccc', fontStyle: 'italic', marginBottom: '1rem' }}>
-            {event.caption}
-          </p>
-          <div
+      <div>
+        {events.map((event, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '1rem',
+              marginBottom: '3.5rem',
+              paddingBottom: '3.5rem',
+              borderBottom: i < events.length - 1 ? '1px solid #27272a' : 'none',
             }}
           >
-            {event.files.map((file, idx) => {
-              const isVideo = file.endsWith('.mp4');
-              // container to enforce same aspect ratio
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    width: '100%',
-                    // fixed ratio: let's do 4:3 (you can tweak)
-                    aspectRatio: '4 / 3',
-                    overflow: 'hidden',
-                    borderRadius: '8px',
-                    background: '#000',
-                    position: 'relative',
-                  }}
-                >
-                  {isVideo ? (
-                    <video
-                      src={`/community/${event.folder}/${file}`}
-                      controls
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        top: 0,
-                        left: 0,
-                        objectFit: 'cover',
-                      }}
-                    />
-                  ) : (
-                    <img
-                      src={`/community/${event.folder}/${file}`}
-                      alt={`${event.title} ${idx + 1}`}
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        top: 0,
-                        left: 0,
-                        objectFit: 'cover',
-                      }}
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-      ))}
+            <h2
+              style={{
+                fontSize: '1rem',
+                fontWeight: 600,
+                color: '#fafafa',
+                marginBottom: '0.625rem',
+              }}
+            >
+              {event.title}
+            </h2>
+            <p
+              style={{
+                fontSize: '0.875rem',
+                color: '#71717a',
+                lineHeight: 1.7,
+                marginBottom: '1.5rem',
+                maxWidth: '540px',
+                fontStyle: 'italic',
+              }}
+            >
+              {event.caption}
+            </p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+                gap: '0.5rem',
+              }}
+            >
+              {event.files.map((file, idx) => {
+                const isVideo = file.endsWith('.mp4');
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      width: '100%',
+                      aspectRatio: '4 / 3',
+                      overflow: 'hidden',
+                      borderRadius: '6px',
+                      backgroundColor: '#18181b',
+                      border: '1px solid #27272a',
+                      position: 'relative',
+                    }}
+                  >
+                    {isVideo ? (
+                      <video
+                        src={`/community/${event.folder}/${file}`}
+                        controls
+                        style={{
+                          position: 'absolute',
+                          width: '100%',
+                          height: '100%',
+                          top: 0,
+                          left: 0,
+                          objectFit: 'cover',
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={`/community/${event.folder}/${file}`}
+                        alt={`${event.title} ${idx + 1}`}
+                        loading="lazy"
+                        style={{
+                          position: 'absolute',
+                          width: '100%',
+                          height: '100%',
+                          top: 0,
+                          left: 0,
+                          objectFit: 'cover',
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
       <ContactMe />
-    </div>
+    </main>
   );
 }

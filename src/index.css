@@ -1,43 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #e6e6e6;
-  background: linear-gradient(-45deg, #111111, #330000, #990000, #222222, #ffcc00);
-  background-size: 400% 400%;
-  animation: gradientShift 40s ease-in-out infinite;
-  background-attachment: fixed;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-#root {
-  position: relative;
-  z-index: 0;
-  min-height: 100vh;
+  background-color: #09090b;
+  color: #fafafa;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-main {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
 a {
-  color: #FFCC00; /* USC Gold */
-  font-weight: 600;
+  color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #ffd633; /* lighter gold on hover */
-  text-decoration: underline;
 }

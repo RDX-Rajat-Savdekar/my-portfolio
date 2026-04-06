@@ -1,73 +1,57 @@
-import { motion } from 'framer-motion';
-import pdfUrl from '/Rajat_Resume.pdf?url'; // ✅ Vite-safe import for resume
+import pdfUrl from '/Rajat_Resume.pdf?url';
+
+const links = [
+  { name: 'GitHub', href: 'https://github.com/RDX-Rajat-Savdekar' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/in/rajatsavdekar' },
+  { name: 'Resume', href: pdfUrl },
+];
 
 export default function ContactMe() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '4rem', padding: '2rem 1rem', color: '#ddd' }}>
-      <hr
-        style={{
-          border: 'none',
-          borderTop: '1px solid rgba(255,255,255,0.15)',
-          width: '60%',
-          margin: '2rem auto'
-        }}
-      />
-      <p style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>
-        Have a question or want to collaborate?
+    <footer
+      style={{
+        marginTop: '5rem',
+        paddingTop: '2rem',
+        borderTop: '1px solid #27272a',
+      }}
+    >
+      <p style={{ fontSize: '0.875rem', color: '#71717a', marginBottom: '1rem' }}>
+        Open to full-time SWE roles. On OPT.
       </p>
-
-      {/* Email button */}
-      <motion.a
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        href="mailto:rajatsavdekar@gmail.com"
-        style={{
-          display: 'inline-block',
-          fontWeight: 'bold',
-          fontSize: '1.1rem',
-          color: '#00c3ffff', //
-          textDecoration: 'none',
-          marginBottom: '1rem',
-          transition: 'color 0.3s ease'
-        }}
-      >
-        → Email me at rajatsavdekar@gmail.com
-      </motion.a>
-
-      {/* Social / Quick Links */}
-      <div
-        style={{
-          marginTop: '1rem',
-          fontSize: '0.95rem',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '2rem',
-          flexWrap: 'wrap'
-        }}
-      >
-        {[
-          { name: 'GitHub', href: 'https://github.com/RDX-Rajat-Savdekar' },
-          { name: 'LinkedIn', href: 'https://linkedin.com/in/rajatsavdekar' },
-          { name: 'Resume', href: pdfUrl }
-        ].map((link, i) => (
-          <motion.a
-            key={i}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center' }}>
+        <a
+          href="mailto:rajatsavdekar@gmail.com"
+          style={{
+            fontSize: '0.875rem',
+            color: '#f59e0b',
+            fontWeight: 500,
+            transition: 'color 0.15s',
+            marginRight: '1.5rem',
+          }}
+          onMouseEnter={(e) => (e.target.style.color = '#fbbf24')}
+          onMouseLeave={(e) => (e.target.style.color = '#f59e0b')}
+        >
+          rajatsavdekar@gmail.com
+        </a>
+        {links.map((link) => (
+          <a
+            key={link.name}
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
             style={{
-              color: '#FFCC00',   // USC Gold for consistency
-              textDecoration: 'none',
-              fontWeight: 600,
-              transition: 'color 0.3s ease'
+              fontSize: '0.875rem',
+              color: '#71717a',
+              marginRight: '1.5rem',
+              transition: 'color 0.15s',
             }}
+            onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
+            onMouseLeave={(e) => (e.target.style.color = '#71717a')}
           >
-            {link.name}
-          </motion.a>
+            {link.name} ↗
+          </a>
         ))}
       </div>
-    </div>
+    </footer>
   );
 }

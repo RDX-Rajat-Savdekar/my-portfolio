@@ -1,11 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import Home from './pages/Home';
-import DevLog from './pages/DevLog';
-import Resume from './pages/Resume';
+import Work from './pages/Work';
+import Writing from './pages/Writing';
 import Community from './pages/Community';
-import Articles from './pages/Articles';
-
 
 function App() {
   return (
@@ -13,14 +11,16 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/log" element={<DevLog />} />
-        <Route path="/articles" element={<Articles />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/writing" element={<Writing />} />
         <Route path="/community" element={<Community />} />
+        {/* Legacy routes */}
+        <Route path="/resume" element={<Navigate to="/work" replace />} />
+        <Route path="/log" element={<Navigate to="/writing" replace />} />
+        <Route path="/articles" element={<Navigate to="/writing" replace />} />
       </Routes>
     </Router>
   );
 }
-
 
 export default App;
