@@ -15,21 +15,21 @@ export default function ContactMe() {
         borderTop: '1px solid #27272a',
       }}
     >
-      <p style={{ fontSize: '0.875rem', color: '#71717a', marginBottom: '1rem' }}>
-        Open to full-time SWE roles. On OPT.
+      <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '1rem' }}>
+        Available for full-time software engineering roles starting Summer 2026.
       </p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center' }}>
         <a
           href="mailto:rajatsavdekar@gmail.com"
           style={{
             fontSize: '0.875rem',
-            color: '#f59e0b',
+            color: 'var(--accent)',
             fontWeight: 500,
-            transition: 'color 0.15s',
+            transition: 'opacity 0.15s',
             marginRight: '1.5rem',
           }}
-          onMouseEnter={(e) => (e.target.style.color = '#fbbf24')}
-          onMouseLeave={(e) => (e.target.style.color = '#f59e0b')}
+          onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+          onMouseLeave={(e) => (e.target.style.opacity = '1')}
         >
           rajatsavdekar@gmail.com
         </a>
@@ -41,12 +41,12 @@ export default function ContactMe() {
             rel="noreferrer"
             style={{
               fontSize: '0.875rem',
-              color: '#71717a',
+              color: 'var(--muted)',
               marginRight: '1.5rem',
               transition: 'color 0.15s',
             }}
-            onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
-            onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+            onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+            onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
           >
             {link.name} ↗
           </a>

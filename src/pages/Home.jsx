@@ -1,39 +1,49 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
+import JourneyTimeline from '../components/JourneyTimeline';
 
-const featuredProjects = [
+const whatImBuilding = [
   {
     name: 'MockPad',
-    description:
-      'AI-powered coding environment for algorithm practice. Personalized suggestions, real-time progress tracking, built on the MERN stack with GenAI tools.',
-    tags: ['React', 'Node.js', 'MongoDB', 'GenAI'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
+    description: 'Free CoderPad — real-time collaborative interviews with playback',
+    links: [{ label: 'Live', url: 'https://mockpad-kappa.vercel.app/' }],
   },
   {
-    name: 'Manim-DSA',
-    description:
-      '20+ animated visualizations of complex distributed systems and DSA concepts. Engineered a rendering pipeline with caching that cut build times by 30%.',
-    tags: ['Python', 'Manim', 'System Design'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
-    youtube: 'https://youtube.com/@rajatsavdekar',
+    name: 'CelestiaVR',
+    description: 'Immersive VR stargazing for Meta Quest 3 with NASA/JPL data',
+    links: [
+      { label: 'Demo', url: 'https://www.youtube.com/watch?v=QzRTp0EtUsQ' },
+      { label: 'Animated Presentation', url: 'https://rdx-rajat-savdekar.github.io/Celestia_Presentation/' },
+    ],
   },
   {
     name: 'Aura',
-    description:
-      'visionOS accessibility app providing real-time captions and sound alerts for hearing-impaired users. CoreML for on-device sound classification. Won 2nd place at a USC Hackathon.',
-    tags: ['SwiftUI', 'visionOS', 'CoreML'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
-    youtube: 'https://youtube.com/@rajatsavdekar',
-    badge: '2nd @ USC Hackathon',
+    description: 'visionOS CoreML app — 2nd place USC Hackathon',
+    links: [{ label: 'Demo', url: 'https://www.youtube.com/watch?v=HbW9F2zjmLQ&t=65s' }],
+  },
+  {
+    name: 'SplitIt',
+    description: 'Expense splitter',
+    links: [{ label: 'Live', url: 'https://splitit-frontend-vite.vercel.app/login' }],
+  },
+  {
+    name: 'Trojanmind',
+    description: 'AI-powered Mental Health Copilot for USC students',
+    links: [{ label: 'Demo', url: 'https://www.youtube.com/watch?v=QOkA36npHNo' }],
+  },
+  {
+    name: 'Research Papers',
+    description: 'All papers I have published',
+    links: [{ label: 'Repo', url: 'https://github.com/RDX-Rajat-Savdekar/Research-Papers' }],
   },
 ];
 
 const recentWriting = [
   {
     date: 'Sep 2025',
-    title: 'Portfolio Restructure — Simple & Focused',
-    type: 'devlog',
+    title: 'Building for Spatial Computing: Lessons from CelestiaVR',
+    type: 'article',
     path: '/writing',
     internal: true,
   },
@@ -47,7 +57,7 @@ const recentWriting = [
   {
     date: 'Sep 2025',
     title: 'React Performance Optimization — What Actually Matters',
-    type: 'devlog',
+    type: 'article',
     path: '/writing',
     internal: true,
   },
@@ -63,26 +73,22 @@ const s = {
   page: {
     maxWidth: '672px',
     margin: '0 auto',
-    padding: '4rem 1.5rem 2rem',
+    padding: '6rem 1.5rem 4rem',
   },
   sectionLabel: {
     display: 'block',
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "var(--font-mono)",
     fontSize: '0.7rem',
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: '#71717a',
+    color: 'var(--muted)',
     marginBottom: '1.5rem',
   },
-  divider: {
-    borderTop: '1px solid #27272a',
-    marginBottom: '0px',
-  },
   tag: {
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "var(--font-mono)",
     fontSize: '0.7rem',
-    color: '#71717a',
-    border: '1px solid #27272a',
+    color: 'var(--muted)',
+    border: '1px solid var(--border)',
     borderRadius: '4px',
     padding: '1px 6px',
   },
@@ -92,25 +98,25 @@ export default function Home() {
   return (
     <main style={s.page}>
       {/* ── Hero ── */}
-      <motion.section {...fade(0)} style={{ marginBottom: '5rem' }}>
+      <motion.section {...fade(0)} style={{ marginBottom: '6rem' }}>
         <p
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "var(--font-mono)",
             fontSize: '0.75rem',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: '#f59e0b',
+            color: 'var(--accent)',
             marginBottom: '1rem',
           }}
         >
-          MS CS @ USC · Los Angeles, CA
+          MS CS @ USC · Los Angeles
         </p>
         <h1
           style={{
             fontSize: 'clamp(2rem, 6vw, 2.75rem)',
             fontWeight: 700,
             letterSpacing: '-0.03em',
-            color: '#fafafa',
+            color: 'var(--fg)',
             lineHeight: 1.15,
             marginBottom: '1.25rem',
           }}
@@ -121,13 +127,13 @@ export default function Home() {
           style={{
             fontSize: '1.0625rem',
             lineHeight: 1.75,
-            color: '#a1a1aa',
+            color: 'var(--muted)',
             marginBottom: '2rem',
-            maxWidth: '520px',
+            maxWidth: '540px',
           }}
         >
-          I build software and write about the process. Currently finishing my
-          master's at USC, on OPT, figuring it out in public.
+          I build high-utility tools at the intersection of <strong>Spatial Computing</strong> and <strong>On-device AI</strong>. 
+          My approach is simple: build the expensive tool, then make it free.
         </p>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <Link
@@ -135,185 +141,102 @@ export default function Home() {
             style={{
               display: 'inline-block',
               padding: '0.5rem 1.125rem',
-              backgroundColor: '#f59e0b',
-              color: '#09090b',
+              backgroundColor: 'var(--fg)',
+              color: 'var(--bg)',
               borderRadius: '6px',
               fontSize: '0.875rem',
               fontWeight: 600,
-              transition: 'background-color 0.15s',
+              transition: 'opacity 0.15s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#fbbf24')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#f59e0b')}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
-            View my work →
+            View Work
           </Link>
           <Link
             to="/writing"
             style={{
               display: 'inline-block',
               padding: '0.5rem 1.125rem',
-              border: '1px solid #3f3f46',
-              color: '#d4d4d8',
+              border: '1px solid var(--border)',
+              color: 'var(--muted)',
               borderRadius: '6px',
               fontSize: '0.875rem',
               fontWeight: 500,
-              transition: 'border-color 0.15s, color 0.15s',
+              transition: 'all 0.15s',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#71717a';
-              e.currentTarget.style.color = '#fafafa';
+              e.currentTarget.style.borderColor = 'var(--muted)';
+              e.currentTarget.style.color = 'var(--fg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#3f3f46';
-              e.currentTarget.style.color = '#d4d4d8';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--muted)';
             }}
           >
-            Read my writing →
+            Read Articles
           </Link>
         </div>
       </motion.section>
 
-      {/* ── Selected Work ── */}
-      <motion.section {...fade(0.1)} style={{ marginBottom: '5rem' }}>
-        <span style={s.sectionLabel}>Selected Work</span>
-        <div>
-          {featuredProjects.map((project, i) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.15 + i * 0.07 }}
-              style={{
-                display: 'flex',
-                gap: '1.5rem',
-                padding: '1.25rem 0',
-                borderBottom: '1px solid #27272a',
-                flexWrap: 'wrap',
-              }}
-            >
-              <div style={{ flex: 1, minWidth: '240px' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.625rem',
-                    marginBottom: '0.375rem',
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: '0.9375rem',
-                      fontWeight: 600,
-                      color: '#fafafa',
-                    }}
-                  >
-                    {project.name}
-                  </h3>
-                  {project.badge && (
-                    <span
-                      style={{
-                        fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: '0.65rem',
-                        color: '#f59e0b',
-                        backgroundColor: 'rgba(245,158,11,0.1)',
-                        border: '1px solid rgba(245,158,11,0.25)',
-                        borderRadius: '4px',
-                        padding: '1px 6px',
-                      }}
-                    >
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
-                <p
-                  style={{
-                    fontSize: '0.875rem',
-                    lineHeight: 1.65,
-                    color: '#a1a1aa',
-                    marginBottom: '0.75rem',
-                  }}
-                >
-                  {project.description}
-                </p>
-                <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                  {project.tags.map((tag) => (
-                    <span key={tag} style={s.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.375rem',
-                  alignItems: 'flex-end',
-                  justifyContent: 'flex-start',
-                  paddingTop: '2px',
-                  minWidth: '60px',
-                }}
-              >
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                    onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                    onMouseLeave={(e) => (e.target.style.color = '#71717a')}
-                  >
-                    GitHub ↗
-                  </a>
-                )}
-                {project.youtube && (
-                  <a
-                    href={project.youtube}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                    onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                    onMouseLeave={(e) => (e.target.style.color = '#71717a')}
-                  >
-                    YouTube ↗
-                  </a>
-                )}
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                    onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                    onMouseLeave={(e) => (e.target.style.color = '#71717a')}
-                  >
-                    Live ↗
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
+      {/* ── What I'm Building ── */}
+      <motion.section {...fade(0.1)} style={{ marginBottom: '6rem' }}>
+        <span style={s.sectionLabel}>What I'm Building</span>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                <th style={{ padding: '0.75rem 0', color: 'var(--fg)', fontWeight: 600, width: '25%' }}>Project</th>
+                <th style={{ padding: '0.75rem 0', color: 'var(--fg)', fontWeight: 600 }}>What it does</th>
+                <th style={{ padding: '0.75rem 0', color: 'var(--fg)', fontWeight: 600, textAlign: 'right' }}>Links</th>
+              </tr>
+            </thead>
+            <tbody>
+              {whatImBuilding.map((p, i) => (
+                <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <td style={{ padding: '1.25rem 0', color: 'var(--fg)', fontWeight: 500, verticalAlign: 'top' }}>{p.name}</td>
+                  <td style={{ padding: '1.25rem 0', color: 'var(--muted)', lineHeight: 1.5, verticalAlign: 'top', paddingRight: '1rem' }}>{p.description}</td>
+                  <td style={{ padding: '1.25rem 0', textAlign: 'right', verticalAlign: 'top' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
+                      {p.links.map((l, j) => (
+                        <a
+                          key={j}
+                          href={l.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ color: 'var(--accent)', whiteSpace: 'nowrap', transition: 'opacity 0.15s' }}
+                          onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+                          onMouseLeave={(e) => (e.target.style.opacity = '1')}
+                        >
+                          {l.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <Link
           to="/work"
           style={{
             display: 'inline-block',
-            marginTop: '1rem',
+            marginTop: '1.5rem',
             fontSize: '0.8125rem',
-            color: '#71717a',
+            color: 'var(--muted)',
             transition: 'color 0.15s',
           }}
-          onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-          onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+          onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+          onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
         >
-          View all work →
+          View detailed technical analysis →
         </Link>
       </motion.section>
 
-      {/* ── Writing ── */}
-      <motion.section {...fade(0.2)} style={{ marginBottom: '5rem' }}>
-        <span style={s.sectionLabel}>Writing</span>
+      {/* ── Articles ── */}
+      <motion.section {...fade(0.2)} style={{ marginBottom: '6rem' }}>
+        <span style={s.sectionLabel}>Recent Articles</span>
         <div>
           {recentWriting.map((item, i) => (
             <div
@@ -322,17 +245,18 @@ export default function Home() {
                 display: 'flex',
                 gap: '1.25rem',
                 alignItems: 'flex-start',
-                padding: '0.875rem 0',
-                borderBottom: '1px solid #27272a',
+                padding: '1rem 0',
+                borderBottom: '1px solid var(--border)',
               }}
             >
               <span
                 style={{
                   flexShrink: 0,
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "var(--font-mono)",
                   fontSize: '0.7rem',
-                  color: '#52525b',
-                  paddingTop: '2px',
+                  color: 'var(--muted)',
+                  opacity: 0.6,
+                  paddingTop: '3px',
                   width: '60px',
                 }}
               >
@@ -344,11 +268,11 @@ export default function Home() {
                     to={item.path}
                     style={{
                       fontSize: '0.875rem',
-                      color: '#d4d4d8',
-                      transition: 'color 0.15s',
+                      color: 'var(--fg)',
+                      transition: 'opacity 0.15s',
                     }}
-                    onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
-                    onMouseLeave={(e) => (e.target.style.color = '#d4d4d8')}
+                    onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+                    onMouseLeave={(e) => (e.target.style.opacity = '1')}
                   >
                     {item.title}
                   </Link>
@@ -359,38 +283,16 @@ export default function Home() {
                     rel="noreferrer"
                     style={{
                       fontSize: '0.875rem',
-                      color: '#d4d4d8',
-                      transition: 'color 0.15s',
+                      color: 'var(--fg)',
+                      transition: 'opacity 0.15s',
                     }}
-                    onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
-                    onMouseLeave={(e) => (e.target.style.color = '#d4d4d8')}
+                    onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+                    onMouseLeave={(e) => (e.target.style.opacity = '1')}
                   >
                     {item.title} ↗
                   </a>
                 )}
               </div>
-              <span
-                style={{
-                  flexShrink: 0,
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: '0.65rem',
-                  padding: '1px 6px',
-                  borderRadius: '4px',
-                  ...(item.type === 'article'
-                    ? {
-                        color: '#f59e0b',
-                        backgroundColor: 'rgba(245,158,11,0.1)',
-                        border: '1px solid rgba(245,158,11,0.2)',
-                      }
-                    : {
-                        color: '#71717a',
-                        backgroundColor: '#18181b',
-                        border: '1px solid #27272a',
-                      }),
-                }}
-              >
-                {item.type}
-              </span>
             </div>
           ))}
         </div>
@@ -398,48 +300,27 @@ export default function Home() {
           to="/writing"
           style={{
             display: 'inline-block',
-            marginTop: '1rem',
+            marginTop: '1.5rem',
             fontSize: '0.8125rem',
-            color: '#71717a',
+            color: 'var(--muted)',
             transition: 'color 0.15s',
           }}
-          onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-          onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+          onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+          onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
         >
-          View all writing →
+          View all articles →
         </Link>
       </motion.section>
 
-      {/* ── Currently ── */}
+      {/* ── Journey ── */}
       <motion.section
         {...fade(0.3)}
         style={{
-          marginBottom: '4rem',
-          padding: '1.25rem 1.5rem',
-          borderRadius: '8px',
-          border: '1px solid #27272a',
-          backgroundColor: '#18181b',
+          marginBottom: '6rem',
         }}
       >
-        <span style={{ ...s.sectionLabel, marginBottom: '1rem' }}>Currently</span>
-        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
-          {[
-            ['MS CS at USC', 'graduating May 2026'],
-            ['Looking for', 'full-time SWE roles (on OPT)'],
-            ['Building', 'MockPad, writing in public'],
-          ].map(([label, value]) => (
-            <li
-              key={label}
-              style={{ display: 'flex', gap: '0.5rem', fontSize: '0.875rem' }}
-            >
-              <span style={{ color: '#52525b', flexShrink: 0 }}>→</span>
-              <span style={{ color: '#71717a' }}>
-                {label}{' '}
-                <span style={{ color: '#d4d4d8' }}>{value}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
+        <span style={s.sectionLabel}>The Journey</span>
+        <JourneyTimeline />
       </motion.section>
 
       <ContactMe />

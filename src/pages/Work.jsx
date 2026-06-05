@@ -4,6 +4,15 @@ import pdfUrl from '/Rajat_Resume.pdf?url';
 
 const projects = [
   {
+    name: 'CelestiaVR',
+    description:
+      'Immersive VR stargazing experience for Meta Quest using NASA/JPL data. Visualizing the cosmos with high-fidelity spatial data.',
+    details:
+      'Designed a spatial mapping system to render celestial bodies at real-world scale in VR. Integrated NASA Horizon APIs for accurate planet positioning. Optimized rendering for Meta Quest 3/3S to maintain consistent 90 FPS.',
+    tags: ['Meta Quest SDK', 'Unity', 'NASA API', 'C#', 'XR'],
+    github: 'https://github.com/RDX-Rajat-Savdekar',
+  },
+  {
     name: 'Aura: Live Caption & Sound Awareness',
     description:
       'visionOS accessibility app providing real-time captions and visual alerts for hearing-impaired users. Won 2nd place at a USC Hackathon.',
@@ -11,45 +20,34 @@ const projects = [
       'Built spatial UI with SwiftUI for Apple Vision Pro. Integrated CoreML for on-device sound classification — kept processing local to protect user privacy. Managed the full SDLC from spatial UI design to model optimization.',
     tags: ['SwiftUI', 'visionOS', 'CoreML', 'Accessibility'],
     github: 'https://github.com/RDX-Rajat-Savdekar',
-    youtube: 'https://youtube.com/@rajatsavdekar',
     badge: '2nd @ USC Hackathon',
+  },
+  {
+    name: 'Research Impact: Texture Analysis',
+    description:
+      'Developed a GUI tool for image texture analysis using Gray-Level Co-occurrence Matrix (GLCM).',
+    details:
+      'Engineered a MATLAB-based tool to compute texture features (contrast, entropy, homogeneity). This research has been cited in 10+ IEEE and Springer Nature papers, demonstrating its academic relevance and impact.',
+    tags: ['MATLAB', 'Image Processing', 'Publication', 'Research'],
+    live: 'https://ijnrd.org/viewpaperforall.php?paper=IJNRD2202021',
+  },
+  {
+    name: 'MockPad',
+    description:
+      'AI-powered coding environment for algorithm practice. Built as a free, open-source alternative to enterprise-grade interview tools.',
+    details:
+      'Developed an AI coding assistant with the MERN stack. Integrated GenAI tools to design a scalable REST API for real-time progress tracking and personalized algorithmic suggestions.',
+    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'GenAI'],
+    github: 'https://github.com/RDX-Rajat-Savdekar',
   },
   {
     name: 'SplitIt — Splitwise Clone',
     description:
       'Fault-tolerant expense splitting app using graph algorithms to simplify debt across concurrent multi-user environments.',
     details:
-      'Designed graph-based debt simplification logic. Built a modular REST API following OOP principles, optimized MongoDB schemas for real-time transaction updates. Implemented JWT auth and session state management.',
+      'Designed graph-based debt simplification logic. Built a modular REST API following OOP principles, optimized MongoDB schemas for real-time transaction updates.',
     tags: ['React', 'Node.js', 'MongoDB', 'JWT', 'Graph Algorithms'],
     live: '#',
-  },
-  {
-    name: 'RAG System',
-    description:
-      'Scalable distributed service using retrieval-augmented generation pipelines for context-aware queries.',
-    details:
-      'Engineered RAG pipelines to integrate external knowledge sources. Built a resilient vector search system, optimizing retrieval architectures to resolve edge-case hallucinations and ensure low latency.',
-    tags: ['Python', 'LangChain', 'Vector DB', 'RAG', 'Distributed Systems'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
-  },
-  {
-    name: 'Manim-DSA',
-    description:
-      '20+ animated visualizations of complex distributed systems and DSA concepts. Built a rendering pipeline with caching that cut build times by 30%.',
-    details:
-      'Created a library of algorithmic animations demonstrating "Thinking Big" via visual system design breakdowns. Engineered caching and operational monitoring into the rendering pipeline.',
-    tags: ['Python', 'Manim', 'System Design', 'DevOps'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
-    youtube: 'https://youtube.com/@rajatsavdekar',
-  },
-  {
-    name: 'MockPad',
-    description:
-      'AI-powered coding environment for algorithm practice — personalized suggestions, real-time progress tracking, built on MERN.',
-    details:
-      'Developed an AI coding assistant with the MERN stack. Integrated GenAI tools to design a scalable REST API for real-time progress tracking and personalized algorithmic suggestions.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'GenAI'],
-    github: 'https://github.com/RDX-Rajat-Savdekar',
   },
 ];
 
@@ -60,7 +58,7 @@ const experience = [
     location: 'Los Angeles, CA',
     period: 'May 2025 – July 2025',
     bullets: [
-      'Mentored 2 international teams through an intensive 4-week engineering rotation, delivering weekly prototypes.',
+      'Mentored international teams through intensive engineering rotations, delivering weekly prototypes.',
       'Guided students through the full product lifecycle, enforcing technical standards to transform concepts into functional projects.',
     ],
   },
@@ -70,8 +68,8 @@ const experience = [
     location: 'Jalgaon, India',
     period: 'May 2023 – May 2024',
     bullets: [
-      'Owned the full lifecycle of a web-based procurement platform for 150 daily users — drove the transition from manual logs to a digital architecture with 99.9% uptime.',
-      'Refactored legacy PHP modules into scalable microservices using Flask and MySQL, designing a fault-tolerant backend with zero data loss.',
+      'Owned the full lifecycle of a web-based procurement platform for 150 daily users — drove the transition from manual logs to digital architecture.',
+      'Refactored legacy PHP modules into scalable microservices using Flask and MySQL, designing a fault-tolerant backend.',
       'Implemented Docker-based CI/CD pipelines, reducing release cycles by 30%.',
     ],
   },
@@ -86,18 +84,18 @@ const skills = {
 const s = {
   sectionLabel: {
     display: 'block',
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "var(--font-mono)",
     fontSize: '0.7rem',
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: '#71717a',
+    color: 'var(--muted)',
     marginBottom: '1.5rem',
   },
   tag: {
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "var(--font-mono)",
     fontSize: '0.68rem',
-    color: '#71717a',
-    border: '1px solid #27272a',
+    color: 'var(--muted)',
+    border: '1px solid var(--border)',
     borderRadius: '4px',
     padding: '1px 6px',
   },
@@ -105,7 +103,7 @@ const s = {
 
 export default function Work() {
   return (
-    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '4rem 1.5rem 2rem' }}>
+    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '6rem 1.5rem 4rem' }}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -118,7 +116,7 @@ export default function Work() {
             fontSize: '1.75rem',
             fontWeight: 700,
             letterSpacing: '-0.025em',
-            color: '#fafafa',
+            color: 'var(--fg)',
             marginBottom: '1rem',
           }}
         >
@@ -134,19 +132,19 @@ export default function Work() {
             alignItems: 'center',
             gap: '0.375rem',
             padding: '0.4rem 0.875rem',
-            border: '1px solid #3f3f46',
+            border: '1px solid var(--border)',
             borderRadius: '6px',
             fontSize: '0.8125rem',
-            color: '#a1a1aa',
-            transition: 'border-color 0.15s, color 0.15s',
+            color: 'var(--muted)',
+            transition: 'all 0.15s',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#71717a';
-            e.currentTarget.style.color = '#fafafa';
+            e.currentTarget.style.borderColor = 'var(--muted)';
+            e.currentTarget.style.color = 'var(--fg)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = '#3f3f46';
-            e.currentTarget.style.color = '#a1a1aa';
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.color = 'var(--muted)';
           }}
         >
           ↓ Download Resume (PDF)
@@ -170,7 +168,7 @@ export default function Work() {
               transition={{ duration: 0.35, delay: 0.1 + i * 0.07 }}
               style={{
                 padding: '1.5rem 0',
-                borderBottom: '1px solid #27272a',
+                borderBottom: '1px solid var(--border)',
               }}
             >
               <div
@@ -184,17 +182,17 @@ export default function Work() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', flexWrap: 'wrap' }}>
-                  <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#fafafa' }}>
+                  <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>
                     {project.name}
                   </h3>
                   {project.badge && (
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', monospace",
+                        fontFamily: "var(--font-mono)",
                         fontSize: '0.65rem',
-                        color: '#f59e0b',
-                        backgroundColor: 'rgba(245,158,11,0.1)',
-                        border: '1px solid rgba(245,158,11,0.25)',
+                        color: 'var(--accent)',
+                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        border: '1px solid rgba(56, 189, 248, 0.25)',
                         borderRadius: '4px',
                         padding: '1px 6px',
                       }}
@@ -209,23 +207,11 @@ export default function Work() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                      onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                      onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+                      style={{ fontSize: '0.8rem', color: 'var(--muted)', transition: 'color 0.15s' }}
+                      onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+                      onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
                     >
                       GitHub ↗
-                    </a>
-                  )}
-                  {project.youtube && (
-                    <a
-                      href={project.youtube}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                      onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                      onMouseLeave={(e) => (e.target.style.color = '#71717a')}
-                    >
-                      YouTube ↗
                     </a>
                   )}
                   {project.live && project.live !== '#' && (
@@ -233,19 +219,19 @@ export default function Work() {
                       href={project.live}
                       target="_blank"
                       rel="noreferrer"
-                      style={{ fontSize: '0.8rem', color: '#71717a', transition: 'color 0.15s' }}
-                      onMouseEnter={(e) => (e.target.style.color = '#d4d4d8')}
-                      onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+                      style={{ fontSize: '0.8rem', color: 'var(--muted)', transition: 'color 0.15s' }}
+                      onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+                      onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
                     >
-                      Live ↗
+                      Link ↗
                     </a>
                   )}
                 </div>
               </div>
-              <p style={{ fontSize: '0.875rem', color: '#a1a1aa', lineHeight: 1.65, marginBottom: '0.5rem' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '0.5rem' }}>
                 {project.description}
               </p>
-              <p style={{ fontSize: '0.8125rem', color: '#71717a', lineHeight: 1.6, marginBottom: '0.875rem' }}>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', opacity: 0.7, lineHeight: 1.6, marginBottom: '0.875rem' }}>
                 {project.details}
               </p>
               <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
@@ -280,14 +266,14 @@ export default function Work() {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#fafafa' }}>{job.role}</p>
-                  <p style={{ fontSize: '0.8125rem', color: '#a1a1aa' }}>{job.org} · {job.location}</p>
+                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>{job.role}</p>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>{job.org} · {job.location}</p>
                 </div>
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "var(--font-mono)",
                     fontSize: '0.7rem',
-                    color: '#71717a',
+                    color: 'var(--muted)',
                     paddingTop: '2px',
                   }}
                 >
@@ -296,7 +282,7 @@ export default function Work() {
               </div>
               <ul style={{ marginTop: '0.75rem', paddingLeft: '1rem', display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                 {job.bullets.map((b, i) => (
-                  <li key={i} style={{ fontSize: '0.875rem', color: '#a1a1aa', lineHeight: 1.65 }}>
+                  <li key={i} style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65 }}>
                     {b}
                   </li>
                 ))}
@@ -319,9 +305,9 @@ export default function Work() {
             <div key={category} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <span
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "var(--font-mono)",
                   fontSize: '0.7rem',
-                  color: '#71717a',
+                  color: 'var(--muted)',
                   paddingTop: '3px',
                   width: '100px',
                   flexShrink: 0,
@@ -377,13 +363,13 @@ export default function Work() {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#fafafa' }}>{edu.degree}</p>
-                  <p style={{ fontSize: '0.8125rem', color: '#a1a1aa' }}>{edu.school} · {edu.location}</p>
-                  <p style={{ fontSize: '0.8rem', color: '#71717a', marginTop: '0.25rem' }}>
+                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>{edu.degree}</p>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>{edu.school} · {edu.location}</p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--muted)', opacity: 0.7, marginTop: '0.25rem' }}>
                     {edu.courses} · GPA {edu.gpa}
                   </p>
                 </div>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', color: '#71717a', paddingTop: '2px' }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: '0.7rem', color: 'var(--muted)', paddingTop: '2px' }}>
                   {edu.period}
                 </span>
               </div>

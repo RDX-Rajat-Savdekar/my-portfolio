@@ -1,51 +1,36 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ContactMe from '../components/ContactMeComponent';
 
-const devlogs = [
+const technicalArticles = [
   {
-    date: 'Sep 25, 2025',
-    title: 'Portfolio Restructure — Simple & Focused',
+    date: 'June 2026',
+    title: 'Architecting an Astronomically Accurate XR Sky Engine',
     summary:
-      'Rebuilt the portfolio to focus on three core things: Work, Writing, and Community. Cut the noise, added more story.',
-    tags: ['React', 'Portfolio', 'UX'],
-    status: 'completed',
+      'How I built a high-performance celestial simulation for Meta Quest 3S using JPL telemetry and custom rotation models.',
+    tags: ['Unity', 'XR', 'Physics', 'Math'],
+    path: '/writing/celestia-vr',
   },
   {
-    date: 'Sep 20, 2025',
-    title: 'React Performance Optimization — What Actually Matters',
+    date: 'October 2024',
+    title: 'Aura: Real-time Spatial HUDs on visionOS',
     summary:
-      'Deep dive into React.memo, useMemo, and code splitting with React.lazy. Used Vite bundle analysis to find the real bottlenecks.',
-    tags: ['React', 'Performance', 'Vite'],
-    status: 'ongoing',
+      'Engineering a low-latency, privacy-first accessibility tool for Apple Vision Pro using CoreML and custom rendering pipelines.',
+    tags: ['visionOS', 'SwiftUI', 'CoreML'],
+    path: '/writing/aura',
   },
   {
-    date: 'Sep 15, 2025',
-    title: 'Docker Containerization — Multi-stage Builds & CI/CD',
+    date: 'June 2026',
+    title: 'Engineering a Deterministic Ghost Replay System',
     summary:
-      'Set up multi-stage Docker builds for a full-stack app. Wired Docker Compose for local orchestration and integrated into GitHub Actions.',
-    tags: ['Docker', 'DevOps', 'CI/CD'],
-    status: 'completed',
-  },
-  {
-    date: 'Sep 10, 2025',
-    title: 'Migrating to TypeScript — Incrementally, Not All at Once',
-    summary:
-      'Gradual migration of existing JS projects to TypeScript. Set up strict type checking, learned when generics actually help.',
-    tags: ['TypeScript', 'JavaScript', 'Refactoring'],
-    status: 'ongoing',
-  },
-  {
-    date: 'Sep 05, 2025',
-    title: 'Building a REST API with Node.js & Express',
-    summary:
-      'Built a RESTful API with proper error handling, JWT authentication, role-based access control, and Swagger documentation.',
-    tags: ['Node.js', 'Express', 'API Design', 'Auth'],
-    status: 'completed',
+      'Optimizing memory and physics for a Unity 2D game. Solving GC pressure and frame spikes through architectural pivots.',
+    tags: ['Unity', 'C#', 'Memory', 'Optimization'],
+    path: '/writing/after-image',
   },
 ];
 
-const articles = [
+const externalArticles = [
   {
     date: 'Jun 2025',
     title: 'Why I Built My Resume Template from Scratch in LaTeX',
@@ -75,24 +60,14 @@ const humanPosts = [
     preview: 'Timelines, cap-gap, H-1B lottery odds, and how to think about your job search given the constraints.',
     status: 'coming soon',
   },
-  {
-    title: 'What USC\'s CS Master\'s Actually Taught Me vs What I Expected',
-    preview: 'The gap between what I thought grad school would be and what it actually is — the good and the frustrating.',
-    status: 'coming soon',
-  },
 ];
-
-const statusColor = {
-  completed: '#10b981',
-  ongoing: '#f59e0b',
-};
 
 const s = {
   tag: {
-    fontFamily: "'JetBrains Mono', monospace",
+    fontFamily: "var(--font-mono)",
     fontSize: '0.68rem',
-    color: '#71717a',
-    border: '1px solid #27272a',
+    color: 'var(--muted)',
+    border: '1px solid var(--border)',
     borderRadius: '4px',
     padding: '1px 6px',
   },
@@ -102,7 +77,7 @@ export default function Writing() {
   const [activeTab, setActiveTab] = useState('technical');
 
   return (
-    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '4rem 1.5rem 2rem' }}>
+    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '6rem 1.5rem 4rem' }}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -115,14 +90,14 @@ export default function Writing() {
             fontSize: '1.75rem',
             fontWeight: 700,
             letterSpacing: '-0.025em',
-            color: '#fafafa',
+            color: 'var(--fg)',
             marginBottom: '0.75rem',
           }}
         >
-          Writing
+          Articles
         </h1>
-        <p style={{ fontSize: '0.9375rem', color: '#71717a', lineHeight: 1.65 }}>
-          Technical devlogs and honest writing about the journey. The process, not just the outcomes.
+        <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.65 }}>
+          Technical deep-dives, engineering case studies, and honest writing about the journey.
         </p>
       </motion.div>
 
@@ -135,7 +110,7 @@ export default function Writing() {
           display: 'flex',
           gap: '0',
           marginBottom: '2.5rem',
-          borderBottom: '1px solid #27272a',
+          borderBottom: '1px solid var(--border)',
         }}
       >
         {[
@@ -152,8 +127,8 @@ export default function Writing() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              borderBottom: activeTab === tab.id ? '2px solid #f59e0b' : '2px solid transparent',
-              color: activeTab === tab.id ? '#fafafa' : '#71717a',
+              borderBottom: activeTab === tab.id ? '2px solid var(--fg)' : '2px solid transparent',
+              color: activeTab === tab.id ? 'var(--fg)' : 'var(--muted)',
               marginBottom: '-1px',
               transition: 'color 0.15s',
             }}
@@ -170,113 +145,78 @@ export default function Writing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Devlogs */}
+          {/* Case Studies */}
           <p
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "var(--font-mono)",
               fontSize: '0.7rem',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: '#52525b',
+              color: 'var(--muted)',
+              opacity: 0.6,
               marginBottom: '1rem',
             }}
           >
-            Devlogs
+            Engineering Case Studies
           </p>
-          <div style={{ marginBottom: '3rem' }}>
-            {devlogs.map((log, i) => (
-              <div
+          <div style={{ marginBottom: '4rem' }}>
+            {technicalArticles.map((article, i) => (
+              <Link
                 key={i}
+                to={article.path}
                 style={{
-                  padding: '1.25rem 0',
-                  borderBottom: '1px solid #27272a',
+                  display: 'block',
+                  padding: '1.5rem 0',
+                  borderBottom: '1px solid var(--border)',
+                  textDecoration: 'none',
                 }}
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '0.375rem',
-                    flexWrap: 'wrap',
-                    gap: '0.5rem',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: '0.7rem',
-                      color: '#52525b',
-                    }}
-                  >
-                    {log.date}
-                  </span>
-                  <span
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.375rem',
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: '0.68rem',
-                      color: statusColor[log.status] || '#71717a',
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: '6px',
-                        height: '6px',
-                        borderRadius: '50%',
-                        backgroundColor: statusColor[log.status] || '#71717a',
-                        display: 'inline-block',
-                      }}
-                    />
-                    {log.status}
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: '0.7rem', color: 'var(--muted)' }}>
+                    {article.date}
                   </span>
                 </div>
                 <h3
                   style={{
-                    fontSize: '0.9375rem',
+                    fontSize: '1rem',
                     fontWeight: 600,
-                    color: '#fafafa',
-                    marginBottom: '0.375rem',
+                    color: 'var(--fg)',
+                    marginBottom: '0.5rem',
+                    transition: 'color 0.15s',
                   }}
+                  onMouseEnter={(e) => (e.target.style.color = 'var(--accent)')}
+                  onMouseLeave={(e) => (e.target.style.color = 'var(--fg)')}
                 >
-                  {log.title}
+                  {article.title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: '0.875rem',
-                    color: '#a1a1aa',
-                    lineHeight: 1.65,
-                    marginBottom: '0.75rem',
-                  }}
-                >
-                  {log.summary}
+                <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
+                  {article.summary}
                 </p>
                 <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                  {log.tags.map((tag) => (
+                  {article.tags.map((tag) => (
                     <span key={tag} style={s.tag}>{tag}</span>
                   ))}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
-          {/* Articles */}
+          {/* External Articles */}
           <p
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "var(--font-mono)",
               fontSize: '0.7rem',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: '#52525b',
+              color: 'var(--muted)',
+              opacity: 0.6,
               marginBottom: '1rem',
             }}
           >
-            Articles on Medium
+            External Publications
           </p>
           <div>
-            {articles.map((article, i) => (
+            {externalArticles.map((article, i) => (
               <a
                 key={i}
                 href={article.link}
@@ -284,38 +224,36 @@ export default function Writing() {
                 rel="noreferrer"
                 style={{
                   display: 'block',
-                  padding: '1.25rem 0',
-                  borderBottom: '1px solid #27272a',
+                  padding: '1.5rem 0',
+                  borderBottom: '1px solid var(--border)',
                   textDecoration: 'none',
                 }}
               >
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "var(--font-mono)",
                     fontSize: '0.7rem',
-                    color: '#52525b',
+                    color: 'var(--muted)',
                     display: 'block',
-                    marginBottom: '0.375rem',
+                    marginBottom: '0.5rem',
                   }}
                 >
                   {article.date}
                 </span>
-                <p
+                <h3
                   style={{
-                    fontSize: '0.9375rem',
+                    fontSize: '1rem',
                     fontWeight: 600,
-                    color: '#d4d4d8',
-                    marginBottom: '0.375rem',
-                    transition: 'color 0.15s',
+                    color: 'var(--fg)',
+                    marginBottom: '0.5rem',
+                    transition: 'opacity 0.15s',
                   }}
-                  onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
-                  onMouseLeave={(e) => (e.target.style.color = '#d4d4d8')}
+                  onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+                  onMouseLeave={(e) => (e.target.style.opacity = '1')}
                 >
                   {article.title} ↗
-                </p>
-                <p
-                  style={{ fontSize: '0.875rem', color: '#a1a1aa', lineHeight: 1.65, marginBottom: '0.75rem' }}
-                >
+                </h3>
+                <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
                   {article.summary}
                 </p>
                 <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
@@ -336,9 +274,9 @@ export default function Writing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <p style={{ fontSize: '0.9375rem', color: '#71717a', lineHeight: 1.75, marginBottom: '2rem' }}>
-            The honest stuff — interview prep reality checks, navigating OPT, what grad school actually
-            teaches you. Writing this while I'm in it, not after I've figured it out.
+          <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: '2rem' }}>
+            Personal writing on interview prep, navigating OPT, and graduate school. 
+            Documenting the journey in real-time.
           </p>
           <div style={{ marginBottom: '2rem' }}>
             {humanPosts.map((post, i) => (
@@ -346,22 +284,21 @@ export default function Writing() {
                 key={i}
                 style={{
                   padding: '1.25rem 0',
-                  borderBottom: '1px solid #27272a',
+                  borderBottom: '1px solid var(--border)',
                   opacity: 0.6,
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.375rem', gap: '1rem' }}>
-                  <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#d4d4d8' }}>
+                  <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>
                     {post.title}
                   </h3>
                   <span
                     style={{
                       flexShrink: 0,
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "var(--font-mono)",
                       fontSize: '0.65rem',
-                      color: '#71717a',
-                      backgroundColor: '#18181b',
-                      border: '1px solid #27272a',
+                      color: 'var(--muted)',
+                      border: '1px solid var(--border)',
                       borderRadius: '4px',
                       padding: '1px 6px',
                     }}
@@ -369,7 +306,7 @@ export default function Writing() {
                     {post.status}
                   </span>
                 </div>
-                <p style={{ fontSize: '0.875rem', color: '#71717a', lineHeight: 1.65 }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65 }}>
                   {post.preview}
                 </p>
               </div>
@@ -379,23 +316,22 @@ export default function Writing() {
             style={{
               padding: '1.25rem',
               borderRadius: '8px',
-              border: '1px solid #27272a',
-              backgroundColor: '#18181b',
+              border: '1px solid var(--border)',
             }}
           >
-            <p style={{ fontSize: '0.875rem', color: '#71717a', lineHeight: 1.65 }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65 }}>
               Follow along on{' '}
               <a
                 href="https://medium.com/@rajatsavdekar"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: '#f59e0b', transition: 'color 0.15s' }}
-                onMouseEnter={(e) => (e.target.style.color = '#fbbf24')}
-                onMouseLeave={(e) => (e.target.style.color = '#f59e0b')}
+                style={{ color: 'var(--accent)', transition: 'opacity 0.15s' }}
+                onMouseEnter={(e) => (e.target.style.opacity = '0.7')}
+                onMouseLeave={(e) => (e.target.style.opacity = '1')}
               >
                 Medium ↗
               </a>{' '}
-              for articles as they publish. These posts are in progress — writing while I'm in the middle of it.
+              for more articles.
             </p>
           </div>
         </motion.div>

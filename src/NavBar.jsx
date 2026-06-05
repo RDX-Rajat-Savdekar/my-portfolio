@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function NavBar() {
   const location = useLocation();
@@ -6,6 +7,12 @@ export default function NavBar() {
     { name: 'Work', path: '/work' },
     { name: 'Writing', path: '/writing' },
     { name: 'Community', path: '/community' },
+  ];
+
+  const socialLinks = [
+    { name: 'GitHub', href: 'https://github.com/RDX-Rajat-Savdekar' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/rajatsavdekar' },
+    { name: 'Resume', href: pdfUrl },
   ];
 
   return (
@@ -34,40 +41,63 @@ export default function NavBar() {
         <Link
           to="/"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "var(--font-mono)",
             fontSize: '0.8rem',
-            color: '#71717a',
+            color: 'var(--muted)',
             letterSpacing: '0.025em',
             transition: 'color 0.15s',
           }}
-          onMouseEnter={(e) => (e.target.style.color = '#fafafa')}
-          onMouseLeave={(e) => (e.target.style.color = '#71717a')}
+          onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+          onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
         >
           rajatsavdekar.dev
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', borderRight: '1px solid var(--border)', paddingRight: '1.25rem' }}>
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  style={{
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    color: isActive ? 'var(--fg)' : 'var(--muted)',
+                    transition: 'color 0.15s',
+                  }}
+                  onMouseEnter={(e) => { if (!isActive) e.target.style.color = 'var(--fg)'; }}
+                  onMouseLeave={(e) => { if (!isActive) e.target.style.color = 'var(--muted)'; }}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
                 style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  color: isActive ? '#f59e0b' : '#a1a1aa',
+                  fontSize: '0.8125rem',
+                  color: 'var(--muted)',
                   transition: 'color 0.15s',
                 }}
-                onMouseEnter={(e) => { if (!isActive) e.target.style.color = '#fafafa'; }}
-                onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#a1a1aa'; }}
+                onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
+                onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
               >
-                {item.name}
-              </Link>
-            );
-          })}
+                {link.name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
   );
 }
+
