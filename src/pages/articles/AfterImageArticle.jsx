@@ -3,6 +3,7 @@ import ArticleLayout from '../../components/ArticleLayout';
 export default function AfterImageArticle() {
   return (
     <ArticleLayout
+      projectSlug="after-image"
       title="Engineering a Deterministic Ghost Replay System"
       date="June 2026"
       tags={['Unity', 'C#', 'Game Engine', 'Memory Management']}

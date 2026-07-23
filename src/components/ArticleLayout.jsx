@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactMe from './ContactMeComponent';
+import { getProjectBySlug, getProjectLinks } from '../data/content';
 
-export default function ArticleLayout({ children, title, date, tags, description }) {
+export default function ArticleLayout({ projectSlug, title, date, tags, description, children }) {
+  const project = projectSlug ? getProjectBySlug(projectSlug) : null;
+  const links = project ? getProjectLinks(project) : [];
+
   return (
     <main style={{ maxWidth: '720px', margin: '0 auto', padding: '6rem 1.5rem 4rem' }}>
       <Link
@@ -12,12 +16,9 @@ export default function ArticleLayout({ children, title, date, tags, description
           fontSize: '0.875rem',
           color: 'var(--muted)',
           marginBottom: '2rem',
-          transition: 'color 0.15s',
         }}
-        onMouseEnter={(e) => (e.target.style.color = 'var(--fg)')}
-        onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
       >
-        ← Back to Articles
+        ← Back to Writing
       </Link>
 
       <motion.article
@@ -28,7 +29,7 @@ export default function ArticleLayout({ children, title, date, tags, description
         <header style={{ marginBottom: '3rem' }}>
           <div
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
               color: 'var(--accent)',
               marginBottom: '1rem',
@@ -55,17 +56,46 @@ export default function ArticleLayout({ children, title, date, tags, description
               fontSize: '1.125rem',
               lineHeight: 1.6,
               color: 'var(--muted)',
-              marginBottom: '1.5rem',
+              marginBottom: links.length ? '1.25rem' : '1.5rem',
             }}
           >
             {description}
           </p>
+          {links.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.625rem',
+                marginBottom: '1.5rem',
+              }}
+            >
+              {links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    fontSize: '0.8125rem',
+                    fontWeight: 500,
+                    color: 'var(--fg)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '6px',
+                    padding: '0.35rem 0.75rem',
+                  }}
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             {tags.map((tag) => (
               <span
                 key={tag}
                 style={{
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: 'var(--font-mono)',
                   fontSize: '0.7rem',
                   color: 'var(--muted)',
                   border: '1px solid var(--border)',

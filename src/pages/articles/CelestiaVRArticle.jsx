@@ -3,6 +3,7 @@ import ArticleLayout from '../../components/ArticleLayout';
 export default function CelestiaVRArticle() {
   return (
     <ArticleLayout
+      projectSlug="celestia-vr"
       title="Architecting an Astronomically Accurate XR Sky Engine"
       date="June 2026"
       tags={['Unity', 'XR', 'Physics', 'Optimization']}
@@ -47,6 +48,10 @@ export default function CelestiaVRArticle() {
 
       <section>
         <h2>Results & Performance SLA</h2>
+        <p>
+          The project won <strong>1st place at RealityShift</strong>, USC&apos;s XR Hackathon in Los
+          Angeles — on a 5-person team where I owned the real-time sky rendering engine.
+        </p>
         <p>
           Building for the Quest 3S meant hitting a strict <strong>72Hz frame budget</strong>. I implemented a 'lazy-enable' strategy for the telescope eyepiece camera, which reclaimed <strong>4-6ms of GPU time</strong> whenever the user wasn't actively looking through the lens.
         </p>

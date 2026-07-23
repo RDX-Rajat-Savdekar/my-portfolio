@@ -29,3 +29,62 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(9, 9, 11, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.site-nav-inner {
+  max-width: 672px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.025em;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav-link {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.site-nav-link.active {
+  color: var(--fg);
+}
+
+.site-nav-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .site-nav-divider {
+    display: inline-block;
+  }
+}
