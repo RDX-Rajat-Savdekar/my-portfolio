@@ -40,6 +40,10 @@ function App() {
           path="/writing/research-texture"
           element={<Navigate to="/projects/research-papers" replace />}
         />
+        <Route
+          path="/projects/astro-gsap"
+          element={<Navigate to="/projects/astro-gsap-f1" replace />}
+        />
         <Route path="/community" element={<Community />} />
         <Route path="/resume" element={<Navigate to="/work" replace />} />
         <Route path="/log" element={<Navigate to="/writing" replace />} />
