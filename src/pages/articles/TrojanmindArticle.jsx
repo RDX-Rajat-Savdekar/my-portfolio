@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function TrojanmindArticle() {
+export default function TrojanmindArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="trojanmind"
       title="TrojanMind: Calendar-Aware Mental Health Copilot"
       date="2025"

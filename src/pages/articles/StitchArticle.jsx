@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function StitchArticle() {
+export default function StitchArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="stitch"
       title="Stitch: Autonomous CI Repair for OpenAI Build Week"
       date="July 2026"

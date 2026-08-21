@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function CreatorLabArticle() {
+export default function CreatorLabArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="creator-lab"
       title="RDX Dev Creator Lab: One Repo, Six Animation Engines"
       date="2026"

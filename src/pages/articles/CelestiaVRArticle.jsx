@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function CelestiaVRArticle() {
+export default function CelestiaVRArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="celestia-vr"
       title="Architecting an Astronomically Accurate XR Sky Engine"
       date="June 2026"

@@ -40,7 +40,7 @@ const events = [
 
 export default function Community() {
   return (
-    <main style={{ maxWidth: '672px', margin: '0 auto', padding: '6rem 1.5rem 4rem' }}>
+    <main style={{ maxWidth: '720px', margin: '0 auto', padding: '3.5rem 1.5rem 4rem' }}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}

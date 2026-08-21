@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function AuraArticle() {
+export default function AuraArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="aura"
       title="Aura: Real-time Spatial HUDs on visionOS"
       date="October 2025"

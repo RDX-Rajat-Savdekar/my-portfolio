@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function AfterImageArticle() {
+export default function AfterImageArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="after-image"
       title="Engineering a Deterministic Ghost Replay System"
       date="June 2026"

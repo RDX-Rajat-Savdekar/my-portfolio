@@ -1,24 +1,28 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactMe from './ContactMeComponent';
-import { getProjectBySlug, getProjectLinks } from '../data/content';
+import ProjectHeroMedia from './ProjectHeroMedia';
+import ProjectLinks from './ProjectLinks';
+import { getProjectBySlug } from '../data/content';
 
-export default function ArticleLayout({ projectSlug, title, date, tags, description, children }) {
+export default function ArticleLayout({
+  layout = 'article',
+  projectSlug,
+  title,
+  date,
+  tags,
+  description,
+  children,
+}) {
   const project = projectSlug ? getProjectBySlug(projectSlug) : null;
-  const links = project ? getProjectLinks(project) : [];
+  const isProject = layout === 'project';
+  const media = project?.media ?? {};
+  const preview = media.preview || media.poster;
 
   return (
-    <main style={{ maxWidth: '720px', margin: '0 auto', padding: '6rem 1.5rem 4rem' }}>
-      <Link
-        to="/writing"
-        style={{
-          display: 'inline-block',
-          fontSize: '0.875rem',
-          color: 'var(--muted)',
-          marginBottom: '2rem',
-        }}
-      >
-        ← Back to Writing
+    <main className={isProject ? 'project-page' : 'article-page'}>
+      <Link to={isProject ? '/#projects' : '/writing'} className="back-link">
+        {isProject ? '← All projects' : '← Writing'}
       </Link>
 
       <motion.article
@@ -26,150 +30,83 @@ export default function ArticleLayout({ projectSlug, title, date, tags, descript
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
       >
-        <header style={{ marginBottom: '3rem' }}>
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              color: 'var(--accent)',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-            }}
-          >
+        {isProject && preview && <ProjectHeroMedia media={media} />}
+
+        <header style={{ marginBottom: '2.5rem' }}>
+          <div className="home-eyebrow" style={{ marginBottom: '0.85rem' }}>
             {date}
           </div>
-          <h1
-            style={{
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
-              fontWeight: 700,
-              letterSpacing: '-0.03em',
-              color: 'var(--fg)',
-              lineHeight: 1.1,
-              marginBottom: '1.25rem',
-            }}
-          >
-            {title}
-          </h1>
-          <p
-            style={{
-              fontSize: '1.125rem',
-              lineHeight: 1.6,
-              color: 'var(--muted)',
-              marginBottom: links.length ? '1.25rem' : '1.5rem',
-            }}
-          >
-            {description}
-          </p>
-          {links.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.625rem',
-                marginBottom: '1.5rem',
-              }}
-            >
-              {links.map((link) => (
-                <a
-                  key={link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    fontSize: '0.8125rem',
-                    fontWeight: 500,
-                    color: 'var(--fg)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '6px',
-                    padding: '0.35rem 0.75rem',
-                  }}
-                >
-                  {link.label} ↗
-                </a>
-              ))}
+          <h1 className="project-page-title">{isProject && project ? project.name : title}</h1>
+          <p className="project-page-lead">{description}</p>
+          {project && (
+            <div style={{ marginBottom: '1.25rem' }}>
+              <ProjectLinks project={{ ...project, projectPath: null }} />
             </div>
           )}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.7rem',
-                  color: 'var(--muted)',
-                  border: '1px solid var(--border)',
-                  padding: '2px 8px',
-                  borderRadius: '4px',
-                }}
-              >
-                {tag}
+            {tags.map((t) => (
+              <span key={t} className="tag-pill">
+                {t}
               </span>
             ))}
           </div>
         </header>
 
-        <div
-          className="article-content"
-          style={{
-            fontSize: '1.0625rem',
-            lineHeight: 1.8,
-            color: '#d4d4d8',
-          }}
-        >
-          {children}
-        </div>
+        {isProject && project?.description && (
+          <div className="project-page-body" style={{ marginBottom: '2rem' }}>
+            <p>{project.description}</p>
+            {project.details && <p className="project-page-details">{project.details}</p>}
+          </div>
+        )}
+
+        {isProject && project?.papers?.length > 0 && (
+          <section className="papers-section">
+            <h2>Papers</h2>
+            <ul className="papers-list">
+              {project.papers.map((paper) => (
+                <li key={paper.title}>
+                  <div>
+                    <p className="paper-title">{paper.title}</p>
+                    <p className="paper-meta">
+                      {paper.venue} · {paper.year}
+                      {paper.citations ? ` · ${paper.citations} citations` : ''}
+                    </p>
+                  </div>
+                  <div className="paper-actions">
+                    {paper.pdf && (
+                      <a href={paper.pdf} target="_blank" rel="noreferrer" className="plink plink-paper">
+                        PDF ↗
+                      </a>
+                    )}
+                    {paper.scholar && (
+                      <a href={paper.scholar} target="_blank" rel="noreferrer" className="plink plink-default">
+                        Scholar ↗
+                      </a>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {project.scholar && (
+              <a
+                href={project.scholar}
+                target="_blank"
+                rel="noreferrer"
+                className="section-more"
+                style={{ marginTop: '1rem', display: 'inline-block' }}
+              >
+                Full Google Scholar profile →
+              </a>
+            )}
+          </section>
+        )}
+
+        <div className="article-content">{children}</div>
       </motion.article>
 
-      <div style={{ marginTop: '6rem' }}>
+      <div style={{ marginTop: '5rem' }}>
         <ContactMe />
       </div>
-
-      <style>{`
-        .article-content h2 {
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: var(--fg);
-          margin-top: 3rem;
-          margin-bottom: 1.25rem;
-          letter-spacing: -0.02em;
-        }
-        .article-content h3 {
-          font-size: 1.125rem;
-          font-weight: 600;
-          color: var(--fg);
-          margin-top: 2rem;
-          margin-bottom: 0.75rem;
-        }
-        .article-content p {
-          margin-bottom: 1.5rem;
-        }
-        .article-content ul, .article-content ol {
-          margin-bottom: 1.5rem;
-          padding-left: 1.25rem;
-        }
-        .article-content li {
-          margin-bottom: 0.5rem;
-        }
-        .article-content code {
-          font-family: var(--font-mono);
-          background: #18181b;
-          padding: 0.2rem 0.4rem;
-          border-radius: 4px;
-          font-size: 0.9em;
-          color: var(--accent);
-        }
-        .article-content blockquote {
-          border-left: 2px solid var(--accent);
-          padding-left: 1.5rem;
-          font-style: italic;
-          color: var(--muted);
-          margin: 2rem 0;
-        }
-        .article-content strong {
-          color: var(--fg);
-        }
-      `}</style>
     </main>
   );
 }

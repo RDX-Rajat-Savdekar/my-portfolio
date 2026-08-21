@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Heavy media intermediates (keep out of deploy)
+public/projects/**/raw/
+public/projects/**/*.mov
+.media-scratch/

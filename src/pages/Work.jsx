@@ -1,18 +1,22 @@
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import { projects, experience, education, getProjectLinks } from '../data/content';
-import { page, sectionLabel, tag } from '../styles/shared';
+import ProjectMediaCard from '../components/ProjectMediaCard';
+import { experience, education, projectFilters, getProjectsByFilter } from '../data/content';
+import { pageWide, sectionLabel } from '../styles/shared';
 import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function Work() {
+  const [filter, setFilter] = useState('all');
+  const projects = useMemo(() => getProjectsByFilter(filter), [filter]);
+
   return (
-    <main style={page}>
+    <main style={pageWide}>
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        style={{ marginBottom: '3rem' }}
+        style={{ marginBottom: '2.5rem' }}
       >
         <h1
           style={{
@@ -25,24 +29,25 @@ export default function Work() {
         >
           Work
         </h1>
-        <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '1.25rem', maxWidth: '520px' }}>
-          Projects, experience, and education. Case studies with architecture decisions live under Writing.
+        <p
+          style={{
+            fontSize: '0.9375rem',
+            color: 'var(--muted)',
+            lineHeight: 1.65,
+            marginBottom: '1.25rem',
+            maxWidth: '520px',
+          }}
+        >
+          Full project catalog with the same media previews as home. Filter by lane, then dig into
+          experience, education, and the resume PDF.
         </p>
         <a
           href={pdfUrl}
           download
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.375rem',
-            padding: '0.4rem 0.875rem',
-            border: '1px solid var(--border)',
-            borderRadius: '6px',
-            fontSize: '0.8125rem',
-            color: 'var(--muted)',
-          }}
+          className="btn-ghost"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem' }}
         >
           ↓ Download Resume (PDF)
         </a>
@@ -55,99 +60,23 @@ export default function Work() {
         style={{ marginBottom: '4rem' }}
       >
         <span style={sectionLabel}>Projects</span>
-        <div>
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.slug}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.1 + i * 0.05 }}
-              style={{
-                padding: '1.5rem 0',
-                borderBottom: '1px solid var(--border)',
-              }}
+        <div className="filter-row" role="tablist" aria-label="Project filters">
+          {projectFilters.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={filter === item.id}
+              className={filter === item.id ? 'filter-chip active' : 'filter-chip'}
+              onClick={() => setFilter(item.id)}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  gap: '1rem',
-                  marginBottom: '0.5rem',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', flexWrap: 'wrap' }}>
-                  <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>
-                    {project.name}
-                  </h3>
-                  {project.featured && (
-                    <span style={{ ...tag, color: 'var(--accent)', borderColor: 'rgba(56, 189, 248, 0.25)' }}>
-                      featured
-                    </span>
-                  )}
-                  {project.badge && (
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.65rem',
-                        color: 'var(--accent)',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                        border: '1px solid rgba(56, 189, 248, 0.25)',
-                        borderRadius: '4px',
-                        padding: '1px 6px',
-                      }}
-                    >
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  {project.articlePath && (
-                    <Link
-                      to={project.articlePath}
-                      style={{ fontSize: '0.8rem', color: 'var(--accent)' }}
-                    >
-                      Case study →
-                    </Link>
-                  )}
-                  {getProjectLinks(project).map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ fontSize: '0.8rem', color: 'var(--muted)' }}
-                    >
-                      {link.label} ↗
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '0.5rem' }}>
-                {project.description}
-              </p>
-              {project.details && (
-                <p
-                  style={{
-                    fontSize: '0.8125rem',
-                    color: 'var(--muted)',
-                    opacity: 0.7,
-                    lineHeight: 1.6,
-                    marginBottom: '0.875rem',
-                  }}
-                >
-                  {project.details}
-                </p>
-              )}
-              <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                {project.tags.map((t) => (
-                  <span key={t} style={tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <div className="project-grid">
+          {projects.map((project, i) => (
+            <ProjectMediaCard key={project.slug} project={project} index={i} />
           ))}
         </div>
       </motion.section>

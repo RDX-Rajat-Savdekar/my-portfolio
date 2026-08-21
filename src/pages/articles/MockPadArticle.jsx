@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function MockPadArticle() {
+export default function MockPadArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="mockpad"
       title="Building MockPad: A Free Real-Time Interview Editor on Yjs"
       date="April 2026"

@@ -20,6 +20,11 @@ export const projects = [
     slug: 'celestia-vr',
     name: 'CelestiaVR',
     featured: true,
+    filter: 'xr',
+    media: {
+      preview: '/projects/stitch/celestia/exports/loop.mp4',
+      hover: '/projects/stitch/celestia/exports/hover.mp4',
+    },
     tagline: 'Immersive VR stargazing for Meta Quest 3 with NASA/JPL data',
     description:
       'Meta Quest 3 VR stargazing app rendering a real, time-accurate sky (~9k stars, planets, 88 constellations) with gaze-dwell interaction. I owned the real-time sky rendering engine on a 5-person USC AR/VR team.',
@@ -27,7 +32,7 @@ export const projects = [
       'GPU-instanced star field from the 119k-row HYG catalog (mag ≤ 6.5), sidereal-accurate rotation about the true celestial pole, and affine-aligned Stellarium constellation art — measured 72–90 Hz on Quest 3.',
     tags: ['Unity 6', 'OpenXR', 'URP', 'C#', 'HLSL', 'XR'],
     badge: '1st @ RealityShift · USC XR Hackathon',
-    articlePath: '/writing/celestia-vr',
+    projectPath: '/projects/celestia-vr',
     github: 'https://github.com/RDX-Rajat-Savdekar/CelestiaVR',
     githubSecondary: null,
     youtube: 'https://www.youtube.com/watch?v=QzRTp0EtUsQ',
@@ -39,6 +44,11 @@ export const projects = [
     slug: 'aura',
     name: 'Aura',
     featured: true,
+    filter: 'xr',
+    media: {
+      preview: '/projects/stitch/aura-visionos/exports/loop.mp4',
+      hover: '/projects/stitch/aura-visionos/exports/hover.mp4',
+    },
     tagline: 'visionOS on-device captions & sound awareness — 2nd @ LA Tech Week',
     description:
       'Apple Vision Pro accessibility app running two on-device ML pipelines (Speech ASR + SoundAnalysis) with zero cloud fallback. Solo code; teammates contributed README only.',
@@ -46,7 +56,7 @@ export const projects = [
       'Dual pipeline off one AVAudioEngine tap, two-layer utterance segmentation, classifier hysteresis/throttle, and a RealityKit texture-baked spatial HUD (designed + demoed; wiring varies by build).',
     tags: ['visionOS', 'SwiftUI', 'CoreML', 'RealityKit', 'Accessibility'],
     badge: '2nd @ LA Tech Week / USC ISI',
-    articlePath: '/writing/aura',
+    projectPath: '/projects/aura',
     github: 'https://github.com/RDX-Rajat-Savdekar/Aura-Vision-Pro',
     githubSecondary: null,
     youtube: 'https://www.youtube.com/watch?v=3KEH2BCODBo&t=24s',
@@ -67,6 +77,11 @@ export const projects = [
     slug: 'mockpad',
     name: 'MockPad',
     featured: true,
+    filter: 'web',
+    media: {
+      preview: '/projects/stitch/mockpad/media/mockpad-demo.gif',
+      hover: '/projects/stitch/mockpad/media/mockpad-demo.mp4',
+    },
     tagline: 'Free CoderPad — real-time collaborative interviews with playback',
     description:
       'Solo-built mock-interview web app: shared Monaco editor, whiteboard, notes, timer, and 4-language code execution — all synced through one Yjs CRDT doc per room.',
@@ -74,7 +89,7 @@ export const projects = [
       'Yjs + y-websocket + LevelDB backend with 30-min/2-hr room TTL. Hardest bug: Excalidraw↔Yjs echo-loop + Float32Array pressure restore. WebRTC audio prototyped then scoped out.',
     tags: ['React 19', 'Yjs', 'Node.js', 'Monaco', 'Excalidraw'],
     badge: '100+ real users',
-    articlePath: '/writing/mockpad',
+    projectPath: '/projects/mockpad',
     github: 'https://github.com/RDX-Rajat-Savdekar/mockpad',
     githubSecondary: null,
     youtube: null,
@@ -85,7 +100,13 @@ export const projects = [
   {
     slug: 'stitch',
     name: 'Stitch',
-    featured: false,
+    featured: true,
+    filter: 'tools',
+    media: {
+      preview: '/projects/stitch/stitch/exports/opt/preview.gif',
+      hover: '/projects/stitch/stitch/exports/stitch-demo-hover.mp4',
+      poster: '/projects/stitch/stitch/exports/stitch-demo-poster.jpg',
+    },
     tagline: 'Autonomous CI repair — webhook in, validated patch PR out',
     description:
       'The CI failure that fixes itself: GitHub Actions webhook → log diagnosis → unified diff → validate → open PR (or comment), with branch-aware trust policies and a full product dashboard.',
@@ -93,7 +114,7 @@ export const projects = [
       'OpenAI Build Week 2026 · Developer Tools. Split diagnosis/fix AI steps, live clone/apply/push, multi-model providers, PostgreSQL multi-tenant backend, RBAC, Slack/email, Jira — 25 Vitest tests.',
     tags: ['TypeScript', 'React', 'Express', 'PostgreSQL', 'Codex'],
     badge: 'OpenAI Build Week 2026',
-    articlePath: '/writing/stitch',
+    projectPath: '/projects/stitch',
     github: 'https://github.com/RDX-Rajat-Savdekar/openai_build_week',
     githubSecondary: 'https://github.com/Khushalsarode/openai-build-week-hackathon',
     githubSecondaryLabel: 'Team repo',
@@ -109,6 +130,12 @@ export const projects = [
     slug: 'emojicode',
     name: 'EmojiCode',
     featured: false,
+    filter: 'web',
+    media: {
+      preview: '/projects/stitch/emojicode/exports/preview.gif',
+      hover: '/projects/stitch/emojicode/exports/hover.mp4',
+      poster: '/projects/stitch/emojicode/3homepag.jpg',
+    },
     tagline: 'Comment-native cipher game for Reddit — encode in 5, crack in comments',
     description:
       'Devvit Web game for Reddit\'s "Games with a Hook" hackathon: pick 5 emojis, post instantly, redditors guess in comments. XP, streaks, dual leaderboards, lazy-loaded Phaser solve burst.',
@@ -116,7 +143,7 @@ export const projects = [
       'React 19 + Hono + Redis on Devvit. Autonomous safety (local denylist + optional OpenAI Moderation), Levenshtein fuzzy matching, crowd-sourced answer dictionary, Cipher of the Day cron.',
     tags: ['Devvit', 'React', 'TypeScript', 'Redis', 'Phaser'],
     badge: 'Reddit Games with a Hook 2026',
-    articlePath: '/writing/emojicode',
+    projectPath: '/projects/emojicode',
     github: 'https://github.com/Khushalsarode/EmojiCode',
     githubSecondary: null,
     youtube: null,
@@ -135,6 +162,11 @@ export const projects = [
     slug: 'after-image',
     name: 'AfterImage',
     featured: false,
+    filter: 'xr',
+    media: {
+      preview: '/projects/stitch/main-gamesmiths/exports/preview.gif',
+      hover: '/projects/stitch/main-gamesmiths/exports/hover.mp4',
+    },
     tagline: 'Co-op puzzle platformer with deterministic ghost replay (WebGL)',
     description:
       'Unity 2D cooperative puzzle-platformer where Round 2 replays your Round 1 actions as a ghost. I built the keyframe replay system, analytics buffer, and spline collision generator.',
@@ -142,7 +174,7 @@ export const projects = [
       '50 Hz Vector2 keyframe sampling instead of input replay to avoid PhysX divergence across WebGL hosts. Programmatic BoxCollider2D subdivision on splines to prevent tunneling.',
     tags: ['Unity', 'C#', 'WebGL', '2D Physics'],
     badge: null,
-    articlePath: '/writing/after-image',
+    projectPath: '/projects/after-image',
     github: 'https://github.com/CSCI-526/main-gamesmiths',
     githubSecondary: null,
     youtube: null,
@@ -154,6 +186,7 @@ export const projects = [
     slug: 'splitit',
     name: 'SplitIt',
     featured: false,
+    filter: 'web',
     tagline: 'Full-stack Splitwise-style expense splitting',
     description:
       'React 19 + Vite frontend and Express 5 + MongoDB backend for group expense tracking, flexible splits, balances, and settle-up payments.',
@@ -161,7 +194,12 @@ export const projects = [
       'Feature-sliced axios service layer, zustand + localStorage JWT auth, and client-side equal/unequal/percentage split validation. Demo deployment with fake data.',
     tags: ['React', 'Express', 'MongoDB', 'JWT', 'Vite'],
     badge: null,
-    articlePath: '/writing/splitit',
+    projectPath: '/projects/splitit',
+    media: {
+      preview: '/projects/stitch/splitit/media/exports/preview.gif',
+      hover: '/projects/stitch/splitit/media/exports/hover.mp4',
+      poster: '/projects/stitch/splitit/media/splitit-dashboard.png',
+    },
     github: 'https://github.com/RDX-Rajat-Savdekar/splitit-frontend-vite',
     githubSecondary: 'https://github.com/RDX-Rajat-Savdekar/splitit-backend',
     githubSecondaryLabel: 'Backend repo',
@@ -174,6 +212,11 @@ export const projects = [
     slug: 'creator-lab',
     name: 'RDX Dev Creator Lab',
     featured: false,
+    filter: 'tools',
+    media: {
+      preview: '/projects/stitch/rdx-dev-creator-lab/media/demo.gif',
+      hover: '/projects/stitch/rdx-dev-creator-lab/media/demo.mp4',
+    },
     tagline: 'Open-source lab for programmatic animation & interactive explainers',
     description:
       'Multi-engine playground combining Manim CE, Remotion, Godot, Motion Canvas, React Three Fiber, and React Flow to build motion-driven technical content.',
@@ -181,7 +224,7 @@ export const projects = [
       '35+ interactive demos across learning folders; Whisper + FFmpeg VO alignment tooling; Astro × GSAP × Three.js scroll showcases.',
     tags: ['Manim', 'Remotion', 'Godot', 'Motion Canvas', 'R3F'],
     badge: null,
-    articlePath: '/writing/creator-lab',
+    projectPath: '/projects/creator-lab',
     github: 'https://github.com/RDX-Rajat-Savdekar/rdx-dev-creator-lab',
     githubSecondary: null,
     youtube: null,
@@ -193,6 +236,40 @@ export const projects = [
     slug: 'research-papers',
     name: 'Research Papers',
     featured: false,
+    filter: 'research',
+    papers: [
+      {
+        title: 'Texture feature analysis of an image using Gray level Co-Occurrence matrix',
+        shortLabel: 'GLCM PDF',
+        year: '2022',
+        venue: 'IJNRD',
+        citations: 10,
+        pdf: '/projects/stitch/research_papers_pdf/All%20Pdfs/TEXTURE%20FEATURE%20ANALYSIS%20OF%20AN%20IMAGE%20USING%20GRAY%20LEVEL%20COOCCURRENCE%20MATRIX..pdf',
+        scholar: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ynyXTd8AAAAJ&citation_for_view=ynyXTd8AAAAJ:d1gkVwhDpl0C',
+      },
+      {
+        title: 'Analysis of IAS Interview Transcript Using Word Data Visualization',
+        shortLabel: 'IAS PDF',
+        year: '2022',
+        venue: 'IJNRD',
+        pdf: '/projects/stitch/research_papers_pdf/All%20Pdfs/ANALYSIS%20OF%20IAS%20INTERVIEW%20TRANSCRIPT%20USING%20WORD%20DATA%20VISUALIZATION.pdf',
+      },
+      {
+        title: 'Medical Transcript Analysis',
+        shortLabel: 'Medical PDF',
+        year: '2022',
+        venue: 'Undergrad research',
+        pdf: '/projects/stitch/research_papers_pdf/All%20Pdfs/Medical%20Transcript%20Analysis.pdf',
+      },
+      {
+        title: 'LSB Based Image Steganography using Passkey',
+        shortLabel: 'Stego PDF',
+        year: '2022',
+        venue: 'Undergrad research',
+        pdf: '/projects/stitch/research_papers_pdf/All%20Pdfs/LSB%20Based%20Image%20Steganography%20using%20Passkey.pdf',
+      },
+    ],
+    scholar: 'https://scholar.google.com/citations?user=ynyXTd8AAAAJ&hl=en',
     tagline: 'Four undergrad publications — GLCM tool cited 10× across Nature, Springer, IEEE',
     description:
       'Undergraduate research from Mumbai University: GLCM texture analysis, medical transcript NLP, IAS interview analysis, and LSB steganography — code and PDFs in one repo.',
@@ -200,24 +277,23 @@ export const projects = [
       'The GLCM MATLAB GUI is the standout: contrast, entropy, homogeneity, and related features, reused in 10+ peer-reviewed papers. Repo tracks all publications, certificates, and source.',
     tags: ['Research', 'MATLAB', 'NLP', 'Publications'],
     badge: null,
-    articlePath: '/writing/research-papers',
+    projectPath: '/projects/research-papers',
     github: 'https://github.com/RDX-Rajat-Savdekar/Research-Papers',
     githubSecondary: null,
     youtube: null,
     live: null,
     presentation: null,
     paper: null,
-    extraLinks: [
-      {
-        label: 'Google Scholar',
-        url: 'https://scholar.google.com/citations?user=ynyXTd8AAAAJ&hl=en',
-      },
-    ],
   },
   {
     slug: 'trojanmind',
     name: 'TrojanMind',
     featured: false,
+    filter: 'web',
+    media: {
+      preview: '/projects/stitch/trojanmind/exports/preview.gif',
+      hover: '/projects/stitch/trojanmind/exports/hover.mp4',
+    },
     tagline: 'AI academic & mental health copilot for USC students',
     description:
       'Anthropic hackathon project: paste a Google Calendar / Brightspace iCal feed and get urgency scoring, burnout risk, a 7-day action plan, streaming narrative, and dual-persona chat — with crisis-mode safety routing.',
@@ -225,7 +301,7 @@ export const projects = [
       '3-stage Claude pipeline (classify → assess risk → generate plan) on claude-haiku-4-5. Crisis intercept when stress ≥ 9. React + Express + SSE + node-ical.',
     tags: ['React', 'Node.js', 'Claude API', 'SSE', 'Mental Health'],
     badge: 'Anthropic Hackathon',
-    articlePath: '/writing/trojanmind',
+    projectPath: '/projects/trojanmind',
     github: 'https://github.com/pavan-r411/TrojanMind',
     githubSecondary: null,
     githubSecondaryLabel: null,
@@ -233,6 +309,78 @@ export const projects = [
     live: null,
     presentation: null,
     paper: null,
+  },
+  {
+    slug: 'devstack',
+    name: 'DevStack',
+    featured: false,
+    filter: 'tools',
+    media: {
+      preview: '/projects/stitch/devstack/media/exports/preview.gif',
+      hover: '/projects/stitch/devstack/media/devstack-demo.mp4',
+    },
+    tagline: 'Control plane for auth, feature flags, workflows, and metrics',
+    description:
+      'Portfolio walkthrough of a developer control plane covering overview, auth, flags, workflows, and metrics in one demo surface.',
+    details: null,
+    tags: ['TypeScript', 'React', 'Platform', 'DevTools'],
+    badge: null,
+    projectPath: '/projects/devstack',
+    github: 'https://github.com/RDX-Rajat-Savdekar/DevStack',
+    githubSecondary: null,
+    youtube: null,
+    live: null,
+    presentation: null,
+    paper: null,
+  },
+  {
+    slug: 'cloudbridge',
+    name: 'CloudBridge',
+    featured: false,
+    filter: 'tools',
+    media: {
+      preview: '/projects/stitch/cloudbridge/media/exports/preview.gif',
+      hover: '/projects/stitch/cloudbridge/media/exports/hover.mp4',
+    },
+    tagline: 'Bridge between local workflows and cloud infrastructure',
+    description:
+      'CloudBridge connects local development workflows to cloud services — captured as a looping product demo for the portfolio.',
+    details: null,
+    tags: ['Cloud', 'TypeScript', 'Infrastructure'],
+    badge: null,
+    projectPath: '/projects/cloudbridge',
+    github: 'https://github.com/RDX-Rajat-Savdekar/cloud-bridge',
+    githubSecondary: null,
+    youtube: null,
+    live: null,
+    presentation: null,
+    paper: null,
+  },
+  {
+    slug: 'astro-gsap',
+    name: 'Astro × GSAP Lab',
+    featured: false,
+    filter: 'web',
+    media: {
+      preview: '/projects/stitch/astro/media/exports/loop.mp4',
+      hover: '/projects/stitch/astro/media/exports/hover.mp4',
+    },
+    tagline: 'Scroll-driven motion experiments on Astro + GSAP + Webflow',
+    description:
+      'Interactive motion showcase submitted to the CodeTV GSAP Cloud challenge — scroll storytelling with high-craft animation.',
+    details: null,
+    tags: ['Astro', 'GSAP', 'Webflow', 'Motion'],
+    badge: 'CodeTV GSAP Cloud',
+    projectPath: '/projects/astro-gsap',
+    github: null,
+    githubSecondary: null,
+    youtube: null,
+    live: 'https://gsap-lab-a8153b.webflow.io/',
+    presentation: null,
+    paper: null,
+    extraLinks: [
+      { label: 'Challenge site', url: 'https://codetv-gsap-cloud.webflow.io/' },
+    ],
   },
 ];
 
@@ -342,15 +490,15 @@ const articleMeta = {
   },
 };
 
-/** Case study index — derived from projects with articles. */
+/** Project writeup index — derived from projects with deep pages. */
 export const caseStudies = projects
-  .filter((p) => p.articlePath)
+  .filter((p) => p.projectPath && articleMeta[p.slug])
   .map((p) => ({
     date: articleMeta[p.slug]?.date ?? '2026',
     title: articleMeta[p.slug]?.title ?? p.name,
     summary: articleMeta[p.slug]?.summary ?? p.tagline,
     tags: p.tags.slice(0, 4),
-    path: p.articlePath,
+    path: p.projectPath,
     projectSlug: p.slug,
   }))
   .sort((a, b) => {
@@ -403,18 +551,63 @@ export const humanPosts = [
   },
 ];
 
+export const projectFilters = [
+  { id: 'all', label: 'All' },
+  { id: 'featured', label: 'Featured' },
+  { id: 'xr', label: 'XR / Spatial' },
+  { id: 'web', label: 'Web' },
+  { id: 'tools', label: 'Tools' },
+  { id: 'research', label: 'Research' },
+];
+
 export function getFeaturedProjects() {
   return projects.filter((p) => p.featured);
+}
+
+export function getProjectsByFilter(filterId = 'all') {
+  let list;
+  if (filterId === 'all') list = [...projects];
+  else if (filterId === 'featured') list = projects.filter((p) => p.featured);
+  else list = projects.filter((p) => p.filter === filterId);
+  return sortProjectsByLinks(list);
+}
+
+/** Group projects that share similar primary link types. */
+export function sortProjectsByLinks(list) {
+  const rank = (p) => {
+    if (p.live) return 0;
+    if (p.youtube) return 1;
+    if (p.papers?.length || p.scholar || p.paper) return 2;
+    if (p.github) return 3;
+    return 4;
+  };
+  return [...list].sort((a, b) => {
+    const ra = rank(a);
+    const rb = rank(b);
+    if (ra !== rb) return ra - rb;
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return 0;
+  });
 }
 
 export function getProjectBySlug(slug) {
   return projects.find((p) => p.slug === slug);
 }
 
-/** Build link chips for Work page and article headers. */
+/** Build link chips — Live / Demo first, then code, then papers. */
 export function getProjectLinks(project) {
   if (!project) return [];
   const links = [];
+  if (project.live) {
+    links.push({
+      label: project.liveLabel ?? 'Live',
+      url: project.live,
+    });
+  }
+  if (project.youtube) {
+    links.push({ label: project.youtubeLabel ?? 'YouTube', url: project.youtube });
+  }
+  if (project.presentation) links.push({ label: 'Presentation', url: project.presentation });
   if (project.github) links.push({ label: 'GitHub', url: project.github });
   if (project.githubSecondary) {
     links.push({
@@ -422,17 +615,13 @@ export function getProjectLinks(project) {
       url: project.githubSecondary,
     });
   }
-  if (project.youtube) {
-    links.push({ label: project.youtubeLabel ?? 'YouTube', url: project.youtube });
-  }
   if (project.extraLinks?.length) links.push(...project.extraLinks);
-  if (project.live) {
-    links.push({
-      label: project.liveLabel ?? 'Live',
-      url: project.live,
+  if (project.paper) links.push({ label: 'Paper', url: project.paper });
+  if (project.scholar) links.push({ label: 'Google Scholar', url: project.scholar });
+  if (project.papers?.length) {
+    project.papers.forEach((p, i) => {
+      if (p.pdf) links.push({ label: p.shortLabel || `PDF ${i + 1}`, url: p.pdf });
     });
   }
-  if (project.presentation) links.push({ label: 'Presentation', url: project.presentation });
-  if (project.paper) links.push({ label: 'Paper', url: project.paper });
   return links;
 }

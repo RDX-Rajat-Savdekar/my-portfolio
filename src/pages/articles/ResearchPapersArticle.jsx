@@ -29,9 +29,10 @@ const papers = [
   },
 ];
 
-export default function ResearchPapersArticle() {
+export default function ResearchPapersArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="research-papers"
       title="Research Papers: Four Undergrad Publications"
       date="2019–2023"

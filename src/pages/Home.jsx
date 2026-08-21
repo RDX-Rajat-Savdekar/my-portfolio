@@ -1,223 +1,130 @@
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import { site, caseStudies, getFeaturedProjects, getProjectLinks } from '../data/content';
-import { page, sectionLabel, tag, fade } from '../styles/shared';
+import ProjectMediaCard from '../components/ProjectMediaCard';
+import {
+  site,
+  experience,
+  humanPosts,
+  externalArticles,
+  projectFilters,
+  getProjectsByFilter,
+} from '../data/content';
+import { pageWide, sectionLabel, fade } from '../styles/shared';
 
 export default function Home() {
-  const featured = getFeaturedProjects();
-  const recentArticles = caseStudies.slice(0, 5);
+  const [filter, setFilter] = useState('all');
+  const projects = useMemo(() => getProjectsByFilter(filter), [filter]);
 
   return (
-    <main style={page}>
-      <motion.section {...fade(0)} style={{ marginBottom: '6rem' }}>
-        <p
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '1rem',
-          }}
-        >
-          {site.location}
-        </p>
-        <h1
-          style={{
-            fontSize: 'clamp(2rem, 6vw, 2.75rem)',
-            fontWeight: 700,
-            letterSpacing: '-0.03em',
-            color: 'var(--fg)',
-            lineHeight: 1.15,
-            marginBottom: '1.25rem',
-          }}
-        >
-          {site.name}
-        </h1>
-        <p
-          style={{
-            fontSize: '1.0625rem',
-            lineHeight: 1.75,
-            color: 'var(--muted)',
-            marginBottom: '2rem',
-            maxWidth: '540px',
-          }}
-        >
+    <main style={pageWide} className="home-page">
+      <div className="home-atmosphere" aria-hidden />
+
+      <motion.section {...fade(0)} className="home-hero">
+        <p className="home-eyebrow">{site.location}</p>
+        <h1 className="home-name">{site.name}</h1>
+        <p className="home-bio">
           I build high-utility tools at the intersection of{' '}
-          <strong style={{ color: 'var(--fg)' }}>Spatial Computing</strong> and{' '}
-          <strong style={{ color: 'var(--fg)' }}>On-device AI</strong>. My approach is
-          simple: build the expensive tool, then make it free.
+          <strong>Spatial Computing</strong> and <strong>On-device AI</strong>. My
+          approach is simple: build the expensive tool, then make it free.
         </p>
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <Link
-            to="/work"
-            style={{
-              display: 'inline-block',
-              padding: '0.5rem 1.125rem',
-              backgroundColor: 'var(--fg)',
-              color: 'var(--bg)',
-              borderRadius: '6px',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-            }}
-          >
-            View Work
-          </Link>
-          <Link
-            to="/writing"
-            style={{
-              display: 'inline-block',
-              padding: '0.5rem 1.125rem',
-              border: '1px solid var(--border)',
-              color: 'var(--muted)',
-              borderRadius: '6px',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-            }}
-          >
-            Read Case Studies
-          </Link>
+        <div className="home-cta-row">
+          <a href="#projects" className="btn-primary">
+            See projects
+          </a>
+          <a href="#contact" className="btn-ghost">
+            Contact
+          </a>
         </div>
       </motion.section>
 
-      <motion.section {...fade(0.1)} style={{ marginBottom: '6rem' }}>
-        <span style={sectionLabel}>Featured Work</span>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-          {featured.map((project) => (
-            <article
-              key={project.slug}
-              style={{
-                padding: '1.5rem 0',
-                borderBottom: '1px solid var(--border)',
-              }}
+      <motion.section {...fade(0.08)} id="projects" className="home-section">
+        <div className="section-head">
+          <span style={sectionLabel}>Projects</span>
+          <p className="section-sub">
+            GIF on load, video on hover. Sorted so similar link types sit together — Live demos,
+            then videos, then papers / repos.
+          </p>
+        </div>
+
+        <div className="filter-row" role="tablist" aria-label="Project filters">
+          {projectFilters.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={filter === item.id}
+              className={filter === item.id ? 'filter-chip active' : 'filter-chip'}
+              onClick={() => setFilter(item.id)}
             >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  gap: '1rem',
-                  flexWrap: 'wrap',
-                  marginBottom: '0.5rem',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', flexWrap: 'wrap' }}>
-                  <h2 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>
-                    {project.name}
-                  </h2>
-                  {project.badge && (
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.65rem',
-                        color: 'var(--accent)',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                        border: '1px solid rgba(56, 189, 248, 0.25)',
-                        borderRadius: '4px',
-                        padding: '1px 6px',
-                      }}
-                    >
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  {project.articlePath && (
-                    <Link
-                      to={project.articlePath}
-                      style={{ fontSize: '0.8rem', color: 'var(--accent)', whiteSpace: 'nowrap' }}
-                    >
-                      Case study →
-                    </Link>
-                  )}
-                  {getProjectLinks(project).map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ fontSize: '0.8rem', color: 'var(--muted)', whiteSpace: 'nowrap' }}
-                    >
-                      {link.label} ↗
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: '0.75rem' }}>
-                {project.tagline}
-              </p>
-              <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap' }}>
-                {project.tags.slice(0, 4).map((t) => (
-                  <span key={t} style={tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
+              {item.label}
+            </button>
           ))}
         </div>
-        <Link
-          to="/work"
-          style={{
-            display: 'inline-block',
-            marginTop: '1.5rem',
-            fontSize: '0.8125rem',
-            color: 'var(--muted)',
-          }}
-        >
-          All projects & experience →
+
+        <AnimatePresence mode="popLayout">
+          <motion.div layout className="project-grid">
+            {projects.map((project, i) => (
+              <ProjectMediaCard key={project.slug} project={project} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        <Link to="/work" className="section-more">
+          Full catalog, experience & resume →
         </Link>
       </motion.section>
 
-      <motion.section {...fade(0.2)} style={{ marginBottom: '6rem' }}>
-        <span style={sectionLabel}>Recent Case Studies</span>
-        <div>
-          {recentArticles.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              style={{
-                display: 'flex',
-                gap: '1.25rem',
-                alignItems: 'flex-start',
-                padding: '1rem 0',
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              <span
-                style={{
-                  flexShrink: 0,
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.7rem',
-                  color: 'var(--muted)',
-                  opacity: 0.6,
-                  paddingTop: '3px',
-                  width: '72px',
-                }}
-              >
-                {item.date}
-              </span>
-              <span style={{ fontSize: '0.875rem', color: 'var(--fg)', lineHeight: 1.5 }}>
-                {item.title}
-              </span>
-            </Link>
+      <motion.section {...fade(0.12)} id="experience" className="home-section">
+        <span style={sectionLabel}>Experience</span>
+        <div className="experience-strip">
+          {experience.map((job) => (
+            <div key={`${job.role}-${job.period}`} className="experience-item">
+              <div className="experience-meta">
+                <p className="experience-role">{job.role}</p>
+                <p className="experience-org">
+                  {job.org} · {job.location}
+                </p>
+              </div>
+              <span className="experience-period">{job.period}</span>
+              <p className="experience-bullet">{job.bullets[0]}</p>
+            </div>
           ))}
         </div>
-        <Link
-          to="/writing"
-          style={{
-            display: 'inline-block',
-            marginTop: '1.5rem',
-            fontSize: '0.8125rem',
-            color: 'var(--muted)',
-          }}
-        >
+      </motion.section>
+
+      <motion.section {...fade(0.16)} className="home-section">
+        <span style={sectionLabel}>Writing</span>
+        <p className="section-sub">Human stuff — hiring, OPT, grad school. Not project writeups.</p>
+        <div className="writing-list">
+          {humanPosts.map((post) => (
+            <div key={post.title} className="writing-row" style={{ cursor: 'default' }}>
+              <span className="writing-date">{post.status}</span>
+              <span className="writing-title">{post.title}</span>
+            </div>
+          ))}
+          {externalArticles.slice(0, 2).map((item) => (
+            <a
+              key={item.link}
+              href={item.link}
+              target="_blank"
+              rel="noreferrer"
+              className="writing-row"
+            >
+              <span className="writing-date">{item.date}</span>
+              <span className="writing-title">{item.title} ↗</span>
+            </a>
+          ))}
+        </div>
+        <Link to="/writing" className="section-more">
           All writing →
         </Link>
       </motion.section>
 
-      <ContactMe />
+      <div id="contact">
+        <ContactMe />
+      </div>
     </main>
   );
 }

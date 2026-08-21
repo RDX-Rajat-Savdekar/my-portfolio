@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function SplitItArticle() {
+export default function SplitItArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="splitit"
       title="SplitIt: Full-Stack Expense Splitting on React + Express"
       date="2025"

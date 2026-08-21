@@ -1,8 +1,9 @@
 import ArticleLayout from '../../components/ArticleLayout';
 
-export default function EmojiCodeArticle() {
+export default function EmojiCodeArticle({ layout = "article" }) {
   return (
     <ArticleLayout
+      layout={layout}
       projectSlug="emojicode"
       title="EmojiCode: A Hook-y Cipher Game on Reddit Devvit"
       date="July 2026"
