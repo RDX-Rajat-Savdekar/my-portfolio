@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import ProjectMediaCard from '../components/ProjectMediaCard';
+import ProjectMediaCard, { bentoSize } from '../components/ProjectMediaCard';
 import { experience, education, projectFilters, getProjectsByFilter } from '../data/content';
-import { pageWide, sectionLabel } from '../styles/shared';
+import { pageWide, sectionLabel, easeOut } from '../styles/shared';
 import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function Work() {
@@ -15,7 +15,7 @@ export default function Work() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45 }}
+        transition={{ duration: 0.7, ease: easeOut }}
         style={{ marginBottom: '2.5rem' }}
       >
         <h1
@@ -38,8 +38,7 @@ export default function Work() {
             maxWidth: '520px',
           }}
         >
-          Full project catalog with the same media previews as home. Filter by lane, then dig into
-          experience, education, and the resume PDF.
+          Projects, experience, and a resume PDF.
         </p>
         <a
           href={pdfUrl}
@@ -56,7 +55,7 @@ export default function Work() {
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.05 }}
+        transition={{ duration: 0.7, delay: 0.05, ease: easeOut }}
         style={{ marginBottom: '4rem' }}
       >
         <span style={sectionLabel}>Projects</span>
@@ -76,7 +75,12 @@ export default function Work() {
         </div>
         <div className="project-grid">
           {projects.map((project, i) => (
-            <ProjectMediaCard key={project.slug} project={project} index={i} />
+            <ProjectMediaCard
+              key={project.slug}
+              project={project}
+              index={i}
+              size={bentoSize(i)}
+            />
           ))}
         </div>
       </motion.section>
@@ -84,7 +88,7 @@ export default function Work() {
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.15 }}
+        transition={{ duration: 0.7, delay: 0.1, ease: easeOut }}
         style={{ marginBottom: '4rem' }}
       >
         <span style={sectionLabel}>Experience</span>
@@ -141,7 +145,7 @@ export default function Work() {
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.2 }}
+        transition={{ duration: 0.7, delay: 0.14, ease: easeOut }}
         style={{ marginBottom: '2rem' }}
       >
         <span style={sectionLabel}>Education</span>

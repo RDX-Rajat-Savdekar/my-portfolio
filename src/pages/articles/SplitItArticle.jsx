@@ -8,7 +8,7 @@ export default function SplitItArticle({ layout = "article" }) {
       title="SplitIt: Full-Stack Expense Splitting on React + Express"
       date="2025"
       tags={['React 19', 'Express 5', 'MongoDB', 'JWT', 'Vite']}
-      description="A Splitwise-style app I built end-to-end to learn full-stack — feature-sliced API layer, JWT auth, and client-side split validation over MongoDB."
+      description="A Splitwise-style app I built end-to-end to learn full-stack: feature-sliced API layer, JWT auth, and client-side split validation over MongoDB."
     >
       <section>
         <h2>The Problem</h2>
@@ -18,7 +18,7 @@ export default function SplitItArticle({ layout = "article" }) {
           expenses, balances, settle-up payments, and activity feeds.
         </p>
         <p>
-          <strong>Honesty note:</strong> the live deployment uses demo/fake data — no real users
+          <strong>Honesty note:</strong> the live deployment uses demo/fake data: no real users
           yet. This is a learning portfolio piece, not a production product.
         </p>
       </section>
@@ -52,7 +52,7 @@ export default function SplitItArticle({ layout = "article" }) {
           The expense modal supports equal, unequal, and percentage splits. Live{' '}
           <code>useEffect</code> recomputes remaining balance; submit is blocked unless shares sum
           to the total (or 100%). The actual debt/net-balance math runs server-side in Express +
-          Mongoose — the client validates and forwards.
+          Mongoose: the client validates and forwards.
         </p>
       </section>
 
@@ -60,14 +60,14 @@ export default function SplitItArticle({ layout = "article" }) {
         <h2>Tradeoffs I&apos;d Revisit</h2>
         <ul>
           <li>
-            Tailwind via CDN instead of a PostCSS build — moved fast when local Tailwind kept
+            Tailwind via CDN instead of a PostCSS build: moved fast when local Tailwind kept
             breaking; not ideal for production bundle size.
           </li>
           <li>
-            JWT in <code>localStorage</code> — fine for a demo, XSS-exposed in a real app.
+            JWT in <code>localStorage</code>: fine for a demo, XSS-exposed in a real app.
           </li>
           <li>
-            Duplicated Add/Edit expense modals — would merge into one parameterized component next
+            Duplicated Add/Edit expense modals: would merge into one parameterized component next
             pass.
           </li>
         </ul>

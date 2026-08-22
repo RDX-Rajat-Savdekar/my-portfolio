@@ -4,7 +4,7 @@ export const site = {
   name: 'Rajat Savdekar',
   domain: 'rajatsavdekar.dev',
   tagline:
-    'I build high-utility tools at the intersection of Spatial Computing and On-device AI. My approach is simple: build the expensive tool, then make it free.',
+    'Spatial computing and on-device AI. Build the expensive tool, then make it free.',
   location: 'MS CS @ USC · Los Angeles',
   availability: 'Available for full-time software engineering roles starting Summer 2026.',
   email: 'rajatsavdekar@gmail.com',
@@ -29,7 +29,7 @@ export const projects = [
     description:
       'Meta Quest 3 VR stargazing app rendering a real, time-accurate sky (~9k stars, planets, 88 constellations) with gaze-dwell interaction. I owned the real-time sky rendering engine on a 5-person USC AR/VR team.',
     details:
-      'GPU-instanced star field from the 119k-row HYG catalog (mag ≤ 6.5), sidereal-accurate rotation about the true celestial pole, and affine-aligned Stellarium constellation art — measured 72–90 Hz on Quest 3.',
+      'GPU-instanced star field from the 119k-row HYG catalog (mag ≤ 6.5), sidereal-accurate rotation about the true celestial pole, and affine-aligned Stellarium constellation art: measured 72–90 Hz on Quest 3.',
     tags: ['Unity 6', 'OpenXR', 'URP', 'C#', 'HLSL', 'XR'],
     badge: '1st @ RealityShift · USC XR Hackathon',
     projectPath: '/projects/celestia-vr',
@@ -49,7 +49,7 @@ export const projects = [
       preview: '/projects/stitch/aura-visionos/exports/loop.mp4',
       hover: '/projects/stitch/aura-visionos/exports/hover.mp4',
     },
-    tagline: 'visionOS on-device captions & sound awareness — 2nd @ LA Tech Week',
+    tagline: 'visionOS on-device captions & sound awareness: 2nd @ LA Tech Week',
     description:
       'Apple Vision Pro accessibility app running two on-device ML pipelines (Speech ASR + SoundAnalysis) with zero cloud fallback. Solo code; teammates contributed README only.',
     details:
@@ -82,9 +82,9 @@ export const projects = [
       preview: '/projects/stitch/mockpad/media/mockpad-demo.gif',
       hover: '/projects/stitch/mockpad/media/mockpad-demo.mp4',
     },
-    tagline: 'Free CoderPad — real-time collaborative interviews with playback',
+    tagline: 'Free CoderPad: real-time collaborative interviews with playback',
     description:
-      'Solo-built mock-interview web app: shared Monaco editor, whiteboard, notes, timer, and 4-language code execution — all synced through one Yjs CRDT doc per room.',
+      'Solo-built mock-interview web app: shared Monaco editor, whiteboard, notes, timer, and 4-language code execution: all synced through one Yjs CRDT doc per room.',
     details:
       'Yjs + y-websocket + LevelDB backend with 30-min/2-hr room TTL. Hardest bug: Excalidraw↔Yjs echo-loop + Float32Array pressure restore. WebRTC audio prototyped then scoped out.',
     tags: ['React 19', 'Yjs', 'Node.js', 'Monaco', 'Excalidraw'],
@@ -107,11 +107,11 @@ export const projects = [
       hover: '/projects/stitch/stitch/exports/stitch-demo-hover.mp4',
       poster: '/projects/stitch/stitch/exports/stitch-demo-poster.jpg',
     },
-    tagline: 'Autonomous CI repair — webhook in, validated patch PR out',
+    tagline: 'Autonomous CI repair: webhook in, validated patch PR out',
     description:
       'The CI failure that fixes itself: GitHub Actions webhook → log diagnosis → unified diff → validate → open PR (or comment), with branch-aware trust policies and a full product dashboard.',
     details:
-      'OpenAI Build Week 2026 · Developer Tools. Split diagnosis/fix AI steps, live clone/apply/push, multi-model providers, PostgreSQL multi-tenant backend, RBAC, Slack/email, Jira — 25 Vitest tests.',
+      'OpenAI Build Week 2026 · Developer Tools. Split diagnosis/fix AI steps, live clone/apply/push, multi-model providers, PostgreSQL multi-tenant backend, RBAC, Slack/email, Jira: 25 Vitest tests.',
     tags: ['TypeScript', 'React', 'Express', 'PostgreSQL', 'Codex'],
     badge: 'OpenAI Build Week 2026',
     projectPath: '/projects/stitch',
@@ -136,7 +136,7 @@ export const projects = [
       hover: '/projects/stitch/emojicode/exports/hover.mp4',
       poster: '/projects/stitch/emojicode/3homepag.jpg',
     },
-    tagline: 'Comment-native cipher game for Reddit — encode in 5, crack in comments',
+    tagline: 'Comment-native cipher game for Reddit: encode in 5, crack in comments',
     description:
       'Devvit Web game for Reddit\'s "Games with a Hook" hackathon: pick 5 emojis, post instantly, redditors guess in comments. XP, streaks, dual leaderboards, lazy-loaded Phaser solve burst.',
     details:
@@ -270,9 +270,9 @@ export const projects = [
       },
     ],
     scholar: 'https://scholar.google.com/citations?user=ynyXTd8AAAAJ&hl=en',
-    tagline: 'Four undergrad publications — GLCM tool cited 10× across Nature, Springer, IEEE',
+    tagline: 'Four undergrad publications: GLCM tool cited 10× across Nature, Springer, IEEE',
     description:
-      'Undergraduate research from Mumbai University: GLCM texture analysis, medical transcript NLP, IAS interview analysis, and LSB steganography — code and PDFs in one repo.',
+      'Undergraduate research from Mumbai University: GLCM texture analysis, medical transcript NLP, IAS interview analysis, and LSB steganography: code and PDFs in one repo.',
     details:
       'The GLCM MATLAB GUI is the standout: contrast, entropy, homogeneity, and related features, reused in 10+ peer-reviewed papers. Repo tracks all publications, certificates, and source.',
     tags: ['Research', 'MATLAB', 'NLP', 'Publications'],
@@ -296,7 +296,7 @@ export const projects = [
     },
     tagline: 'AI academic & mental health copilot for USC students',
     description:
-      'Anthropic hackathon project: paste a Google Calendar / Brightspace iCal feed and get urgency scoring, burnout risk, a 7-day action plan, streaming narrative, and dual-persona chat — with crisis-mode safety routing.',
+      'Anthropic hackathon project: paste a Google Calendar / Brightspace iCal feed and get urgency scoring, burnout risk, a 7-day action plan, streaming narrative, and dual-persona chat: with crisis-mode safety routing.',
     details:
       '3-stage Claude pipeline (classify → assess risk → generate plan) on claude-haiku-4-5. Crisis intercept when stress ≥ 9. React + Express + SSE + node-ical.',
     tags: ['React', 'Node.js', 'Claude API', 'SSE', 'Mental Health'],
@@ -344,7 +344,7 @@ export const projects = [
     },
     tagline: 'Bridge between local workflows and cloud infrastructure',
     description:
-      'CloudBridge connects local development workflows to cloud services — captured as a looping product demo for the portfolio.',
+      'CloudBridge connects local development workflows to cloud services.',
     details: null,
     tags: ['Cloud', 'TypeScript', 'Infrastructure'],
     badge: null,
@@ -358,14 +358,14 @@ export const projects = [
   },
   {
     slug: 'astro-gsap-f1',
-    name: 'GSAP Lab — F1',
+    name: 'GSAP Lab: F1',
     featured: false,
     filter: 'web',
     media: {
       preview: '/projects/stitch/astro/media/exports/f1-loop.mp4',
       hover: '/projects/stitch/astro/media/exports/f1-hover.mp4',
     },
-    tagline: 'Scroll-driven F1 sequence — Astro + GSAP + Webflow',
+    tagline: 'Scroll-driven F1 sequence: Astro + GSAP + Webflow',
     description:
       'One of two motion pieces from the GSAP Lab: a Formula 1 scroll story built for the CodeTV GSAP Cloud challenge.',
     details: null,
@@ -384,14 +384,14 @@ export const projects = [
   },
   {
     slug: 'astro-gsap-iron-man',
-    name: 'GSAP Lab — Iron Man',
+    name: 'GSAP Lab: Iron Man',
     featured: false,
     filter: 'web',
     media: {
       preview: '/projects/stitch/astro/media/exports/iron-man-loop.mp4',
       hover: '/projects/stitch/astro/media/exports/iron-man-hover.mp4',
     },
-    tagline: 'Iron Man HUD scroll experiment — Astro + GSAP + Webflow',
+    tagline: 'Iron Man HUD scroll experiment: Astro + GSAP + Webflow',
     description:
       'The second GSAP Lab piece: an Iron Man HUD sequence with the same Astro × GSAP × Webflow stack, submitted to the CodeTV GSAP Cloud challenge.',
     details: null,
@@ -427,7 +427,7 @@ export const experience = [
     location: 'Jalgaon, India',
     period: 'May 2023 – May 2024',
     bullets: [
-      'Owned the full lifecycle of a web-based procurement platform for 150 daily users — drove the transition from manual logs to digital architecture.',
+      'Owned the full lifecycle of a web-based procurement platform for 150 daily users: drove the transition from manual logs to digital architecture.',
       'Refactored legacy PHP modules into scalable microservices using Flask and MySQL, designing a fault-tolerant backend.',
       'Implemented Docker-based CI/CD pipelines, reducing release cycles by 30%.',
     ],
@@ -464,7 +464,7 @@ const articleMeta = {
     date: 'October 2025',
     title: 'Aura: Real-time Spatial HUDs on visionOS',
     summary:
-      'On-device speech + sound classification on Vision Pro — system design postmortem from a 24-hour LA Tech Week hackathon (2nd place).',
+      'On-device speech + sound classification on Vision Pro: system design postmortem from a 24-hour LA Tech Week hackathon (2nd place).',
   },
   mockpad: {
     date: 'April 2026',
@@ -476,7 +476,7 @@ const articleMeta = {
     date: 'June 2026',
     title: 'Engineering a Deterministic Ghost Replay System',
     summary:
-      'Keyframe replay at 50 Hz instead of input simulation — avoiding PhysX divergence on WebGL.',
+      'Keyframe replay at 50 Hz instead of input simulation: avoiding PhysX divergence on WebGL.',
   },
   splitit: {
     date: '2025',
@@ -488,19 +488,19 @@ const articleMeta = {
     date: '2026',
     title: 'RDX Dev Creator Lab: One Repo, Six Animation Engines',
     summary:
-      'Manim, Remotion, Godot, Motion Canvas, R3F, and React Flow — a playground for programmatic explainers.',
+      'Manim, Remotion, Godot, Motion Canvas, R3F, and React Flow: a playground for programmatic explainers.',
   },
   'research-papers': {
     date: '2019–2023',
     title: 'Research Papers: Four Undergrad Publications',
     summary:
-      'GLCM texture tool (10 citations), medical transcript NLP, IAS interview analysis, and LSB steganography — code and PDFs in one repo.',
+      'GLCM texture tool (10 citations), medical transcript NLP, IAS interview analysis, and LSB steganography: code and PDFs in one repo.',
   },
   stitch: {
     date: 'July 2026',
     title: 'Stitch: Autonomous CI Repair for OpenAI Build Week',
     summary:
-      'Webhook → diagnose → patch → PR. Branch-aware trust, multi-model AI, product dashboard with SSE — built with Codex for the Developer Tools track.',
+      'Webhook → diagnose → patch → PR. Branch-aware trust, multi-model AI, product dashboard with SSE: built with Codex for the Developer Tools track.',
   },
   emojicode: {
     date: 'July 2026',
@@ -516,7 +516,7 @@ const articleMeta = {
   },
 };
 
-/** Project writeup index — derived from projects with deep pages. */
+/** Project writeup index: derived from projects with deep pages. */
 export const caseStudies = projects
   .filter((p) => p.projectPath && articleMeta[p.slug])
   .map((p) => ({
@@ -556,24 +556,9 @@ export const externalArticles = [
     date: 'Jun 2025',
     title: 'Custom Macros I Wrote (and Why)',
     summary:
-      'The LaTeX macros I created to make my resume format clean, consistent, and easy to update — with real examples and reasoning.',
+      'The LaTeX macros I created to make my resume format clean, consistent, and easy to update: with real examples and reasoning.',
     tags: ['LaTeX', 'Resume Design', 'Productivity'],
     link: 'https://medium.com/@rajatsavdekar/custom-macros-i-wrote-and-why-f8845e1541ab',
-  },
-];
-
-export const humanPosts = [
-  {
-    title: "8 Weeks of Google Prep: What the Guides Don't Tell You",
-    preview:
-      'The full framework — 6-phase problem solving, the MIKE method, and what actually moved the needle.',
-    status: 'coming soon',
-  },
-  {
-    title: 'Applying for Jobs on OPT: The Visa Math Nobody Explains',
-    preview:
-      'Timelines, cap-gap, H-1B lottery odds, and how to think about your job search given the constraints.',
-    status: 'coming soon',
   },
 ];
 
@@ -620,7 +605,7 @@ export function getProjectBySlug(slug) {
   return projects.find((p) => p.slug === slug);
 }
 
-/** Build link chips — Live / Demo first, then code, then papers. */
+/** Build link chips: Live / Demo first, then code, then papers. */
 export function getProjectLinks(project) {
   if (!project) return [];
   const links = [];

@@ -8,13 +8,13 @@ export default function EmojiCodeArticle({ layout = "article" }) {
       title="EmojiCode: A Hook-y Cipher Game on Reddit Devvit"
       date="July 2026"
       tags={['Devvit', 'React', 'TypeScript', 'Redis', 'Phaser']}
-      description="Encode it in 5. Crack it in comments. A comment-driven cipher game for Reddit — built for the Games with a Hook hackathon with Phaser."
+      description="Encode it in 5. Crack it in comments. A comment-driven cipher game for Reddit: built for the Games with a Hook hackathon with Phaser."
     >
       <section>
         <h2>The Idea</h2>
         <p>
           <strong>EmojiCode</strong> is built around instant publish: pick exactly 5 emojis, type the
-          answer, hit submit — your post is live in the feed immediately. Other redditors guess what it
+          answer, hit submit: your post is live in the feed immediately. Other redditors guess what it
           means in comments (or inline on the post). No queue, no daily curation, no human moderator in
           the loop.
         </p>
@@ -34,20 +34,20 @@ export default function EmojiCodeArticle({ layout = "article" }) {
 
       <section>
         <h2>Why It&apos;s &ldquo;Hook-y&rdquo;</h2>
-        <p>The hackathon judges on daily return — EmojiCode&apos;s retention loop:</p>
+        <p>The hackathon judges on daily return: EmojiCode&apos;s retention loop:</p>
         <ul>
           <li>
-            <strong>Cipher of the Day</strong> — refreshed at midnight, something new to check daily.
+            <strong>Cipher of the Day</strong>: refreshed at midnight, something new to check daily.
           </li>
           <li>
-            <strong>Streaks</strong> — visible nudge before you lose an active decode streak.
+            <strong>Streaks</strong>: visible nudge before you lose an active decode streak.
           </li>
           <li>
-            <strong>XP + named ranks</strong> — concrete &ldquo;N more decodes to Legendary Cipher&rdquo;
+            <strong>XP + named ranks</strong>: concrete &ldquo;N more decodes to Legendary Cipher&rdquo;
             progress, synced to Reddit flair.
           </li>
           <li>
-            <strong>User-authored content</strong> — every cipher is community-made; the feed never
+            <strong>User-authored content</strong>: every cipher is community-made; the feed never
             runs out.
           </li>
         </ul>
@@ -57,7 +57,7 @@ export default function EmojiCodeArticle({ layout = "article" }) {
         <h2>Gameplay & Autonomy</h2>
         <ul>
           <li>
-            Smart guess checking — Levenshtein fuzzy match + crowd-sourced answer dictionary (solvers
+            Smart guess checking: Levenshtein fuzzy match + crowd-sourced answer dictionary (solvers
             can add alternate phrasings after cracking).
           </li>
           <li>
@@ -82,8 +82,8 @@ export default function EmojiCodeArticle({ layout = "article" }) {
           Redis (sorted sets, no external DB) · Devvit Scheduler for daily/weekly cron.
         </p>
         <p>
-          The solve celebration is a real Phaser Arcade Physics burst — emojis explode, fall under
-          gravity, bounce — code-split via <code>React.lazy</code> so the ~1MB Phaser bundle only loads
+          The solve celebration is a real Phaser Arcade Physics burst: emojis explode, fall under
+          gravity, bounce: code-split via <code>React.lazy</code> so the ~1MB Phaser bundle only loads
           on a correct guess. Targets the hackathon&apos;s{' '}
           <strong>Best Use of Phaser</strong> sub-award.
         </p>

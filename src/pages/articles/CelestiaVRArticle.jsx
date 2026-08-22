@@ -23,7 +23,7 @@ export default function CelestiaVRArticle({ layout = "article" }) {
           The primary challenge was ensuring that the sky dome rotated correctly over time (sidereal rate) without accumulating floating-point errors or encountering gimbal lock. In XR, even a 0.1-degree drift can be perceptible over a long session, breaking the immersion of an observatory.
         </p>
         <blockquote>
-          "The intuitive solution—accumulating Euler angles—drifts significantly after just a few hours of runtime due to precision boundaries."
+          "The intuitive solution-accumulating Euler angles-drifts significantly after just a few hours of runtime due to precision boundaries."
         </blockquote>
       </section>
 
@@ -51,7 +51,7 @@ export default function CelestiaVRArticle({ layout = "article" }) {
         <h2>Results & Performance SLA</h2>
         <p>
           The project won <strong>1st place at RealityShift</strong>, USC&apos;s XR Hackathon in Los
-          Angeles — on a 5-person team where I owned the real-time sky rendering engine.
+          Angeles: on a 5-person team where I owned the real-time sky rendering engine.
         </p>
         <p>
           Building for the Quest 3S meant hitting a strict <strong>72Hz frame budget</strong>. I implemented a 'lazy-enable' strategy for the telescope eyepiece camera, which reclaimed <strong>4-6ms of GPU time</strong> whenever the user wasn't actively looking through the lens.

@@ -22,7 +22,7 @@ export default function NavBar() {
       <div className="contact-strip">
         <div className="contact-strip-inner">
           <span className="contact-strip-label">Contact</span>
-          <a href={`mailto:${site.email}`} className="contact-strip-email">
+          <a href={`mailto:${site.email}`}>
             {site.email}
           </a>
           {contactLinks.map((link) => (

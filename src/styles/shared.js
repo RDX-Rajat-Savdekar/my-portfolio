@@ -6,7 +6,7 @@ export const page = {
 
 /** Wider canvas for media-forward pages (Home / Work). */
 export const pageWide = {
-  maxWidth: '1000px',
+  maxWidth: '1120px',
   margin: '0 auto',
   padding: '3.5rem 1.5rem 4rem',
   position: 'relative',
@@ -33,10 +33,12 @@ export const tag = {
   padding: '1px 6px',
 };
 
+export const easeOut = [0.22, 1, 0.36, 1];
+
 export const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 0, y: 18 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.45, delay },
+  transition: { duration: 0.7, delay, ease: easeOut },
 });
 
 export const linkMuted = {

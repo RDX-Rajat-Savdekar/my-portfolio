@@ -13,7 +13,7 @@ export default function MockPadArticle({ layout = "article" }) {
       <section>
         <h2>The Problem</h2>
         <p>
-          Technical interview prep needs a shared editor, whiteboard, timer, and runnable code — but
+          Technical interview prep needs a shared editor, whiteboard, timer, and runnable code: but
           CoderPad-tier tools are paid. I built MockPad as a free, real-time collaborative room:
           interviewer + interviewee (+ optional viewers) in one browser session.
         </p>
@@ -22,8 +22,8 @@ export default function MockPadArticle({ layout = "article" }) {
       <section>
         <h2>Architecture: One Y.Doc, No REST App State</h2>
         <p>
-          Every collaborative field — Monaco buffer, language, run output, roles, timer, notes,
-          interview type, whiteboard — lives in a single <code>Y.Doc</code> per room. Conflict
+          Every collaborative field: Monaco buffer, language, run output, roles, timer, notes,
+          interview type, whiteboard: lives in a single <code>Y.Doc</code> per room. Conflict
           resolution is free; there is no REST layer mirroring application state.
         </p>
         <ul>
@@ -32,7 +32,7 @@ export default function MockPadArticle({ layout = "article" }) {
             <code>ws</code> server.
           </li>
           <li>
-            <strong>Rejected:</strong> REST + polling/WebSockets for each resource — more glue,
+            <strong>Rejected:</strong> REST + polling/WebSockets for each resource: more glue,
             more race conditions.
           </li>
         </ul>
@@ -44,7 +44,7 @@ export default function MockPadArticle({ layout = "article" }) {
           Excalidraw&apos;s <code>onChange</code> and Yjs&apos;s <code>observe</code> ping-ponged:
           a remote update triggered <code>updateScene</code> mid-stroke and reset the in-progress
           line. Fix: synchronous <code>isLocalRef</code> / <code>isRemoteRef</code> flags around
-          writes — not <code>transaction.local</code>, which wasn&apos;t reliable enough here.
+          writes: not <code>transaction.local</code>, which wasn&apos;t reliable enough here.
         </p>
         <p>
           Second bug: <code>JSON.stringify</code> flattened freedraw <code>pressures</code> from{' '}
@@ -57,7 +57,7 @@ export default function MockPadArticle({ layout = "article" }) {
         <h2>What I Deliberately Did Not Ship</h2>
         <p>
           I prototyped WebRTC audio with SDP/ICE over Yjs awareness (no separate signaling server)
-          and dual-stream recording — then cut it. Rebuilding Zoom inside an interview editor
+          and dual-stream recording: then cut it. Rebuilding Zoom inside an interview editor
           wasn&apos;t the product; letting users bring Meet/Discord was the better tradeoff.
         </p>
       </section>

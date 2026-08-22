@@ -6,26 +6,26 @@ const papers = [
     url: 'https://ijnrd.org/viewpaperforall.php?paper=IJNRD2202021',
     about:
       'Image classification using Gray-Level Co-occurrence Matrix for texture feature extraction.',
-    citations: '10 — Nature, Springer, IEEE',
+    citations: '10: Nature, Springer, IEEE',
   },
   {
     title: 'Medical Transcript Analysis',
     url: 'https://www.ijnrd.org/viewpaperforall.php?paper=IJNRD2307427',
     about: 'NLP-based analysis of medical transcripts for structured information extraction.',
-    citations: '—',
+    citations: '-',
   },
   {
     title: 'Analysis of IAS Interview Transcripts',
     url: 'https://ijnrd.org/viewpaperforall.php?paper=IJNRD2205009',
     about:
       'Computational analysis of UPSC IAS interview transcripts to identify patterns and language structure.',
-    citations: '—',
+    citations: '-',
   },
   {
     title: 'LSB Based Image Steganography Using Passkey',
     url: 'https://ijircce.com/admin/main/storage/app/pdf/KJgaW76YVKApNMzguI2BQkfdSOYWGOZNhhDyGQvX.pdf',
     about: 'Secure data hiding in images using LSB steganography with passkey authentication.',
-    citations: '—',
+    citations: '-',
   },
 ];
 
@@ -42,7 +42,7 @@ export default function ResearchPapersArticle({ layout = "article" }) {
       <section>
         <h2>Overview</h2>
         <p>
-          This repo tracks all of my undergraduate research — papers, certificates, MATLAB/Jupyter
+          This repo tracks all of my undergraduate research: papers, certificates, MATLAB/Jupyter
           source, and PDFs. The GLCM texture tool is the one other groups actually reused; the rest
           span NLP and security topics from the same period.
         </p>
@@ -104,8 +104,8 @@ export default function ResearchPapersArticle({ layout = "article" }) {
       <section>
         <h2>GLCM Tool (Highlight)</h2>
         <p>
-          The texture paper shipped with a MATLAB GUI for GLCM feature extraction — contrast,
-          entropy, homogeneity, and related measures — so researchers could run the same pipeline
+          The texture paper shipped with a MATLAB GUI for GLCM feature extraction: contrast,
+          entropy, homogeneity, and related measures: so researchers could run the same pipeline
           without rewriting boilerplate. That reproducibility is why it picked up citations across
           Nature, Springer, and IEEE venues.
         </p>

@@ -23,7 +23,7 @@ export default function AfterImageArticle({ layout = "article" }) {
           During playtesting, I noticed consistent frame hitches every ~60 seconds. Using the Unity Profiler, I traced the issue to <code>List&lt;Vector2&gt;</code> resizing in the Ghost Replay system. As the list reached its capacity, .NET would allocate a new backing array and copy thousands of entries, triggering a Gen 0 GC promotion.
         </p>
         <blockquote>
-          "In a 60 fps game loop, these mid-frame GC stalls manifest as 1-3ms spikes—enough to cause a 'stutter' that ruins a precision platformer."
+          "In a 60 fps game loop, these mid-frame GC stalls manifest as 1-3ms spikes-enough to cause a 'stutter' that ruins a precision platformer."
         </blockquote>
       </section>
 

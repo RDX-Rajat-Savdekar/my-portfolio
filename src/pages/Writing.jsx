@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import { site, externalArticles, humanPosts } from '../data/content';
+import { site, externalArticles } from '../data/content';
 import { page, tag } from '../styles/shared';
 
 export default function Writing() {
@@ -24,8 +24,7 @@ export default function Writing() {
           Writing
         </h1>
         <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.65, maxWidth: '36rem' }}>
-          Personal essays on interview prep, OPT, and graduate school. Project deep-dives live on
-          each project page — not here.
+          Notes on process and tools. Project writeups live on each project page.
         </p>
       </motion.div>
 
@@ -35,37 +34,6 @@ export default function Writing() {
         transition={{ duration: 0.35, delay: 0.05 }}
         style={{ marginBottom: '3.5rem' }}
       >
-        <p className="home-eyebrow" style={{ marginBottom: '1rem' }}>
-          Human
-        </p>
-        <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-          Documenting the journey in real time — hiring loops, visa math, and what actually helped.
-        </p>
-        <div style={{ marginBottom: '1.5rem' }}>
-          {humanPosts.map((post) => (
-            <div
-              key={post.title}
-              style={{
-                padding: '1.25rem 0',
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  marginBottom: '0.375rem',
-                  gap: '1rem',
-                }}
-              >
-                <h3 style={{ fontSize: '0.975rem', fontWeight: 600, color: 'var(--fg)' }}>{post.title}</h3>
-                <span style={{ ...tag, flexShrink: 0 }}>{post.status}</span>
-              </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65 }}>{post.preview}</p>
-            </div>
-          ))}
-        </div>
         <a href={site.links.medium} target="_blank" rel="noreferrer" className="plink plink-live">
           Follow on Medium ↗
         </a>

@@ -8,7 +8,7 @@ export default function CreatorLabArticle({ layout = "article" }) {
       title="RDX Dev Creator Lab: One Repo, Six Animation Engines"
       date="2026"
       tags={['Manim', 'Remotion', 'Godot', 'Motion Canvas', 'R3F']}
-      description="An open-source playground for programmatic explainers — picking the right engine for math video, scroll sites, real-time sims, and embedded 3D."
+      description="An open-source playground for programmatic explainers: picking the right engine for math video, scroll sites, real-time sims, and embedded 3D."
     >
       <section>
         <h2>Why This Exists</h2>
@@ -16,7 +16,7 @@ export default function CreatorLabArticle({ layout = "article" }) {
           I&apos;m building toward Sebastian Lague / 3Blue1Brown-style technical content. That
           requires different tools for different outputs: rendered math video, programmatic YouTube
           segments, real-time interactive sims, and embeddable 3D in articles. Rather than
-          one-size-fits-all WebGL, this repo is a labeled lab — six engines, each with learning
+          one-size-fits-all WebGL, this repo is a labeled lab: six engines, each with learning
           exercises and demo projects.
         </p>
       </section>
@@ -25,25 +25,25 @@ export default function CreatorLabArticle({ layout = "article" }) {
         <h2>What&apos;s Inside</h2>
         <ul>
           <li>
-            <strong>Manim CE</strong> — vector math / DSA visualizers (Python).
+            <strong>Manim CE</strong>: vector math / DSA visualizers (Python).
           </li>
           <li>
-            <strong>Remotion</strong> — React-driven programmatic video (spring physics, templated
+            <strong>Remotion</strong>: React-driven programmatic video (spring physics, templated
             intros).
           </li>
           <li>
-            <strong>Godot + GDScript</strong> — lightweight real-time sims exportable to HTML5.
+            <strong>Godot + GDScript</strong>: lightweight real-time sims exportable to HTML5.
           </li>
           <li>
-            <strong>Motion Canvas</strong> — generator-based, frame-accurate 2D explainers synced
+            <strong>Motion Canvas</strong>: generator-based, frame-accurate 2D explainers synced
             to voiceover.
           </li>
           <li>
-            <strong>React Three Fiber</strong> — browser 3D at 60fps via <code>useFrame</code>{' '}
+            <strong>React Three Fiber</strong>: browser 3D at 60fps via <code>useFrame</code>{' '}
             ref mutation (not React state).
           </li>
           <li>
-            <strong>React Flow</strong> — live architecture / system-design diagrams.
+            <strong>React Flow</strong>: live architecture / system-design diagrams.
           </li>
         </ul>
         <p>
@@ -55,11 +55,11 @@ export default function CreatorLabArticle({ layout = "article" }) {
       <section>
         <h2>Key Decision: Multi-Engine vs. One Canvas</h2>
         <p>
-          <strong>Chosen:</strong> decouple by output target — don&apos;t force Unity or raw WebGL
+          <strong>Chosen:</strong> decouple by output target: don&apos;t force Unity or raw WebGL
           to be both a game engine and a blog widget factory.
         </p>
         <p>
-          <strong>Rejected:</strong> a single monolithic canvas codebase — faster to learn each
+          <strong>Rejected:</strong> a single monolithic canvas codebase: faster to learn each
           toolchain on its own terms, then harvest twice (article embed + YouTube segment).
         </p>
       </section>

@@ -8,12 +8,12 @@ export default function AuraArticle({ layout = "article" }) {
       title="Aura: Real-time Spatial HUDs on visionOS"
       date="October 2025"
       tags={['visionOS', 'Swift', 'SwiftUI', 'RealityKit', 'On-device ML']}
-      description="How we built Aura — a visionOS accessibility prototype for Apple Vision Pro in a 24-hour hackathon at LA Tech Week / USC ISI. Live speech captions + environmental sound alerts, entirely on-device."
+      description="How we built Aura: a visionOS accessibility prototype for Apple Vision Pro in a 24-hour hackathon at LA Tech Week / USC ISI. Live speech captions + environmental sound alerts, entirely on-device."
     >
       <section>
         <h2>System Design Postmortem (Video)</h2>
         <p>
-          The full walkthrough — what we shipped, what we cut, and why — with Manim animations, Swift
+          The full walkthrough: what we shipped, what we cut, and why: with Manim animations, Swift
           snippets, and hackathon B-roll. Outcome: <strong>2nd place</strong>, fully working prototype,
           zero external dependencies (no cloud ASR, no audio leaving the headset).
         </p>
@@ -29,7 +29,7 @@ export default function AuraArticle({ layout = "article" }) {
         >
           <iframe
             src="https://www.youtube.com/embed/3KEH2BCODBo?start=24"
-            title="How we built Aura — visionOS accessibility postmortem"
+            title="How we built Aura: visionOS accessibility postmortem"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{
@@ -55,16 +55,16 @@ export default function AuraArticle({ layout = "article" }) {
         </p>
         <h3>Chapters</h3>
         <ol>
-          <li>0:00 — The problem</li>
-          <li>1:24 — On-device only</li>
-          <li>2:17 — Build vs train</li>
-          <li>3:25 — One tap, dual pipeline</li>
-          <li>4:28 — Segmentation</li>
-          <li>5:28 — Texture HUD vs 90 Hz</li>
-          <li>6:19 — MainActor bridge</li>
-          <li>6:55 — Iron Man HUD</li>
-          <li>8:03 — Scale</li>
-          <li>8:46 — Outro</li>
+          <li>0:00: The problem</li>
+          <li>1:24: On-device only</li>
+          <li>2:17: Build vs train</li>
+          <li>3:25: One tap, dual pipeline</li>
+          <li>4:28: Segmentation</li>
+          <li>5:28: Texture HUD vs 90 Hz</li>
+          <li>6:19: MainActor bridge</li>
+          <li>6:55: Iron Man HUD</li>
+          <li>8:03: Scale</li>
+          <li>8:46: Outro</li>
         </ol>
       </section>
 
@@ -73,7 +73,7 @@ export default function AuraArticle({ layout = "article" }) {
         <p>
           Aura is a visionOS application for the hearing-impaired. It provides real-time speech-to-text
           transcription and environmental sound classification (sirens, doorbells, etc.) directly in the
-          user&apos;s spatial field of view — built in 24 hours at LA Tech Week / USC ISI.
+          user&apos;s spatial field of view: built in 24 hours at LA Tech Week / USC ISI.
         </p>
       </section>
 
@@ -107,7 +107,7 @@ export default function AuraArticle({ layout = "article" }) {
         <p>
           Standard RealityKit &lsquo;look-at&rsquo; methods often produce degenerate results (NaN
           quaternions) when the user looks directly above or below a panel. I implemented an explicit
-          Gram-Schmidt orthogonalization with a zero-vector guard — a stable HUD that never flickers,
+          Gram-Schmidt orthogonalization with a zero-vector guard: a stable HUD that never flickers,
           regardless of head orientation.
         </p>
 
@@ -117,10 +117,10 @@ export default function AuraArticle({ layout = "article" }) {
         </p>
         <ul>
           <li>
-            <strong>Rejected:</strong> Cloud ASR (Whisper/Google STT) — 200–500ms RTT and privacy cost.
+            <strong>Rejected:</strong> Cloud ASR (Whisper/Google STT): 200–500ms RTT and privacy cost.
           </li>
           <li>
-            <strong>Chosen:</strong> Pure <code>SFSpeechRecognizer</code> — ~50ms latency, zero audio
+            <strong>Chosen:</strong> Pure <code>SFSpeechRecognizer</code>: ~50ms latency, zero audio
             bytes leave the device.
           </li>
         </ul>

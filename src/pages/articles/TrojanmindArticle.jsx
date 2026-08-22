@@ -8,12 +8,12 @@ export default function TrojanmindArticle({ layout = "article" }) {
       title="TrojanMind: Calendar-Aware Mental Health Copilot"
       date="2025"
       tags={['React', 'Node.js', 'Claude API', 'SSE', 'Mental Health']}
-      description="Paste a Google Calendar or Brightspace iCal feed — get urgency scoring, burnout risk, a 7-day plan anchored to real events, and crisis-mode safety routing."
+      description="Paste a Google Calendar or Brightspace iCal feed: get urgency scoring, burnout risk, a 7-day plan anchored to real events, and crisis-mode safety routing."
     >
       <section>
         <h2>The Problem</h2>
         <p>
-          USC students juggle classes, deadlines, and burnout — but generic wellness apps ignore
+          USC students juggle classes, deadlines, and burnout: but generic wellness apps ignore
           their actual schedule. TrojanMind (Anthropic hackathon) treats the calendar as ground truth:
           paste an iCal link and the app builds a personalized week around events that already exist,
           not invented tasks.
@@ -27,15 +27,15 @@ export default function TrojanmindArticle({ layout = "article" }) {
         </p>
         <ul>
           <li>
-            <strong>Event classifier</strong> — urgency score, cognitive load, and deadline clusters
+            <strong>Event classifier</strong>: urgency score, cognitive load, and deadline clusters
             per calendar event.
           </li>
           <li>
-            <strong>Risk assessor</strong> — burnout level; triggers crisis mode when stress is
+            <strong>Risk assessor</strong>: burnout level; triggers crisis mode when stress is
             critical.
           </li>
           <li>
-            <strong>Plan generator</strong> — 7-day action plan referencing only real event titles
+            <strong>Plan generator</strong>: 7-day action plan referencing only real event titles
             from the feed.
           </li>
         </ul>

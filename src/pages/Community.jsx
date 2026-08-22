@@ -3,21 +3,21 @@ import ContactMe from '../components/ContactMeComponent';
 
 const events = [
   {
-    title: 'May 2025 — Sola Con Finals',
+    title: 'May 2025: Sola Con Finals',
     folder: 'may-2025-sola-con-finals',
     files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg'],
     caption:
-      'Organized the finals — coordinating under pressure, connecting with the community. It taught me leadership and the value of creating space for others to build.',
+      'Organized the finals: coordinating under pressure, connecting with the community. It taught me leadership and the value of creating space for others to build.',
   },
   {
-    title: 'April 2025 — MESA Fair',
+    title: 'April 2025: MESA Fair',
     folder: 'april-2025-mesa-fair',
     files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.mp4', '6.mp4', '7.mp4'],
     caption:
       'STEM outreach for K-12 students. Simplifying complex engineering concepts for the next generation of builders.',
   },
   {
-    title: 'Jan 2025 — Sola Con',
+    title: 'Jan 2025: Sola Con',
     folder: 'jan-2025-sola-con',
     files: [
       '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg',
@@ -27,7 +27,7 @@ const events = [
       'Helped build exhibits and run talks. Collaborating with creators from different disciplines broadened how I think about problems.',
   },
   {
-    title: 'Dec 2024 — HustNCode Hackathon',
+    title: 'Dec 2024: HustNCode Hackathon',
     folder: 'dec-2024-hustncode',
     files: [
       '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg',
