@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { site } from './data/content';
 import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function NavBar() {
   const location = useLocation();
+  const [stripOpen, setStripOpen] = useState(false);
   const navItems = [
     { name: 'Work', path: '/work' },
     { name: 'Writing', path: '/writing' },
@@ -19,17 +21,25 @@ export default function NavBar() {
 
   return (
     <header className="site-header">
-      <div className="contact-strip">
+      <div className={stripOpen ? 'contact-strip is-open' : 'contact-strip'}>
         <div className="contact-strip-inner">
+          <button
+            type="button"
+            className="contact-strip-toggle"
+            aria-expanded={stripOpen}
+            onClick={() => setStripOpen((open) => !open)}
+          >
+            Contact
+          </button>
           <span className="contact-strip-label">Contact</span>
-          <a href={`mailto:${site.email}`}>
-            {site.email}
-          </a>
-          {contactLinks.map((link) => (
-            <a key={link.name} href={link.href} target="_blank" rel="noreferrer">
-              {link.name}
-            </a>
-          ))}
+          <div className="contact-strip-links">
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            {contactLinks.map((link) => (
+              <a key={link.name} href={link.href} target="_blank" rel="noreferrer">
+                {link.name}
+              </a>
+            ))}
+          </div>
           <span className="contact-strip-spacer">{site.location}</span>
         </div>
       </div>

@@ -94,11 +94,34 @@ h3 {
   letter-spacing: 0.01em;
 }
 
+.contact-strip-toggle {
+  display: none;
+  appearance: none;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
 .contact-strip-label {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--muted);
   font-size: 0.62rem;
+}
+
+.contact-strip-links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+  flex-wrap: wrap;
 }
 
 .contact-strip a {
@@ -127,8 +150,22 @@ h3 {
 }
 
 @media (max-width: 720px) {
-  .contact-strip-spacer {
+  .contact-strip-spacer,
+  .contact-strip-label {
     display: none;
+  }
+
+  .contact-strip-toggle {
+    display: inline-flex;
+  }
+
+  .contact-strip-links {
+    display: none;
+    width: 100%;
+  }
+
+  .contact-strip.is-open .contact-strip-links {
+    display: flex;
   }
 }
 
@@ -360,7 +397,16 @@ h3 {
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--fg-2);
-  margin-bottom: 2rem;
+  margin-bottom: 0.85rem;
+  max-width: 34rem;
+}
+
+.home-hire {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
   max-width: 34rem;
 }
 
@@ -492,6 +538,13 @@ h3 {
 
 .hero-preview-frame {
   height: min(70vh, 44rem);
+}
+
+@media (max-width: 720px) {
+  .hero-preview.is-resume,
+  .resume-embed {
+    display: none;
+  }
 }
 
 .hero-preview-panel {
@@ -1012,6 +1065,266 @@ a.writing-row:hover {
   line-height: 1.6;
   color: var(--fg-2);
   margin-bottom: 1.25rem;
+}
+
+.project-scan {
+  margin-bottom: 2rem;
+}
+
+.project-scan .home-eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.project-proof {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.project-proof li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--fg);
+}
+
+.project-proof li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--accent);
+}
+
+.project-scan-links {
+  margin-bottom: 1rem;
+}
+
+.project-scan-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-notes-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2rem 0 1rem;
+}
+
+.work-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+}
+
+.work-lede {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0.85rem;
+  max-width: 34rem;
+}
+
+.work-page .home-hire {
+  margin-bottom: 1.25rem;
+}
+
+.resume-embed {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-media);
+}
+
+.resume-embed .hero-preview-frame {
+  border: 0;
+  box-shadow: none;
+}
+
+.work-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.work-job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.work-job-role {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.work-job-org {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.work-job-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.8;
+  margin-top: 0.25rem;
+}
+
+.work-job-period {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.work-job-bullets {
+  margin-top: 0.75rem;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.work-job-bullets li {
+  font-size: 0.9rem;
+  color: var(--fg-2);
+  line-height: 1.65;
+}
+
+.work-project-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+
+.work-project-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0.2rem;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.work-project-row:hover .work-project-name {
+  color: var(--accent);
+}
+
+.work-project-name {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.work-project-tagline {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.community-intro {
+  margin-bottom: 2.5rem;
+}
+
+.community-roles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+
+.community-roles li {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.community-role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.community-role-event {
+  color: var(--fg);
+}
+
+.community-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.community-feature,
+.community-more {
+  margin-bottom: 2rem;
+}
+
+.community-feature h2,
+.community-more h2 {
+  font-size: 1.05rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.community-caption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 36rem;
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+}
+
+.community-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-sunk);
+}
+
+.community-tile img,
+.community-tile video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .community-featured,
+  .community-roles li,
+  .work-project-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
 }
 
 .project-page-body {

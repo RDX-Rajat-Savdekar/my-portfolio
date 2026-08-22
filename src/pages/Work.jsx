@@ -1,54 +1,26 @@
-import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import ProjectMediaCard, { bentoSize } from '../components/ProjectMediaCard';
-import { experience, education, projectFilters, getProjectsByFilter } from '../data/content';
+import { site, experience, education, projects } from '../data/content';
 import { pageWide, sectionLabel, easeOut } from '../styles/shared';
 import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function Work() {
-  const [filter, setFilter] = useState('all');
-  const projects = useMemo(() => getProjectsByFilter(filter), [filter]);
-
   return (
-    <main style={pageWide}>
+    <main style={pageWide} className="work-page">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: easeOut }}
         style={{ marginBottom: '2.5rem' }}
       >
-        <h1
-          style={{
-            fontSize: '1.75rem',
-            fontWeight: 700,
-            letterSpacing: '-0.025em',
-            color: 'var(--fg)',
-            marginBottom: '0.75rem',
-          }}
-        >
-          Work
-        </h1>
-        <p
-          style={{
-            fontSize: '0.9375rem',
-            color: 'var(--muted)',
-            lineHeight: 1.65,
-            marginBottom: '1.25rem',
-            maxWidth: '520px',
-          }}
-        >
-          Projects, experience, and a resume PDF.
+        <h1 className="work-title">Work</h1>
+        <p className="work-lede">
+          Experience, education, and the resume. Project media lives on the home page.
         </p>
-        <a
-          href={pdfUrl}
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-ghost"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem' }}
-        >
-          ↓ Download Resume (PDF)
+        <p className="home-hire">{site.availability}</p>
+        <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+          Open PDF
         </a>
       </motion.div>
 
@@ -56,32 +28,11 @@ export default function Work() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.05, ease: easeOut }}
-        style={{ marginBottom: '4rem' }}
+        className="home-section"
       >
-        <span style={sectionLabel}>Projects</span>
-        <div className="filter-row" role="tablist" aria-label="Project filters">
-          {projectFilters.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={filter === item.id}
-              className={filter === item.id ? 'filter-chip active' : 'filter-chip'}
-              onClick={() => setFilter(item.id)}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-        <div className="project-grid">
-          {projects.map((project, i) => (
-            <ProjectMediaCard
-              key={project.slug}
-              project={project}
-              index={i}
-              size={bentoSize(i)}
-            />
-          ))}
+        <span style={sectionLabel}>Resume</span>
+        <div className="resume-embed">
+          <iframe src={`${pdfUrl}#view=FitH`} title="Resume preview" className="hero-preview-frame" />
         </div>
       </motion.section>
 
@@ -89,52 +40,24 @@ export default function Work() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: easeOut }}
-        style={{ marginBottom: '4rem' }}
+        className="home-section"
       >
         <span style={sectionLabel}>Experience</span>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className="work-stack">
           {experience.map((job) => (
-            <div key={`${job.role}-${job.period}`}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  flexWrap: 'wrap',
-                  gap: '0.25rem',
-                  marginBottom: '0.25rem',
-                }}
-              >
+            <div key={`${job.role}-${job.period}`} className="work-job">
+              <div className="work-job-head">
                 <div>
-                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>{job.role}</p>
-                  <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>
+                  <p className="work-job-role">{job.role}</p>
+                  <p className="work-job-org">
                     {job.org} · {job.location}
                   </p>
                 </div>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.7rem',
-                    color: 'var(--muted)',
-                    paddingTop: '2px',
-                  }}
-                >
-                  {job.period}
-                </span>
+                <span className="work-job-period">{job.period}</span>
               </div>
-              <ul
-                style={{
-                  marginTop: '0.75rem',
-                  paddingLeft: '1rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.375rem',
-                }}
-              >
+              <ul className="work-job-bullets">
                 {job.bullets.map((b) => (
-                  <li key={b} style={{ fontSize: '0.875rem', color: 'var(--muted)', lineHeight: 1.65 }}>
-                    {b}
-                  </li>
+                  <li key={b}>{b}</li>
                 ))}
               </ul>
             </div>
@@ -146,44 +69,51 @@ export default function Work() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.14, ease: easeOut }}
-        style={{ marginBottom: '2rem' }}
+        className="home-section"
       >
         <span style={sectionLabel}>Education</span>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <div className="work-stack">
           {education.map((edu) => (
-            <div key={edu.school}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  flexWrap: 'wrap',
-                  gap: '0.25rem',
-                }}
-              >
+            <div key={edu.school} className="work-job">
+              <div className="work-job-head">
                 <div>
-                  <p style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--fg)' }}>{edu.degree}</p>
-                  <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>
+                  <p className="work-job-role">{edu.degree}</p>
+                  <p className="work-job-org">
                     {edu.school} · {edu.location}
                   </p>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--muted)', opacity: 0.7, marginTop: '0.25rem' }}>
+                  <p className="work-job-meta">
                     {edu.courses} · GPA {edu.gpa}
                   </p>
                 </div>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.7rem',
-                    color: 'var(--muted)',
-                    paddingTop: '2px',
-                  }}
-                >
-                  {edu.period}
-                </span>
+                <span className="work-job-period">{edu.period}</span>
               </div>
             </div>
           ))}
         </div>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.18, ease: easeOut }}
+        className="home-section"
+      >
+        <span style={sectionLabel}>Projects</span>
+        <div className="work-project-list">
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              to={project.projectPath || `/projects/${project.slug}`}
+              className="work-project-row"
+            >
+              <span className="work-project-name">{project.name}</span>
+              <span className="work-project-tagline">{project.tagline}</span>
+            </Link>
+          ))}
+        </div>
+        <Link to="/#projects" className="section-more">
+          See project media
+        </Link>
       </motion.section>
 
       <ContactMe />

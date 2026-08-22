@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ContactMe from './ContactMeComponent';
 import ProjectHeroMedia from './ProjectHeroMedia';
 import ProjectLinks from './ProjectLinks';
-import { getProjectBySlug } from '../data/content';
+import { getProjectBySlug, getProjectProof } from '../data/content';
 
 export default function ArticleLayout({
   layout = 'article',
@@ -18,6 +18,8 @@ export default function ArticleLayout({
   const isProject = layout === 'project';
   const media = project?.media ?? {};
   const preview = media.preview || media.poster;
+  const proof = project ? getProjectProof(project) : [];
+  const lead = isProject && project ? project.tagline : description;
 
   return (
     <main className={isProject ? 'project-page' : 'article-page'}>
@@ -30,20 +32,25 @@ export default function ArticleLayout({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
       >
-        {isProject && preview && <ProjectHeroMedia media={media} />}
-
-        <header style={{ marginBottom: '2.5rem' }}>
-          <div className="home-eyebrow" style={{ marginBottom: '0.85rem' }}>
-            {date}
+        <header className="project-scan">
+          <div className="home-eyebrow">
+            {isProject ? project?.badge || date : date}
           </div>
           <h1 className="project-page-title">{isProject && project ? project.name : title}</h1>
-          <p className="project-page-lead">{description}</p>
+          <p className="project-page-lead">{lead}</p>
+          {proof.length > 0 && (
+            <ul className="project-proof">
+              {proof.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
           {project && (
-            <div style={{ marginBottom: '1.25rem' }}>
+            <div className="project-scan-links">
               <ProjectLinks project={{ ...project, projectPath: null }} />
             </div>
           )}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div className="project-scan-tags">
             {tags.map((t) => (
               <span key={t} className="tag-pill">
                 {t}
@@ -52,12 +59,7 @@ export default function ArticleLayout({
           </div>
         </header>
 
-        {isProject && project?.description && (
-          <div className="project-page-body" style={{ marginBottom: '2rem' }}>
-            <p>{project.description}</p>
-            {project.details && <p className="project-page-details">{project.details}</p>}
-          </div>
-        )}
+        {isProject && preview && <ProjectHeroMedia media={media} />}
 
         {isProject && project?.papers?.length > 0 && (
           <section className="papers-section">
@@ -101,7 +103,12 @@ export default function ArticleLayout({
           </section>
         )}
 
-        <div className="article-content">{children}</div>
+        {children && (
+          <div className="article-content">
+            {isProject && <h2 className="project-notes-label">Notes</h2>}
+            {children}
+          </div>
+        )}
       </motion.article>
 
       <div style={{ marginTop: '5rem' }}>

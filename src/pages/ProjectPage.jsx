@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
 import ProjectHeroMedia from '../components/ProjectHeroMedia';
 import ProjectLinks from '../components/ProjectLinks';
-import { getProjectBySlug } from '../data/content';
+import { getProjectBySlug, getProjectProof } from '../data/content';
 import { tag } from '../styles/shared';
 import CelestiaVRArticle from './articles/CelestiaVRArticle';
 import AuraArticle from './articles/AuraArticle';
@@ -45,6 +45,7 @@ export default function ProjectPage() {
 function GenericProjectPage({ project }) {
   const media = project.media ?? {};
   const preview = media.preview || media.poster;
+  const proof = getProjectProof(project);
 
   return (
     <main className="project-page">
@@ -57,27 +58,38 @@ function GenericProjectPage({ project }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
       >
+        <header className="project-scan">
+          <p className="home-eyebrow">{project.badge || project.filter || 'Project'}</p>
+          <h1 className="project-page-title">{project.name}</h1>
+          <p className="project-page-lead">{project.tagline}</p>
+          {proof.length > 0 && (
+            <ul className="project-proof">
+              {proof.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
+          <div className="project-scan-links">
+            <ProjectLinks project={{ ...project, projectPath: null }} />
+          </div>
+          <div className="project-card-tags">
+            {project.tags.map((t) => (
+              <span key={t} style={tag}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </header>
+
         {preview && <ProjectHeroMedia media={media} />}
 
-        <p className="home-eyebrow" style={{ marginBottom: '0.75rem' }}>
-          {project.badge || project.filter || 'Project'}
-        </p>
-        <h1 className="project-page-title">{project.name}</h1>
-        <p className="project-page-lead">{project.tagline}</p>
-        <ProjectLinks project={{ ...project, projectPath: null }} />
-
-        <div className="project-page-body">
-          <p>{project.description}</p>
-          {project.details && <p className="project-page-details">{project.details}</p>}
-        </div>
-
-        <div className="project-card-tags" style={{ marginTop: '1.25rem' }}>
-          {project.tags.map((t) => (
-            <span key={t} style={tag}>
-              {t}
-            </span>
-          ))}
-        </div>
+        {(project.description || project.details) && (
+          <div className="project-page-body">
+            <h2 className="project-notes-label">Notes</h2>
+            {project.description && <p>{project.description}</p>}
+            {project.details && <p className="project-page-details">{project.details}</p>}
+          </div>
+        )}
 
         {project.papers?.length > 0 && (
           <section className="papers-section">

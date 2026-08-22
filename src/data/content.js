@@ -410,26 +410,139 @@ export const projects = [
   },
 ];
 
+const projectProof = {
+  'celestia-vr': [
+    '1st at RealityShift, USC XR Hackathon',
+    'Real-time sky on Quest 3: ~9k stars, 88 constellations, 72-90 Hz',
+    'Owned the sky rendering engine on a 5-person team',
+  ],
+  aura: [
+    '2nd at LA Tech Week / USC ISI',
+    'Two on-device ML pipelines, no cloud fallback',
+    'Solo code; teammates wrote the README',
+  ],
+  mockpad: [
+    '100+ real users',
+    'Shared editor, whiteboard, notes, and timer on one Yjs doc',
+    'Live at mockpad-kappa.vercel.app',
+  ],
+  stitch: [
+    'OpenAI Build Week 2026, Developer Tools',
+    'Webhook in, validated patch PR out',
+    'Multi-tenant backend with RBAC, Slack, and Jira',
+  ],
+  emojicode: [
+    'Reddit Games with a Hook 2026',
+    'Encode in 5 emojis, crack in comments',
+    'React + Hono + Redis on Devvit',
+  ],
+  'after-image': [
+    'Deterministic ghost replay for a co-op WebGL platformer',
+    '50 Hz keyframe sampling to avoid PhysX drift',
+    'Built replay, analytics buffer, and spline collision',
+  ],
+  splitit: [
+    'Splitwise-style groups, balances, and settle-up',
+    'React 19 frontend, Express 5 + MongoDB backend',
+    'Equal, unequal, and percentage splits',
+  ],
+  'creator-lab': [
+    'Open-source lab for programmatic animation',
+    '35+ demos across Manim, Remotion, Godot, and R3F',
+    'Whisper + FFmpeg voiceover tooling',
+  ],
+  'research-papers': [
+    'Four undergrad publications',
+    'GLCM texture tool cited 10 times (Nature, Springer, IEEE)',
+    'Code and PDFs in one repo',
+  ],
+  trojanmind: [
+    'Anthropic hackathon',
+    'Calendar in, burnout risk and a 7-day plan out',
+    'Crisis routing when stress hits 9+',
+  ],
+  devstack: [
+    'Control plane for auth, flags, workflows, and metrics',
+    'One demo surface for the full walkthrough',
+  ],
+  cloudbridge: [
+    'Connects local workflows to cloud services',
+    'TypeScript infrastructure tooling',
+  ],
+  'astro-gsap-f1': [
+    'CodeTV GSAP Cloud challenge',
+    'Scroll-driven F1 sequence in Astro + GSAP + Webflow',
+  ],
+  'astro-gsap-iron-man': [
+    'CodeTV GSAP Cloud challenge',
+    'Iron Man HUD scroll piece, same motion stack',
+  ],
+};
+
+export function getProjectProof(project) {
+  if (project?.proof?.length) return project.proof;
+  return projectProof[project?.slug] ?? [];
+}
+
+export const communityEvents = [
+  {
+    title: 'May 2025: Sola Con Finals',
+    role: 'Organized the finals',
+    featured: true,
+    folder: 'may-2025-sola-con-finals',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg'],
+    caption: 'Coordinated the finals under pressure and kept the floor moving.',
+  },
+  {
+    title: 'Dec 2024: HustNCode Hackathon',
+    role: 'Mentored teams',
+    featured: true,
+    folder: 'dec-2024-hustncode',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg'],
+    caption: 'Helped teams go from stuck to shipping in 24 hours.',
+  },
+  {
+    title: 'April 2025: MESA Fair',
+    role: 'STEM outreach for K-12',
+    featured: false,
+    folder: 'april-2025-mesa-fair',
+    files: ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.mp4', '6.mp4', '7.mp4'],
+    caption: 'Translated engineering ideas for the next set of builders.',
+  },
+  {
+    title: 'Jan 2025: Sola Con',
+    role: 'Exhibits and talks',
+    featured: false,
+    folder: 'jan-2025-sola-con',
+    files: [
+      '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg',
+      '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg',
+    ],
+    caption: 'Built exhibits and ran talks with creators from other disciplines.',
+  },
+];
+
 export const experience = [
   {
     role: 'Teaching Assistant',
-    org: 'Discover Engineering, USC Summer Programs',
+    org: 'USC Summer Programs',
     location: 'Los Angeles, CA',
-    period: 'May 2025 – July 2025',
+    period: 'May 2025 – Jul 2025',
     bullets: [
-      'Mentored international teams through intensive engineering rotations, delivering weekly prototypes.',
-      'Guided students through the full product lifecycle, enforcing technical standards to transform concepts into functional projects.',
+      'Led a program of 150 students through Python, Git, AI, and REST API development on robotics hardware, guiding functional prototype delivery on schedule.',
     ],
   },
   {
     role: 'Software Engineer',
-    org: 'Jalgaon Fruits Sales Cooperative',
+    org: 'Jalgaon Fruit Sales Cooperative Ltd',
     location: 'Jalgaon, India',
     period: 'May 2023 – May 2024',
     bullets: [
-      'Owned the full lifecycle of a web-based procurement platform for 150 daily users: drove the transition from manual logs to digital architecture.',
-      'Refactored legacy PHP modules into scalable microservices using Flask and MySQL, designing a fault-tolerant backend.',
-      'Implemented Docker-based CI/CD pipelines, reducing release cycles by 30%.',
+      'Decomposed a legacy PHP, SQL monolith by building Python Flask microservices backed by PostgreSQL, orchestrating automated cron jobs to synchronize state and cutting query latency by 40% across 1,000+ daily truck transactions.',
+      'Doubled peak harvest write throughput (2x) and scaled revenue from $100K to $200K by architecting an isolated write path that eliminated 10-15 minute freezes from MyISAM table locking.',
+      'Reduced support chatbot inference costs by 35% across inventory lookups by implementing Redis-based semantic prompt caching, model fallback routing, and token compression over warehouse metadata.',
+      'Cut deployment cycle time by 30% and eliminated production regressions by containerizing microservices with Docker, integrating automated pytest validation suites, and configuring multi-stage CI/CD pipelines.',
+      'Built a web procurement platform backed by RESTful APIs, migrating 150+ daily clerks across 5 warehouses from manual logs to live stakeholder analytics dashboards.',
     ],
   },
 ];
@@ -440,8 +553,8 @@ export const education = [
     school: 'University of Southern California',
     location: 'Los Angeles, CA',
     period: 'Aug 2024 – May 2026',
-    gpa: '3.6',
-    courses: 'Web Technologies, Algorithms, Database Systems, Machine Learning',
+    gpa: '3.63',
+    courses: 'Multimedia System Design, Database Systems, Machine Learning, Game Design',
   },
   {
     degree: 'BE in Computer Engineering',
