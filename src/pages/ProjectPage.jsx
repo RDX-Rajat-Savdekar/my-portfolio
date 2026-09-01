@@ -15,8 +15,12 @@ import ResearchPapersArticle from './articles/ResearchPapersArticle';
 import TrojanmindArticle from './articles/TrojanmindArticle';
 import StitchArticle from './articles/StitchArticle';
 import EmojiCodeArticle from './articles/EmojiCodeArticle';
+import CaliberateArticle from './articles/CaliberateArticle';
+import MediverseArticle from './articles/MediverseArticle';
 
 const WRITEUPS = {
+  caliberate: CaliberateArticle,
+  mediverse: MediverseArticle,
   'celestia-vr': CelestiaVRArticle,
   aura: AuraArticle,
   'after-image': AfterImageArticle,

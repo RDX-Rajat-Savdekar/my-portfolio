@@ -4,7 +4,7 @@ export const site = {
   name: 'Rajat Savdekar',
   domain: 'rajatsavdekar.dev',
   tagline:
-    'Spatial computing and on-device AI. Build the expensive tool, then make it free.',
+    'Spatial computing, on-device AI, and calibrated backend systems. Build the expensive tool, then make it free.',
   location: 'MS CS @ USC · Los Angeles',
   availability: 'Available for full-time software engineering roles starting Summer 2026.',
   email: 'rajatsavdekar@gmail.com',
@@ -16,6 +16,48 @@ export const site = {
 };
 
 export const projects = [
+  {
+    slug: 'caliberate',
+    name: 'Caliberate',
+    featured: true,
+    filter: 'tools',
+    tagline: 'Calibrated eval harness for LLM-generated code patches in sandboxed containers',
+    description:
+      'Portfolio eval harness that scores LLM-generated patches against hidden tests in isolated Docker workers, then calibrates an LLM-as-judge against my own labels before any number is trusted.',
+    details:
+      'Thesis: calibrate the judge and the tasks first. Two-tier grade (programmatic verifier = solved; judge = taste, only after agreement is measured). Task calibration is 3× oracle / 3× no-op. Not a SWE-bench wrapper; not a production eval platform. In progress: public contract and runner next.',
+    tags: ['Python', 'FastAPI', 'Docker', 'PostgreSQL', 'LLM evals'],
+    badge: 'In progress',
+    pin: 1,
+    projectPath: '/projects/caliberate',
+    github: 'https://github.com/RDX-Rajat-Savdekar/Caliberate',
+    githubSecondary: null,
+    youtube: null,
+    live: null,
+    presentation: null,
+    paper: null,
+  },
+  {
+    slug: 'mediverse',
+    name: 'Mediverse',
+    featured: true,
+    filter: 'xr',
+    tagline: 'Quest surgical trainer: drill runtime, measurement harness, backend & AI infra',
+    description:
+      'Meta Quest surgical-training sandbox at Easley-Dunn Productions (Scott Easley): grab tools in an OR or field tent, operate on a bunion-foot mesh, session record/replay, AI narration. I own systems and performance on the drill path first.',
+    details:
+      'Unity 2021.3 / OpenXR / XR Interaction Toolkit. Isolated a ~22-bone foot lab from a 256-collider play scene; local-space vertex tests, lazy mesh clones, MeshCollider recooks throttled to 0.15 s; Play Mode CSV p95 harness. Editor measurements only — not Quest Hz claims.',
+    tags: ['Unity', 'C#', 'OpenXR', 'Meta Quest', 'XR'],
+    badge: 'Easley-Dunn · Current',
+    pin: 2,
+    projectPath: '/projects/mediverse',
+    github: null,
+    githubSecondary: null,
+    youtube: null,
+    live: null,
+    presentation: null,
+    paper: null,
+  },
   {
     slug: 'celestia-vr',
     name: 'CelestiaVR',
@@ -411,6 +453,16 @@ export const projects = [
 ];
 
 const projectProof = {
+  caliberate: [
+    'Calibrate the judge and the tasks before you trust any number',
+    'Hidden tests in isolated Docker workers; LLM-as-judge only after agreement',
+    'Public repo: contract, decisions, honesty rules — runner next',
+  ],
+  mediverse: [
+    'Current role at Easley-Dunn Productions (Scott Easley)',
+    'Drill runtime on a Quest surgical trainer: editor p95 harness, not headset Hz',
+    '~256 idle skeleton colliders, not the foot vertex loop, explained the Jungle gap',
+  ],
   'celestia-vr': [
     '1st at RealityShift, USC XR Hackathon',
     'Real-time sky on Quest 3: ~9k stars, 88 constellations, 72-90 Hz',
@@ -524,6 +576,17 @@ export const communityEvents = [
 
 export const experience = [
   {
+    role: 'Software Developer – Systems & Performance',
+    org: 'Easley-Dunn Productions, Inc. (Mediverse)',
+    location: 'Torrance, CA',
+    period: 'Aug 2026 – Present',
+    bullets: [
+      'Building runtime and backend systems for Mediverse, a Meta Quest surgical-training platform in Unity / OpenXR: tools, anatomy, session replay, and AI narration.',
+      'Isolated a ~22-bone foot lab from a 256-collider play scene and replaced a per-frame world-space vertex walk with local-space tests, lazy mesh clones, and MeshCollider recooks throttled to 0.15 s.',
+      'Traced a ~2.5× editor frame-time gap on the same 2807-vert cuboid to ~256 idle non-convex MeshColliders on a full skeleton, then built a Play Mode harness that logs CSV p95 so ToolLab vs Jungle runs compare the same bone.',
+    ],
+  },
+  {
     role: 'Teaching Assistant',
     org: 'USC Summer Programs',
     location: 'Los Angeles, CA',
@@ -567,6 +630,18 @@ export const education = [
 ];
 
 const articleMeta = {
+  caliberate: {
+    date: 'August 2026',
+    title: 'Caliberate: Calibrate the Judge Before You Trust the Number',
+    summary:
+      'A sandboxed eval harness for LLM-generated patches: hidden tests as truth, an LLM-as-judge only after agreement against my labels, and a CI gate on a set I authored.',
+  },
+  mediverse: {
+    date: 'August 2026',
+    title: 'Mediverse: Measuring Drill Cost in a Quest Surgical Trainer',
+    summary:
+      'The grab script does not cut. A 2 cm trigger on the bit does. The Jungle scene was slow because of ~256 idle skeleton colliders, not the foot vertex loop.',
+  },
   'celestia-vr': {
     date: 'June 2026',
     title: 'Architecting an Astronomically Accurate XR Sky Engine',
@@ -642,6 +717,8 @@ export const caseStudies = projects
   }))
   .sort((a, b) => {
     const order = [
+      'caliberate',
+      'mediverse',
       'celestia-vr',
       'aura',
       'mockpad',
@@ -706,6 +783,9 @@ export function sortProjectsByLinks(list) {
     return 4;
   };
   return [...list].sort((a, b) => {
+    const pa = a.pin ?? 99;
+    const pb = b.pin ?? 99;
+    if (pa !== pb) return pa - pb;
     const ra = rank(a);
     const rb = rank(b);
     if (ra !== rb) return ra - rb;

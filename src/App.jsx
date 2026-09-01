@@ -8,6 +8,8 @@ import ProjectPage from './pages/ProjectPage';
 import './App.css';
 
 const writingRedirects = [
+  'caliberate',
+  'mediverse',
   'celestia-vr',
   'aura',
   'after-image',

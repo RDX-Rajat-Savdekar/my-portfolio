@@ -45,7 +45,9 @@ export default function Home() {
         <p className="home-eyebrow">{site.location}</p>
         <h1 className="home-name">{site.name}</h1>
         <p className="home-bio">
-          Spatial computing and on-device AI. Build the expensive tool, then make it free.
+          Spatial computing and on-device AI. Currently: Mediverse, a Quest surgical trainer at
+          Easley-Dunn, and Caliberate, a calibrated eval harness for LLM-generated code. Build the
+          expensive tool, then make it free.
         </p>
         <p className="home-hire">{site.availability}</p>
         <div className="home-cta-row">
