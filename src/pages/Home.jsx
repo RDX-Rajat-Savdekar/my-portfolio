@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
 import ProjectMediaCard, { bentoSize } from '../components/ProjectMediaCard';
-import { site, communityEvents, projectFilters, getProjectsByFilter } from '../data/content';
+import { site, communityEvents, projectFilters, getProjectsByFilter, resumePdf } from '../data/content';
 import { pageWide, sectionLabel, fade, easeOut } from '../styles/shared';
-import pdfUrl from '/Rajat_Resume.pdf?url';
 
 const COMMUNITY_PREVIEW = communityEvents.map((event) => ({
   title: event.title.replace(/^[A-Za-z]+ \d{4}:\s*/, ''),
@@ -56,7 +55,7 @@ export default function Home() {
           </a>
 
           <ExpandPill id="resume" openKey={openKey} onToggle={toggle} label="Resume">
-            <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="home-expand-link">
+            <a href={resumePdf} target="_blank" rel="noopener noreferrer" className="home-expand-link">
               Open PDF
             </a>
           </ExpandPill>
@@ -74,7 +73,7 @@ export default function Home() {
           <div className="hero-preview-inner">
             {openKey === 'resume' && (
               <iframe
-                src={`${pdfUrl}#view=FitH`}
+                src={`${resumePdf}#view=FitH`}
                 title="Resume preview"
                 className="hero-preview-frame"
               />

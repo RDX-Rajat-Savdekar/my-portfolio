@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ContactMe from '../components/ContactMeComponent';
-import { site, experience, education, projects } from '../data/content';
+import { site, experience, education, projects, resumePdf } from '../data/content';
 import { pageWide, sectionLabel, easeOut } from '../styles/shared';
-import pdfUrl from '/Rajat_Resume.pdf?url';
 
 export default function Work() {
   return (
@@ -19,7 +18,7 @@ export default function Work() {
           Experience, education, and the resume. Project media lives on the home page.
         </p>
         <p className="home-hire">{site.availability}</p>
-        <a href={pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+        <a href={resumePdf} target="_blank" rel="noopener noreferrer" className="btn-ghost">
           Open PDF
         </a>
       </motion.div>
@@ -32,7 +31,7 @@ export default function Work() {
       >
         <span style={sectionLabel}>Resume</span>
         <div className="resume-embed">
-          <iframe src={`${pdfUrl}#view=FitH`} title="Resume preview" className="hero-preview-frame" />
+          <iframe src={`${resumePdf}#view=FitH`} title="Resume preview" className="hero-preview-frame" />
         </div>
       </motion.section>
 

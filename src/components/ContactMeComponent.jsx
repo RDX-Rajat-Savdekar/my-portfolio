@@ -1,11 +1,10 @@
-import { site } from '../data/content';
-import pdfUrl from '/Rajat_Resume.pdf?url';
+import { site, resumePdf } from '../data/content';
 
 const links = [
   { name: 'GitHub', href: site.links.github },
   { name: 'LinkedIn', href: site.links.linkedin },
   { name: 'Medium', href: site.links.medium },
-  { name: 'Résumé', href: pdfUrl },
+  { name: 'Résumé', href: resumePdf },
 ];
 
 export default function ContactMe() {

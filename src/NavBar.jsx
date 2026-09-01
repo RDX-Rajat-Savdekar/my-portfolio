@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { site } from './data/content';
-import pdfUrl from '/Rajat_Resume.pdf?url';
+import { site, resumePdf } from './data/content';
 
 export default function NavBar() {
   const location = useLocation();
@@ -16,7 +15,7 @@ export default function NavBar() {
     { name: 'GitHub', href: site.links.github },
     { name: 'LinkedIn', href: site.links.linkedin },
     { name: 'Medium', href: site.links.medium },
-    { name: 'Résumé', href: pdfUrl },
+    { name: 'Résumé', href: resumePdf },
   ];
 
   return (

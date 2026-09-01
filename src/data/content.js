@@ -1,5 +1,8 @@
 /** Single source of truth for projects and writing. */
 
+/** Query busts GitHub Pages / browser cache when the PDF bytes change. */
+export const resumePdf = '/Rajat_Resume.pdf?v=20260831';
+
 export const site = {
   name: 'Rajat Savdekar',
   domain: 'rajatsavdekar.dev',
@@ -28,7 +31,6 @@ export const projects = [
       'Thesis: calibrate the judge and the tasks first. Two-tier grade (programmatic verifier = solved; judge = taste, only after agreement is measured). Task calibration is 3× oracle / 3× no-op. Not a SWE-bench wrapper; not a production eval platform. In progress: public contract and runner next.',
     tags: ['Python', 'FastAPI', 'Docker', 'PostgreSQL', 'LLM evals'],
     badge: 'In progress',
-    pin: 1,
     projectPath: '/projects/caliberate',
     github: 'https://github.com/RDX-Rajat-Savdekar/Caliberate',
     githubSecondary: null,
@@ -49,7 +51,6 @@ export const projects = [
       'Unity 2021.3 / OpenXR / XR Interaction Toolkit. Isolated a ~22-bone foot lab from a 256-collider play scene; local-space vertex tests, lazy mesh clones, MeshCollider recooks throttled to 0.15 s; Play Mode CSV p95 harness. Editor measurements only — not Quest Hz claims.',
     tags: ['Unity', 'C#', 'OpenXR', 'Meta Quest', 'XR'],
     badge: 'Easley-Dunn · Current',
-    pin: 2,
     projectPath: '/projects/mediverse',
     github: null,
     githubSecondary: null,
@@ -773,7 +774,12 @@ export function getProjectsByFilter(filterId = 'all') {
   return sortProjectsByLinks(list);
 }
 
-/** Group projects that share similar primary link types. */
+function hasProjectMedia(project) {
+  const media = project?.media;
+  return Boolean(media?.preview || media?.poster || media?.hover);
+}
+
+/** Media-first on the home grid; text-only cards (no photo/video) go last. */
 export function sortProjectsByLinks(list) {
   const rank = (p) => {
     if (p.live) return 0;
@@ -783,9 +789,9 @@ export function sortProjectsByLinks(list) {
     return 4;
   };
   return [...list].sort((a, b) => {
-    const pa = a.pin ?? 99;
-    const pb = b.pin ?? 99;
-    if (pa !== pb) return pa - pb;
+    const ma = hasProjectMedia(a) ? 0 : 1;
+    const mb = hasProjectMedia(b) ? 0 : 1;
+    if (ma !== mb) return ma - mb;
     const ra = rank(a);
     const rb = rank(b);
     if (ra !== rb) return ra - rb;
