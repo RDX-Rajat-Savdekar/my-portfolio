@@ -7,6 +7,7 @@
 
 | Project | Scraper folder | Case study route | GitHub | YouTube | Other links |
 |---------|----------------|------------------|--------|---------|-------------|
+| **Caliberate** | `caliberate/` | `/writing/caliberate` | [Caliberate](https://github.com/RDX-Rajat-Savdekar/Caliberate) | — | planning lock only, no harness code yet |
 | **CelestiaVR** | `celestia/` | `/writing/celestia-vr` | [CelestiaVR](https://github.com/RDX-Rajat-Savdekar/CelestiaVR) | [Demo](https://www.youtube.com/watch?v=QzRTp0EtUsQ) | [Presentation](https://rdx-rajat-savdekar.github.io/Celestia_Presentation/) |
 | **Aura** | `aura-visionos/` | `/writing/aura` | [Aura-Vision-Pro](https://github.com/RDX-Rajat-Savdekar/Aura-Vision-Pro) | [Demo](https://www.youtube.com/watch?v=HbW9F2zjmLQ&t=65s) | — |
 | **MockPad** | `mock-pad/` | `/writing/mockpad` | [mockpad](https://github.com/RDX-Rajat-Savdekar/mockpad) | — | [Live](https://mockpad-kappa.vercel.app/) |
@@ -20,6 +21,7 @@
 
 ```
 zprojects scraper and report/
+├── caliberate/caliberate.md + caliberate-report.md
 ├── celestia/celestiavr.md + celestia_report.md
 ├── aura-visionos/aura-visionos.md + aura-report.md
 ├── mock-pad/mockpad.md + mockpad_report.md

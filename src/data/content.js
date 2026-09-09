@@ -457,7 +457,7 @@ const projectProof = {
   caliberate: [
     'Calibrate the judge and the tasks before you trust any number',
     'Hidden tests in isolated Docker workers; LLM-as-judge only after agreement',
-    'Public repo: contract, decisions, honesty rules — runner next',
+    'Public repo: contract, decisions, runner next',
   ],
   mediverse: [
     'Current role at Easley-Dunn Productions (Scott Easley)',

@@ -71,10 +71,6 @@ export default function CaliberateArticle({ layout = 'article' }) {
           <li>A SWE-bench / Harbor / Inspect clone, or a 12-repo leaderboard against Opus.</li>
           <li>An uncalibrated LLM-as-judge as the solve bit.</li>
           <li>A React dashboard before one toy task passes by hand.</li>
-          <li>
-            Any latency, cost, kappa, or pass-rate number that is not in a logged run table. Those
-            bullets get written after the harness exists.
-          </li>
         </ul>
       </section>
 
@@ -85,8 +81,8 @@ export default function CaliberateArticle({ layout = 'article' }) {
           <a href="https://github.com/RDX-Rajat-Savdekar/Caliberate" target="_blank" rel="noreferrer">
             github.com/RDX-Rajat-Savdekar/Caliberate
           </a>
-          ) — problem, stack decisions, and an honesty file so later chats cannot inflate the
-          project. Next: Docker runner, one toy task I can pass by hand, then task mining.
+          ) — problem and stack decisions. Next: Docker runner, one toy task I can pass by hand,
+          then task mining.
         </p>
       </section>
     </ArticleLayout>

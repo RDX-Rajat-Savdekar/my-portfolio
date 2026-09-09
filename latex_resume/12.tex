@@ -1,0 +1,199 @@
+\RequirePackage{fix-cm}
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=0.4in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{charter}
+
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=black}
+
+\definecolor{subtle}{gray}{0.2}
+\newcommand{\subtletext}[1]{\textcolor{subtle}{#1}}
+
+\renewcommand{\labelitemi}{\textbullet}
+\newenvironment{tightlist}{%
+  \begin{itemize}[itemsep=0.16em, topsep=0.10em, leftmargin=1.4em, rightmargin=0pt, parsep=0pt, partopsep=0pt]
+}{%
+  \end{itemize}%
+}
+
+% Entry Macros
+\newcommand{\headstrut}{\rule[-0.32\baselineskip]{0pt}{0.78\baselineskip}}
+
+% #1 title, #2 date, #3 org, #4 location, #5 bullets
+\newcommand{\workentry}[5]{%
+  \vspace{0.4em}%
+  \noindent\headstrut\textbf{#1}\hfill #2\\%
+  \headstrut\subtletext{#3}\hfill\textit{#4}\par
+  \vspace{-0.05em}\begin{tightlist}#5\end{tightlist}\vspace{0.15em}%
+}
+
+% #1 name, #2 date, #3 tech stack, #4 links, #5 bullets
+% NOTE: the old version of this macro silently discarded #2 and #3, so no project
+% ever rendered its date or its tech stack. Both are used now.
+\newcommand{\projectentry}[5]{%
+  \vspace{0.4em}%
+  \noindent\headstrut\textbf{#1}\hfill\ifblank{#4}{}{#4}\\%
+  \headstrut\subtletext{#3}\hfill\textit{#2}\par
+  \vspace{-0.05em}\begin{tightlist}#5\end{tightlist}\vspace{0.15em}%
+}
+
+% #1 school, #2 date, #3 degree, #4 location, #5 gpa (blank to omit), #6 coursework (blank to omit)
+\newcommand{\eduentry}[6]{%
+  \vspace{0.15em}%
+  \noindent\headstrut\textbf{#1}, \textit{#4}\hfill #2\\%
+  \headstrut\subtletext{#3}\hfill\subtletext{#5}\par
+  \ifblank{#6}{}{\headstrut\subtletext{Coursework: #6}\par}%
+  \vspace{0.15em}%
+}
+
+\newcommand{\honorentry}[2]{%
+  \vspace{0.22em}\noindent\textbf{#1.} #2\par%
+}
+
+\newcommand{\mysection}[1]{%
+  \vspace{0.45em}\noindent{\large\bfseries #1}\vspace{-0.85em}\par\noindent\rule{\linewidth}{0.6pt}\par%
+  \vspace{-0.2em}
+}
+
+\newcommand{\dropname}[4]{%
+  \textbf{{\Huge #1}{\huge #2}\hspace{0.2em} {\Huge #3}{\huge #4}}%
+}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+  \dropname{R}{ajat}{S}{avdekar} \\[0.35em]
+  \newcommand{\sep}{\,\textbar\,}
+  \href{mailto:rajatsavdekar@gmail.com}{rajatsavdekar@gmail.com}\sep
+  \href{https://www.linkedin.com/in/rajatsavdekar/}{linkedin.com/in/rajatsavdekar}\sep
+  \href{https://github.com/RDX-Rajat-Savdekar/}{github.com/RDX-Rajat-Savdekar}\sep
+  \href{https://rajatsavdekar.dev/}{rajatsavdekar.dev}\sep
+  (213) 574-8894\sep
+  Los Angeles, CA\\[0.3em]
+  \vspace{-1em}
+\end{center}
+
+\mysection{EDUCATION}
+\eduentry
+  {University of Southern California}
+  {Aug 2024 -- May 2026}
+  {Master of Science in Computer Science}
+  {Los Angeles, CA}
+  {GPA: 3.63}
+  {}
+
+\eduentry
+  {University of Mumbai}
+  {Aug 2019 -- May 2023}
+  {Bachelor of Engineering in Computer Engineering}
+  {Mumbai, India}
+  {}
+  {}
+
+\mysection{SKILLS}
+\vspace{0.1em}
+\noindent\textbf{Languages:} Python, TypeScript, JavaScript, C++, SQL, Java\\[0.15em]
+\noindent\textbf{Backend \& Data:} FastAPI, Flask, Node.js, REST APIs, WebSockets, PostgreSQL, Redis, MongoDB, LevelDB, Celery\\[0.15em]
+\noindent\textbf{ML \& Infrastructure:} PyTorch, OpenAI API, vector search, AWS, Docker, Terraform, GitHub Actions, React, Next.js
+
+% Section is "EXPERIENCE", not "PROFESSIONAL EXPERIENCE" -- the standard convention
+% when an unpaid role sits alongside paid ones, so the volunteer entry is not
+% misrepresented as employment.
+\mysection{EXPERIENCE}
+
+\workentry
+  {Software Engineer, VR Simulation Platform}
+  {Aug 2026 -- Present}
+  {Easley-Dunn Productions, Inc. -- Mediverse (volunteer)}
+  {Torrance, CA}
+{
+  \item Cut replay narration turnaround from 22 minutes to 4 by keeping a 4-bit quantized 7B model resident instead of cold-loading per request, adding batched synthesis and content-hash caching; GPU cost per replay fell by more than half.
+  \item Built a review gate that checks each generated sentence of a narration against the underlying event log, holding anything unsupported for a human before it reaches an operative note.
+  \item Raised replay upload success from 82\% to 99.6\% over 150+ sessions by replacing 100\,MB in-memory SQLite blobs with streamed object storage and PostgreSQL metadata.
+}
+
+\workentry
+  {Teaching Assistant}
+  {May 2025 -- Jul 2025}
+  {USC Summer Programs}
+  {Los Angeles, CA}
+{
+  \item Ran the engineering track for roughly 150 students across three cohorts, teaching Python, Git, and REST APIs and taking 20+ teams from spec to a working hardware-integrated demo.
+}
+
+\workentry
+  {Software Engineer -- Backend \& Distributed Systems}
+  {May 2023 -- May 2024}
+  {Jalgaon Fruit Sales Cooperative Ltd (JFSS)}
+  {Jalgaon, India}
+{
+  \item Killed the 10--15 minute MyISAM table-lock freezes that stalled every peak harvest by moving intake onto an isolated write path, roughly doubling sustained write throughput in a season where volume grew from \$100K to \$200K.
+  \item Decomposed a legacy PHP monolith into Python Flask services on PostgreSQL, with cron-based state sync through the cutover, cutting typical query latency by about 40\% across 1,000+ daily truck transactions.
+  \item Shipped the procurement platform that moved 150+ daily clerks across 5 warehouses off paper logbooks.
+}
+
+\workentry
+  {Software Engineer Intern}
+  {Jan 2023 -- Apr 2023}
+  {Softaid Computers}
+  {Jalgaon, India}
+{
+  \item Compared fine-tuning a domain model against embedding search over chunked documents and recommended retrieval: it answered support queries from the source documents rather than model recall, at about a third the compute per query.
+}
+
+\mysection{SELECTED PROJECTS}
+
+\projectentry
+  {MockPad -- Real-Time Collaborative Code Editor}
+  {May 2026}
+  {Node.js, React, WebSockets, Yjs CRDTs, OpenAI Whisper, MongoDB, LevelDB, Python}
+  {\href{https://mockpad-kappa.vercel.app/}{[\textcolor{blue}{Live}]}\space
+   \href{https://github.com/RDX-Rajat-Savdekar/mockpad}{[\textcolor{blue}{GitHub}]}}
+{
+  \item Built a collaborative editor on Yjs CRDTs over a custom WebSocket layer, holding sub-100ms sync for 30+ simultaneous editors; about 50 people use it.
+  \item Idle rooms evict from memory to LevelDB on an LRU policy, which is what lets it run on a single \$6/month droplet; a returning collaborator restores from disk with no lost state.
+}
+
+\projectentry
+  {Caliberate -- LLM Code-Evaluation Sandbox}
+  {Aug 2026}
+  {Python, FastAPI, PostgreSQL, Docker, GitHub Actions}
+  {\href{https://github.com/RDX-Rajat-Savdekar/Caliberate}{[\textcolor{blue}{GitHub}]}}
+{
+  \item Runs candidate model patches in isolated Docker containers off a PostgreSQL \texttt{SKIP LOCKED} work queue, with leases so a crashed worker releases its task instead of losing it.
+  \item Wired into CI to run the regression suite against each patch and reject the ones that break it.
+}
+
+% CloudBridge cut to make one page. To restore it, drop a JFSS bullet and the
+% Stitch honor entry, or accept a full second page:
+% \projectentry
+%   {CloudBridge -- AI Cloud Architecture Advisor}
+%   {Apr 2026}
+%   {Next.js, TypeScript, Python, FastAPI, React Flow, Terraform, AWS}
+%   {\href{https://github.com/RDX-Rajat-Savdekar/cloud-bridge}{[\textcolor{blue}{GitHub}]}}
+% {
+%   \item Turns a natural-language description into a Terraform-exportable AWS topology, refusing to emit designs that violate Well-Architected constraints or over-grant IAM permission.
+%   \item Renders the result as an editable DAG in React Flow with a running monthly cost estimate.
+% }
+
+\mysection{RESEARCH \& HACKATHONS}
+
+\honorentry
+  {Research Publications}
+  {Four undergrad papers; GLCM paper cited 10+ times across IEEE and Springer Nature. \hfill \href{https://github.com/RDX-Rajat-Savdekar/Research-Papers}{[\textcolor{blue}{GitHub}]}}
+
+\honorentry
+  {Aura -- visionOS Accessibility Assistant}
+  {2nd place of 40+ teams, USC 24-hour hackathon, Aug 2025. \hfill \href{https://www.youtube.com/watch?v=HbW9F2zjmLQ&t=65s}{[\textcolor{blue}{Demo}]}}
+
+\honorentry
+  {Stitch -- Autonomous CI Repair Agent}
+  {OpenAI Build Week, Developer Tools track, Aug 2026. \hfill \href{https://github.com/RDX-Rajat-Savdekar/openai\_build\_week}{[\textcolor{blue}{GitHub}]}}
+
+\end{document}
