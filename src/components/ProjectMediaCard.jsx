@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 import ProjectLinks from './ProjectLinks';
-import { easeOut, tag } from '../styles/shared';
+import { getFilterLabel, getProjectLook, lookMeta } from '../data/content';
+import { tag } from '../styles/shared';
+import { gsap, useGSAP } from '../lib/gsap';
 
 const isVideoSrc = (src) => /\.(mp4|webm)$/i.test(src ?? '');
 
@@ -15,12 +17,13 @@ export function bentoSize(index) {
   return 'sm';
 }
 
-export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
+export default function ProjectMediaCard({ project, index = 0, size = 'sm', showCategory = false }) {
   const reduceMotion = useReducedMotion();
   const [hovered, setHovered] = useState(false);
   const [canHover, setCanHover] = useState(false);
   const videoRef = useRef(null);
   const mediaRef = useRef(null);
+  const titleRef = useRef(null);
   const hoverRef = useRef(false);
   const targetRef = useRef({ rx: 0, ry: 0 });
   const currentRef = useRef({ rx: 0, ry: 0 });
@@ -31,7 +34,8 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
   const previewSrc = media.preview || media.poster || null;
   const previewIsVideo = isVideoSrc(previewSrc) && !reduceMotion;
   const detailTo = project.projectPath || `/projects/${project.slug}`;
-  const useTilt = canHover && !reduceMotion;
+  const look = getProjectLook(project);
+  const useTilt = canHover && !reduceMotion && look === 'globe';
   const roomy = size === 'lg' || size === 'lg-alt' || size === 'md';
 
   useEffect(() => {
@@ -54,6 +58,36 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
   }, [showVideo, hasHoverVideo]);
 
   useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
+
+  useGSAP(
+    (context, contextSafe) => {
+      const title = titleRef.current;
+      if (!title || look !== 'overprint' || reduceMotion || !canHover) return;
+
+      const cxTo = gsap.quickTo(title, '--cx', { duration: 0.4, ease: 'power3' });
+      const mxTo = gsap.quickTo(title, '--mx', { duration: 0.4, ease: 'power3' });
+      gsap.set(title, { '--cx': '-2px', '--mx': '2px' });
+
+      const onMove = contextSafe((e) => {
+        const box = title.getBoundingClientRect();
+        const p = (e.clientX - box.left) / box.width - 0.5;
+        cxTo(`${(-3 - p * 7).toFixed(2)}px`);
+        mxTo(`${(3 + p * 7).toFixed(2)}px`);
+      });
+      const onLeave = contextSafe(() => {
+        cxTo('-2px');
+        mxTo('2px');
+      });
+
+      title.addEventListener('mousemove', onMove);
+      title.addEventListener('mouseleave', onLeave);
+      return () => {
+        title.removeEventListener('mousemove', onMove);
+        title.removeEventListener('mouseleave', onLeave);
+      };
+    },
+    { dependencies: [look, reduceMotion, canHover] },
+  );
 
   const tickTilt = () => {
     const el = mediaRef.current;
@@ -96,12 +130,8 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
   };
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-48px' }}
-      transition={{ duration: 0.7, delay: Math.min(index * 0.04, 0.24), ease: easeOut }}
-      className={`project-card project-card-${size}`}
+    <article
+      className={`project-card project-card-${size} look-${look}`}
       onMouseEnter={() => {
         setHovered(true);
         hoverRef.current = true;
@@ -118,7 +148,17 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
       }}
     >
       <div ref={mediaRef} className="project-card-media-wrap" onMouseMove={onMove}>
+        {look === 'overprint' && (
+          <span className="plate-marks" aria-hidden>
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+        )}
         <Link to={detailTo} className="project-card-media" aria-label={`${project.name} details`}>
+          {look === 'catalog' && <span className="look-star" aria-hidden />}
+          {look === 'globe' && <span className="reticle" aria-hidden />}
           {previewSrc &&
             (previewIsVideo ? (
               <video
@@ -165,11 +205,19 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
       </div>
 
       <div className="project-card-body">
+        {(showCategory && project.filter) || (project.badge && roomy) ? (
+          <div className="project-card-meta">
+            <span className={`look-mark is-${look}`}>{lookMeta[look].label}</span>
+            {showCategory && project.filter && (
+              <span className="project-category">{getFilterLabel(project.filter)}</span>
+            )}
+            {project.badge && roomy && <span className="project-badge">{project.badge}</span>}
+          </div>
+        ) : null}
         <div className="project-card-title-row">
           <Link to={detailTo}>
-            <h3>{project.name}</h3>
+            <h3 ref={titleRef}>{project.name}</h3>
           </Link>
-          {project.badge && roomy && <span className="project-badge">{project.badge}</span>}
         </div>
         {roomy && <p className="project-card-tagline">{project.tagline}</p>}
         <ProjectLinks project={project} compact />
@@ -183,6 +231,6 @@ export default function ProjectMediaCard({ project, index = 0, size = 'sm' }) {
           </div>
         )}
       </div>
-    </motion.article>
+    </article>
   );
 }

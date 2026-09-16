@@ -1,17 +1,34 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import ContactMe from '../components/ContactMeComponent';
 import { site, externalArticles } from '../data/content';
 import { page, tag } from '../styles/shared';
+import { gsap, useGSAP } from '../lib/gsap';
 
 export default function Writing() {
+  const root = useRef(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.fromTo(
+          '.writing-intro > *',
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.55 },
+        );
+        gsap.fromTo(
+          '.writing-row',
+          { autoAlpha: 0, y: 12 },
+          { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.5, delay: 0.12 },
+        );
+      });
+    },
+    { scope: root },
+  );
+
   return (
-    <main style={page}>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45 }}
-        style={{ marginBottom: '2.5rem' }}
-      >
+    <main ref={root} style={page}>
+      <div className="writing-intro" style={{ marginBottom: '2.5rem' }}>
         <h1
           style={{
             fontSize: '1.75rem',
@@ -26,24 +43,15 @@ export default function Writing() {
         <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.65, maxWidth: '36rem' }}>
           Notes on process and tools. Project writeups live on each project page.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.section
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, delay: 0.05 }}
-        style={{ marginBottom: '3.5rem' }}
-      >
+      <section style={{ marginBottom: '3.5rem' }}>
         <a href={site.links.medium} target="_blank" rel="noreferrer" className="plink plink-live">
           Follow on Medium ↗
         </a>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, delay: 0.1 }}
-      >
+      <section>
         <p className="home-eyebrow" style={{ marginBottom: '1rem' }}>
           On Medium
         </p>
@@ -76,7 +84,7 @@ export default function Writing() {
             </a>
           ))}
         </div>
-      </motion.section>
+      </section>
 
       <ContactMe />
     </main>

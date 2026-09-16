@@ -1,0 +1,501 @@
+:root {
+  --bg: #08101c;
+  --bg-elevated: #10182a;
+  --bg-sunk: #0b1220;
+  --fg: #f4efe4;
+  --fg-2: #c8c0b0;
+  --muted: #8a8374;
+  --border: rgba(244, 239, 228, 0.16);
+  --rule: rgba(244, 239, 228, 0.28);
+
+  --accent: #d46a45;
+  --accent-ink: #08101c;
+  --accent-soft: rgba(212, 106, 69, 0.14);
+  --accent-border: rgba(212, 106, 69, 0.45);
+  --cyan: #00a0d2;
+  --magenta: #e1006a;
+  --gold: #e8d6a8;
+  --stock: #f2ebe0;
+
+  --live: #8fbfa4;
+  --live-soft: rgba(143, 191, 164, 0.12);
+  --media: #8aafd4;
+  --media-soft: rgba(138, 175, 212, 0.12);
+  --code: #c8c0b0;
+  --paper: #e8d6a8;
+  --paper-soft: rgba(232, 214, 168, 0.12);
+
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', 'Familjen Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-black: 'Archivo Black', sans-serif;
+
+  --radius: 2px;
+  --shadow-hard: 4px 4px 0 rgba(232, 214, 168, 0.22);
+  --shadow-hard-sm: 2px 2px 0 rgba(232, 214, 168, 0.2);
+  --shadow-media: none;
+}
+
+h1,
+h2,
+h3 {
+  font-variation-settings: normal;
+  font-weight: 400;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(244, 239, 228, 0.11) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+}
+
+body::after {
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+}
+
+.site-header {
+  background-color: rgba(8, 16, 28, 0.9);
+  border-bottom-color: var(--border);
+}
+
+.contact-strip {
+  background: transparent;
+  border-bottom: 1px dashed var(--border);
+}
+
+.home-atmosphere {
+  background:
+    radial-gradient(ellipse 50% 42% at 18% 12%, rgba(232, 214, 168, 0.08), transparent 62%),
+    radial-gradient(ellipse 36% 34% at 88% 0%, rgba(0, 160, 210, 0.06), transparent 60%);
+}
+
+.site-nav-brand,
+.home-name,
+.project-card-title-row h3,
+.project-group-label,
+.work-title,
+.project-page-title {
+  font-variation-settings: normal;
+}
+
+.register-hero {
+  display: grid;
+  gap: 1.6rem;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  padding-top: 0.4rem;
+}
+
+.register-hero .hero-globe {
+  position: relative;
+  width: min(100%, 16rem);
+  height: 16rem;
+  max-width: 16rem;
+  max-height: 16rem;
+  margin-inline: auto;
+}
+
+.register-hero .hero-globe-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (min-width: 880px) {
+  .register-hero {
+    grid-template-columns: 18rem 1fr;
+    gap: 2.4rem;
+  }
+
+  .register-hero .hero-globe {
+    order: -1;
+    width: 18rem;
+    height: 18rem;
+    max-width: 18rem;
+    max-height: 18rem;
+    margin-inline: 0;
+  }
+}
+
+.hero-copy .home-name {
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+}
+
+.home-name-stack {
+  position: relative;
+  display: block;
+}
+
+.home-name-clip span {
+  display: inline-block;
+}
+
+.home-name-plate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-name-plate-cyan {
+  color: var(--cyan);
+  mix-blend-mode: screen;
+}
+
+.home-name-plate-magenta {
+  color: var(--magenta);
+  mix-blend-mode: screen;
+}
+
+.mode-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: -0.4rem 0 1.4rem;
+  padding: 0;
+}
+
+.mode-legend li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.mode-legend b {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mode-legend span {
+  color: var(--muted);
+}
+
+.mode-legend .is-overprint b {
+  color: var(--magenta);
+  text-shadow: -1px 0 var(--cyan);
+}
+
+.mode-legend .is-catalog b {
+  color: var(--accent);
+}
+
+.mode-legend .is-globe b {
+  color: var(--gold);
+}
+
+.look-marks {
+  display: inline-flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.look-mark {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+}
+
+.look-mark.is-overprint {
+  color: #111;
+  background: var(--stock);
+  border-color: #111;
+}
+
+.look-mark.is-catalog {
+  color: var(--accent);
+  border-color: rgba(212, 106, 69, 0.45);
+}
+
+.look-mark.is-globe {
+  color: var(--gold);
+  border-color: rgba(232, 214, 168, 0.35);
+}
+
+.project-group-head .look-marks {
+  margin-left: auto;
+}
+
+.project-card-media-wrap {
+  position: relative;
+}
+
+/* Plate: a printed sheet on the night field */
+.project-card.look-overprint .project-card-media-wrap {
+  position: relative;
+  padding: 0.45rem;
+  background: var(--stock);
+  color: #111;
+}
+
+.project-card.look-overprint .project-card-media {
+  box-shadow: none;
+  border-color: #111;
+}
+
+.project-card.look-overprint .plate-marks {
+  position: absolute;
+  inset: 0.15rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-card.look-overprint .plate-marks i {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #111;
+}
+
+.project-card.look-overprint .plate-marks i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.project-card.look-overprint .plate-marks i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+.project-card.look-overprint .plate-marks i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.project-card.look-overprint .plate-marks i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.project-card.look-overprint .project-card-title-row h3 {
+  font-family: var(--font-black);
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  position: relative;
+  --cx: -2px;
+  --mx: 2px;
+  text-shadow: var(--cx) 0 transparent, var(--mx) 0 transparent;
+}
+
+.project-card.look-overprint:hover .project-card-title-row h3 {
+  color: var(--magenta);
+  text-shadow: var(--cx) 0 var(--cyan), var(--mx) 0 #111;
+}
+
+.project-card.look-overprint .project-card-media {
+  overflow: hidden;
+}
+
+/* Field: named point, no poster box */
+.project-card.look-catalog .project-card-media {
+  box-shadow: none;
+  border-color: rgba(212, 106, 69, 0.35);
+  background: #070b16;
+}
+
+.project-card.look-catalog .project-card-title-row h3 {
+  font-style: italic;
+}
+
+.project-card.look-catalog .look-star {
+  position: absolute;
+  left: 0.55rem;
+  top: 0.55rem;
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg);
+  box-shadow: 0 0 0 4px rgba(212, 106, 69, 0.28);
+  pointer-events: none;
+}
+
+/* Sphere: instrument reticle */
+.project-card.look-globe .project-card-media {
+  box-shadow: none;
+  border-color: rgba(232, 214, 168, 0.28);
+  background: #07080c;
+}
+
+.project-card.look-globe .reticle {
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid rgba(232, 214, 168, 0.28);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-card.look-globe .reticle::before,
+.project-card.look-globe .reticle::after {
+  content: '';
+  position: absolute;
+  background: rgba(232, 214, 168, 0.35);
+}
+
+.project-card.look-globe .reticle::before {
+  left: 50%;
+  top: -0.35rem;
+  bottom: -0.35rem;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.project-card.look-globe .reticle::after {
+  top: 50%;
+  left: -0.35rem;
+  right: -0.35rem;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.project-card.look-globe .project-card-title-row h3 {
+  letter-spacing: -0.03em;
+}
+
+.project-card:hover .project-card-media {
+  box-shadow: none;
+}
+
+.now-feature.look-overprint {
+  background: var(--stock);
+  color: #17150f;
+  padding: 1rem;
+  border: 1px solid #111;
+  position: relative;
+}
+
+.now-feature.look-overprint .now-feature-copy h2,
+.now-feature.look-overprint .now-feature-tagline,
+.now-feature.look-overprint .now-feature-body,
+.now-feature.look-overprint .now-feature-kicker {
+  color: #17150f;
+}
+
+.now-feature.look-overprint .now-feature-kicker,
+.now-feature.look-overprint .now-feature-kicker .project-badge {
+  color: var(--magenta);
+}
+
+.now-feature.look-overprint .now-feature-copy h2 {
+  font-family: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.now-feature.look-overprint .now-feature-media {
+  box-shadow: none;
+}
+
+.now-feature.look-overprint .plate-marks {
+  position: absolute;
+  inset: 0.35rem;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.now-feature.look-overprint .plate-marks i {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #111;
+}
+
+.now-feature.look-overprint .plate-marks i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.now-feature.look-overprint .plate-marks i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+.now-feature.look-overprint .plate-marks i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.now-feature.look-overprint .plate-marks i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.filter-chip {
+  color: var(--fg-2);
+}
+
+.filter-chip.active {
+  color: var(--accent-ink);
+  background: var(--gold);
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--accent-ink);
+}
+
+.home-expand,
+.home-expand.is-open,
+.home-expand.is-primary.is-open {
+  background: var(--bg-elevated);
+}
+
+.btn-ghost {
+  background: var(--bg-elevated);
+  color: var(--fg);
+}
+
+.plink:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--gold);
+}
+
+.now-feature.look-overprint .plink {
+  background: #fff;
+  color: #111;
+  border-color: #111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card.look-overprint:hover .project-card-title-row h3 {
+    text-shadow: none;
+    color: #111;
+  }
+
+  .home-name-plate {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-name-plate {
+    display: none;
+  }
+}

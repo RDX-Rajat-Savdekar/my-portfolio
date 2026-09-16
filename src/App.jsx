@@ -5,7 +5,9 @@ import Work from './pages/Work';
 import Writing from './pages/Writing';
 import Community from './pages/Community';
 import ProjectPage from './pages/ProjectPage';
+// import LookStudio from './pages/LookStudio';
 import './App.css';
+import './register.css';
 
 const writingRedirects = [
   'headcount-vouch',
@@ -48,6 +50,7 @@ function App() {
           element={<Navigate to="/projects/astro-gsap-f1" replace />}
         />
         <Route path="/community" element={<Community />} />
+        {/* <Route path="/looks" element={<LookStudio />} /> */}
         <Route path="/resume" element={<Navigate to="/work" replace />} />
         <Route path="/log" element={<Navigate to="/writing" replace />} />
         <Route path="/articles" element={<Navigate to="/writing" replace />} />

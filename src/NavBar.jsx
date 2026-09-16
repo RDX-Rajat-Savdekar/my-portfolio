@@ -9,6 +9,7 @@ export default function NavBar() {
     { name: 'Work', path: '/work' },
     { name: 'Writing', path: '/writing' },
     { name: 'Community', path: '/community' },
+    // { name: 'Looks', path: '/looks' },
   ];
 
   const contactLinks = [

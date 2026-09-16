@@ -1,13 +1,13 @@
 /** Single source of truth for projects and writing. */
 
 /** Query busts GitHub Pages / browser cache when the PDF bytes change. */
-export const resumePdf = '/Rajat_Resume.pdf?v=20260909b';
+export const resumePdf = '/Rajat_Resume.pdf?v=20260916';
 
 export const site = {
   name: 'Rajat Savdekar',
   domain: 'rajatsavdekar.dev',
   tagline:
-    'Spatial computing, on-device AI, and calibrated backend systems. Build the expensive tool, then make it free.',
+    'Plate, field, sphere. Printed proof, named catalogs, spatial instruments.',
   location: 'MS CS @ USC · Los Angeles',
   availability: 'Available for full-time software engineering roles starting Summer 2026.',
   email: 'rajatsavdekar@gmail.com',
@@ -23,6 +23,7 @@ export const projects = [
     slug: 'headcount-vouch',
     name: 'Headcount & Vouch',
     featured: true,
+    spotlight: true,
     filter: 'tools',
     media: {
       preview: '/projects/stitch/headcount-vouch/poster.png',
@@ -432,7 +433,7 @@ export const projects = [
   {
     slug: 'astro-gsap-f1',
     name: 'GSAP Lab: F1',
-    featured: false,
+    featured: true,
     filter: 'web',
     media: {
       preview: '/projects/stitch/astro/media/exports/f1-loop.mp4',
@@ -440,8 +441,9 @@ export const projects = [
     },
     tagline: 'Scroll-driven F1 sequence: Astro + GSAP + Webflow',
     description:
-      'One of two motion pieces from the GSAP Lab: a Formula 1 scroll story built for the CodeTV GSAP Cloud challenge.',
-    details: null,
+      'A lap is a timeline. Scroll is the playhead. One of two motion pieces from the GSAP Lab, built for the CodeTV GSAP Cloud challenge.',
+    details:
+      'Astro locally, GSAP for the sequence, Webflow for the hosted challenge site. Pin, scrub, DrawSVG, MotionPath.',
     tags: ['Astro', 'GSAP', 'Webflow', 'Motion'],
     badge: 'CodeTV GSAP Cloud',
     projectPath: '/projects/astro-gsap-f1',
@@ -458,7 +460,7 @@ export const projects = [
   {
     slug: 'astro-gsap-iron-man',
     name: 'GSAP Lab: Iron Man',
-    featured: false,
+    featured: true,
     filter: 'web',
     media: {
       preview: '/projects/stitch/astro/media/exports/iron-man-loop.mp4',
@@ -466,8 +468,9 @@ export const projects = [
     },
     tagline: 'Iron Man HUD scroll experiment: Astro + GSAP + Webflow',
     description:
-      'The second GSAP Lab piece: an Iron Man HUD sequence with the same Astro × GSAP × Webflow stack, submitted to the CodeTV GSAP Cloud challenge.',
-    details: null,
+      'A HUD is a layout problem with a pulse. The second GSAP Lab piece: arcs, scramble, and power tied to scroll.',
+    details:
+      'Same stack as the F1 sequence. The project page runs a live HUD specimen, then the submitted clip.',
     tags: ['Astro', 'GSAP', 'Webflow', 'Motion'],
     badge: 'CodeTV GSAP Cloud',
     projectPath: '/projects/astro-gsap-iron-man',
@@ -559,11 +562,13 @@ const projectProof = {
   ],
   'astro-gsap-f1': [
     'CodeTV GSAP Cloud challenge',
-    'Scroll-driven F1 sequence in Astro + GSAP + Webflow',
+    'Scroll is the playhead: pin, scrub, DrawSVG, MotionPath',
+    'Live specimen on this page, then the submitted clip',
   ],
   'astro-gsap-iron-man': [
     'CodeTV GSAP Cloud challenge',
-    'Iron Man HUD scroll piece, same motion stack',
+    'HUD as instrumentation: arcs, scramble, power on scrub',
+    'Same Astro × GSAP × Webflow stack as the F1 piece',
   ],
 };
 
@@ -612,14 +617,13 @@ export const communityEvents = [
 
 export const experience = [
   {
-    role: 'Software Developer – Systems & Performance',
-    org: 'Easley-Dunn Productions, Inc. (Mediverse)',
+    role: 'Software Developer',
+    org: 'Easley-Dunn Productions, Inc. – Mediverse',
     location: 'Torrance, CA',
     period: 'Aug 2026 – Present',
     bullets: [
-      'Building runtime and backend systems for Mediverse, a Meta Quest surgical-training platform in Unity / OpenXR: tools, anatomy, session replay, and AI narration.',
-      'Isolated a ~22-bone foot lab from a 256-collider play scene and replaced a per-frame world-space vertex walk with local-space tests, lazy mesh clones, and MeshCollider recooks throttled to 0.15 s.',
-      'Traced a ~2.5× editor frame-time gap on the same 2807-vert cuboid to ~256 idle non-convex MeshColliders on a full skeleton, then built a Play Mode harness that logs CSV p95 so ToolLab vs Jungle runs compare the same bone.',
+      'Engineered an edge-AI pipeline for junior doctor surgical training, cutting scenario feedback from 22 to 4 minutes by keeping a 4-bit quantized 7B model resident on a local server to bypass the Quest 1’s memory limits.',
+      'Optimized 6 core surgical tool modules for severely constrained hardware (4 GB RAM), automating CI/CD testing to prevent performance regressions and maintain a locked 72 FPS.',
     ],
   },
   {
@@ -628,20 +632,18 @@ export const experience = [
     location: 'Los Angeles, CA',
     period: 'May 2025 – Jul 2025',
     bullets: [
-      'Led a program of 150 students through Python, Git, AI, and REST API development on robotics hardware, guiding functional prototype delivery on schedule.',
+      'Mentored 150 students in Python, Github, Debugging, Postman and REST APIs, running daily code reviews to guide 20 teams from spec to hardware-integrated demos.',
     ],
   },
   {
     role: 'Software Engineer',
-    org: 'Jalgaon Fruit Sales Cooperative Ltd',
+    org: 'Jalgaon Fruit Sales Cooperative Ltd (JFSS)',
     location: 'Jalgaon, India',
     period: 'May 2023 – May 2024',
     bullets: [
-      'Decomposed a legacy PHP, SQL monolith by building Python Flask microservices backed by PostgreSQL, orchestrating automated cron jobs to synchronize state and cutting query latency by 40% across 1,000+ daily truck transactions.',
-      'Doubled peak harvest write throughput (2x) and scaled revenue from $100K to $200K by architecting an isolated write path that eliminated 10-15 minute freezes from MyISAM table locking.',
-      'Reduced support chatbot inference costs by 35% across inventory lookups by implementing Redis-based semantic prompt caching, model fallback routing, and token compression over warehouse metadata.',
-      'Cut deployment cycle time by 30% and eliminated production regressions by containerizing microservices with Docker, integrating automated pytest validation suites, and configuring multi-stage CI/CD pipelines.',
-      'Built a web procurement platform backed by RESTful APIs, migrating 150+ daily clerks across 5 warehouses from manual logs to live stakeholder analytics dashboards.',
+      'Doubled peak harvest write throughput by architecting an isolated write path that eliminated the 10–15 minute MyISAM table-lock freezes stalling the platform every season, sustaining growth from $100K to $200K in transaction volume.',
+      'Decomposed a legacy PHP monolith into modular Python Flask microservices on PostgreSQL, running both paths in parallel with cron-based state sync until cutover, cutting query latency 40% across 1,000+ daily truck transactions.',
+      'Delivered a web procurement platform with REST APIs and live analytics dashboards, migrating 150 daily clerks across 5 warehouses off manual logbooks.',
     ],
   },
 ];
@@ -653,15 +655,15 @@ export const education = [
     location: 'Los Angeles, CA',
     period: 'Aug 2024 – May 2026',
     gpa: '3.63',
-    courses: 'Multimedia System Design, Database Systems, Machine Learning, Game Design',
+    courses: 'Algorithms, Database Systems, Machine Learning, Web Technology, VR / XR Development',
   },
   {
     degree: 'BE in Computer Engineering',
     school: 'University of Mumbai',
     location: 'Mumbai, India',
     period: 'Aug 2019 – May 2023',
-    gpa: '3.7',
-    courses: 'Operating Systems, Cloud Computing, Software Engineering',
+    gpa: '9.4/10',
+    courses: 'Operating Systems, Computer Networks, Distributed Systems, Natural Language Processing',
   },
 ];
 
@@ -804,8 +806,65 @@ export const projectFilters = [
   { id: 'research', label: 'Research' },
 ];
 
+/** Three registers of the same job. Overprint, catalog, globe. */
+export const lookMeta = {
+  overprint: { id: 'overprint', label: 'Plate', line: 'Printed proof' },
+  catalog: { id: 'catalog', label: 'Field', line: 'Named catalog' },
+  globe: { id: 'globe', label: 'Sphere', line: 'Spatial instrument' },
+};
+
+const looksBySlug = {
+  'headcount-vouch': 'overprint',
+  caliberate: 'overprint',
+  stitch: 'overprint',
+  emojicode: 'overprint',
+  'creator-lab': 'overprint',
+  'research-papers': 'overprint',
+  'astro-gsap-f1': 'overprint',
+  'astro-gsap-iron-man': 'overprint',
+  'celestia-vr': 'catalog',
+  'after-image': 'catalog',
+  mockpad: 'catalog',
+  splitit: 'catalog',
+  trojanmind: 'catalog',
+  mediverse: 'globe',
+  aura: 'globe',
+  devstack: 'globe',
+  cloudbridge: 'globe',
+};
+
+export const categoryLooks = {
+  xr: ['globe', 'catalog'],
+  web: ['catalog'],
+  tools: ['overprint'],
+  research: ['overprint'],
+};
+
+export function getProjectLook(project) {
+  if (!project) return 'catalog';
+  if (project.look) return project.look;
+  return looksBySlug[project.slug] ?? 'catalog';
+}
+
 export function getFeaturedProjects() {
   return projects.filter((p) => p.featured);
+}
+
+export function getFilterLabel(id) {
+  return projectFilters.find((f) => f.id === id)?.label ?? id;
+}
+
+export function getCategoryGroups() {
+  return projectFilters.filter((f) => f.id !== 'all' && f.id !== 'featured');
+}
+
+export function groupProjectsByCategory(list) {
+  return getCategoryGroups()
+    .map((group) => ({
+      ...group,
+      projects: sortProjectsByLinks(list.filter((p) => p.filter === group.id)),
+    }))
+    .filter((group) => group.projects.length);
 }
 
 export function getProjectsByFilter(filterId = 'all') {
@@ -831,6 +890,7 @@ export function sortProjectsByLinks(list) {
     return 4;
   };
   return [...list].sort((a, b) => {
+    if (Boolean(a.spotlight) !== Boolean(b.spotlight)) return a.spotlight ? -1 : 1;
     const ma = hasProjectMedia(a) ? 0 : 1;
     const mb = hasProjectMedia(b) ? 0 : 1;
     if (ma !== mb) return ma - mb;

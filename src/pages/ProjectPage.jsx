@@ -18,6 +18,7 @@ import StitchArticle from './articles/StitchArticle';
 import EmojiCodeArticle from './articles/EmojiCodeArticle';
 import CaliberateArticle from './articles/CaliberateArticle';
 import MediverseArticle from './articles/MediverseArticle';
+import GsapLabArticle from './articles/GsapLabArticle';
 
 const WRITEUPS = {
   'headcount-vouch': HeadcountVouchArticle,
@@ -33,6 +34,8 @@ const WRITEUPS = {
   trojanmind: TrojanmindArticle,
   stitch: StitchArticle,
   emojicode: EmojiCodeArticle,
+  'astro-gsap-f1': () => <GsapLabArticle slug="astro-gsap-f1" />,
+  'astro-gsap-iron-man': () => <GsapLabArticle slug="astro-gsap-iron-man" />,
 };
 
 export default function ProjectPage() {

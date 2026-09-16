@@ -13,8 +13,10 @@
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.2.2",
     "framer-motion": "^12.18.1",
+    "gsap": "^3.15.0",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

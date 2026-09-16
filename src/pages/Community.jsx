@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import ContactMe from '../components/ContactMeComponent';
 import { communityEvents } from '../data/content';
 import { pageWide, sectionLabel } from '../styles/shared';
+import { gsap, useGSAP } from '../lib/gsap';
 
 function MediaTile({ event, file, idx }) {
   const isVideo = file.endsWith('.mp4');
@@ -29,29 +30,37 @@ function EventGallery({ event, files }) {
 }
 
 export default function Community() {
+  const root = useRef(null);
   const featured = communityEvents.filter((event) => event.featured);
   const rest = communityEvents.filter((event) => !event.featured);
 
+  useGSAP(
+    () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      gsap.fromTo(
+        '.community-intro > *',
+        { autoAlpha: 0, y: 14 },
+        { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.55 },
+      );
+      gsap.fromTo(
+        '.community-roles li',
+        { autoAlpha: 0, x: -10 },
+        { autoAlpha: 1, x: 0, stagger: 0.05, duration: 0.45, delay: 0.1 },
+      );
+    },
+    { scope: root },
+  );
+
   return (
-    <main style={pageWide} className="community-page">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45 }}
-        className="community-intro"
-      >
+    <main ref={root} style={pageWide} className="community-page">
+      <div className="community-intro">
         <h1 className="work-title">Community</h1>
         <p className="work-lede">
           Volunteering, mentoring, and organizing in the Los Angeles tech community.
         </p>
-      </motion.div>
+      </div>
 
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.05 }}
-        className="home-section"
-      >
+      <section className="home-section">
         <span style={sectionLabel}>What I ran</span>
         <ul className="community-roles">
           {communityEvents.map((event) => (
@@ -61,14 +70,9 @@ export default function Community() {
             </li>
           ))}
         </ul>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="home-section"
-      >
+      <section className="home-section">
         <span style={sectionLabel}>Featured</span>
         <div className="community-featured">
           {featured.map((event) => (
@@ -80,14 +84,9 @@ export default function Community() {
             </article>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.14 }}
-        className="home-section"
-      >
+      <section className="home-section">
         <span style={sectionLabel}>More photos</span>
         {rest.map((event) => (
           <article key={event.title} className="community-more">
@@ -106,7 +105,7 @@ export default function Community() {
               <EventGallery event={event} files={event.files.slice(3)} />
             </article>
           ))}
-      </motion.section>
+      </section>
 
       <ContactMe />
     </main>
