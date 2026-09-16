@@ -11,4 +11,4 @@ Source clips and unused screens kept out of `public/` so they are not copied int
 | `splitit-demo.mp4` | Full SplitIt recording (gif + hover export used on site) |
 | `stitch-demo-autoplay.gif` | Original Stitch autoplay gif |
 | `stitch-demo-hover.webm` | Extra Stitch hover format |
-| `emojicode-screens/` | Extra EmojiCode UI stills (homepage still is live) |
+| `headcount-vouch/` | CALL-E live-call wavs (Headcount + Vouch). Stills and videos live under `public/projects/stitch/headcount-vouch/`. |

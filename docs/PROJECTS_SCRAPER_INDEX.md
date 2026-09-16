@@ -7,7 +7,7 @@
 
 | Project | Scraper folder | Case study route | GitHub | YouTube | Other links |
 |---------|----------------|------------------|--------|---------|-------------|
-| **Caliberate** | `caliberate/` | `/writing/caliberate` | [Caliberate](https://github.com/RDX-Rajat-Savdekar/Caliberate) | — | planning lock only, no harness code yet |
+| **Headcount & Vouch** | — | `/projects/headcount-vouch` | [caller-ai](https://github.com/RDX-Rajat-Savdekar/caller-ai) | [Demo](https://youtu.be/-Xsi651IdK8) | [Headcount PR](https://github.com/CALLE-AI/awesome-phone-call-agents/pull/601) · [Vouch PR](https://github.com/CALLE-AI/awesome-phone-call-agents/pull/605) |
 | **CelestiaVR** | `celestia/` | `/writing/celestia-vr` | [CelestiaVR](https://github.com/RDX-Rajat-Savdekar/CelestiaVR) | [Demo](https://www.youtube.com/watch?v=QzRTp0EtUsQ) | [Presentation](https://rdx-rajat-savdekar.github.io/Celestia_Presentation/) |
 | **Aura** | `aura-visionos/` | `/writing/aura` | [Aura-Vision-Pro](https://github.com/RDX-Rajat-Savdekar/Aura-Vision-Pro) | [Demo](https://www.youtube.com/watch?v=HbW9F2zjmLQ&t=65s) | — |
 | **MockPad** | `mock-pad/` | `/writing/mockpad` | [mockpad](https://github.com/RDX-Rajat-Savdekar/mockpad) | — | [Live](https://mockpad-kappa.vercel.app/) |

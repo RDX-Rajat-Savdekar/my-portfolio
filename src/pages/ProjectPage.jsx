@@ -5,6 +5,7 @@ import ProjectHeroMedia from '../components/ProjectHeroMedia';
 import ProjectLinks from '../components/ProjectLinks';
 import { getProjectBySlug, getProjectProof } from '../data/content';
 import { tag } from '../styles/shared';
+import HeadcountVouchArticle from './articles/HeadcountVouchArticle';
 import CelestiaVRArticle from './articles/CelestiaVRArticle';
 import AuraArticle from './articles/AuraArticle';
 import AfterImageArticle from './articles/AfterImageArticle';
@@ -19,6 +20,7 @@ import CaliberateArticle from './articles/CaliberateArticle';
 import MediverseArticle from './articles/MediverseArticle';
 
 const WRITEUPS = {
+  'headcount-vouch': HeadcountVouchArticle,
   caliberate: CaliberateArticle,
   mediverse: MediverseArticle,
   'celestia-vr': CelestiaVRArticle,

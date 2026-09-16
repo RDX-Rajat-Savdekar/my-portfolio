@@ -8,6 +8,7 @@ import ProjectPage from './pages/ProjectPage';
 import './App.css';
 
 const writingRedirects = [
+  'headcount-vouch',
   'caliberate',
   'mediverse',
   'celestia-vr',

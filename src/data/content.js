@@ -20,6 +20,36 @@ export const site = {
 
 export const projects = [
   {
+    slug: 'headcount-vouch',
+    name: 'Headcount & Vouch',
+    featured: true,
+    filter: 'tools',
+    media: {
+      preview: '/projects/stitch/headcount-vouch/poster.png',
+      hover: '/projects/stitch/headcount-vouch/videos/calle-submit.mp4',
+      poster: '/projects/stitch/headcount-vouch/poster.png',
+    },
+    tagline: 'Disaster reach is a denominator. Employment verify is a consent gate.',
+    description:
+      'Two CALL-E consoles. Headcount runs a CDC CASPER-style household needs check by phone and treats voicemail as unreached. Vouch will not dial without a consent record, and California SB 1162 strips salary history from the script.',
+    details:
+      'Fixture replay is the default. Live calling is opt-in. Two real outbound calls on video: 62s drill, 66s employment verify. Kill switch on every screen. Unsupported model claims strike through.',
+    tags: ['TypeScript', 'Next.js', 'CALL-E', 'SQLite', 'Remotion'],
+    badge: 'CALL-E Hackathon 2026',
+    projectPath: '/projects/headcount-vouch',
+    github: 'https://github.com/RDX-Rajat-Savdekar/caller-ai',
+    githubSecondary: 'https://github.com/CALLE-AI/awesome-phone-call-agents/pull/601',
+    githubSecondaryLabel: 'Headcount PR',
+    youtube: 'https://youtu.be/-Xsi651IdK8',
+    live: null,
+    presentation: null,
+    paper: null,
+    extraLinks: [
+      { label: 'Vouch PR', url: 'https://github.com/CALLE-AI/awesome-phone-call-agents/pull/605' },
+      { label: 'Devpost', url: 'https://call-e.devpost.com/' },
+    ],
+  },
+  {
     slug: 'caliberate',
     name: 'Caliberate',
     featured: true,
@@ -454,6 +484,11 @@ export const projects = [
 ];
 
 const projectProof = {
+  'headcount-vouch': [
+    'Two real outbound CALL-E calls on video, not a mock',
+    'Voicemail is not a reach. No consent artifact, no dial.',
+    'California SB 1162 strips salary even when the form asked',
+  ],
   caliberate: [
     'Calibrate the judge and the tasks before you trust any number',
     'Hidden tests in isolated Docker workers; LLM-as-judge only after agreement',
@@ -631,6 +666,12 @@ export const education = [
 ];
 
 const articleMeta = {
+  'headcount-vouch': {
+    date: 'September 2026',
+    title: 'Headcount & Vouch: Two Real CALL-E Calls',
+    summary:
+      'CASPER by phone (voicemail is not a reach) and consent-gated employment verify. Two live outbound calls for the CALL-E hackathon.',
+  },
   caliberate: {
     date: 'August 2026',
     title: 'Caliberate: Calibrate the Judge Before You Trust the Number',
@@ -718,6 +759,7 @@ export const caseStudies = projects
   }))
   .sort((a, b) => {
     const order = [
+      'headcount-vouch',
       'caliberate',
       'mediverse',
       'celestia-vr',
