@@ -11,25 +11,6 @@ export default function RegisterHero({ children }) {
   );
 }
 
-export function ModeLegend() {
-  return (
-    <ul className="mode-legend">
-      <li className="is-overprint">
-        <b>Plate</b>
-        <span>printed proof</span>
-      </li>
-      <li className="is-catalog">
-        <b>Field</b>
-        <span>named catalog</span>
-      </li>
-      <li className="is-globe">
-        <b>Sphere</b>
-        <span>spatial instrument</span>
-      </li>
-    </ul>
-  );
-}
-
 export function LookMarks({ ids }) {
   if (!ids?.length) return null;
   return (
