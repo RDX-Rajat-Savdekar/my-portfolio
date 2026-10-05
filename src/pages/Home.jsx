@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ContactMe from '../components/ContactMeComponent';
-import ProjectWatchGrid from '../components/ProjectWatchGrid';
+import ProjectShowcase from '../components/ProjectShowcase';
 import RegisterHero from '../components/RegisterHero';
 import {
   site,
@@ -195,7 +195,7 @@ export default function Home() {
           ))}
         </div>
 
-        <ProjectWatchGrid projects={projects} filter={filter} />
+        <ProjectShowcase projects={projects} filter={filter} />
       </section>
 
       <div id="contact">

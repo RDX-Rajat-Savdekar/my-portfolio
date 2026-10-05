@@ -7,11 +7,12 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 125%;
 }
 
 body {
-  background-color: #08101c;
-  color: #f4efe4;
+  background-color: #f3efe6;
+  color: #1c1914;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { globeInk } from './globeInk.js';
 
 function attachCanvas(canvas, paint, { animate = true } = {}) {
   const ctx = canvas.getContext('2d');
@@ -119,9 +120,11 @@ export function StarGlobe({ className = 'look-canvas', inked = true }) {
       };
     });
 
+    const ink = globeInk(inked);
+
     return attachCanvas(canvas, (ctx, width, height, t) => {
-      if (inked) {
-        ctx.fillStyle = '#07080c';
+      if (ink.sky) {
+        ctx.fillStyle = ink.sky;
         ctx.fillRect(0, 0, width, height);
       } else {
         ctx.clearRect(0, 0, width, height);
@@ -130,7 +133,8 @@ export function StarGlobe({ className = 'look-canvas', inked = true }) {
       const cy = height * 0.52;
       const r = Math.min(width, height) * 0.38;
       const rot = t * 0.004;
-      ctx.strokeStyle = 'rgba(214, 196, 150, 0.18)';
+      ctx.strokeStyle = ink.ring;
+      ctx.lineWidth = inked ? 1 : 1.5;
       ctx.beginPath();
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.stroke();
@@ -141,9 +145,10 @@ export function StarGlobe({ className = 'look-canvas', inked = true }) {
         const px = cx + x * r;
         const py = cy + p.y * r;
         const depth = (z + 1) / 2;
-        ctx.fillStyle = `rgba(232, 214, 168, ${0.18 + depth * 0.75})`;
+        const alpha = inked ? 0.18 + depth * 0.75 : 0.72 + depth * 0.28;
+        ctx.fillStyle = ink.star(alpha);
         ctx.beginPath();
-        ctx.arc(px, py, p.m * (0.6 + depth), 0, Math.PI * 2);
+        ctx.arc(px, py, p.m * (inked ? 0.6 + depth : 1.15 + depth * 0.55), 0, Math.PI * 2);
         ctx.fill();
       });
     });

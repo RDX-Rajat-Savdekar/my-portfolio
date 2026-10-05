@@ -1,7 +1,7 @@
 /** Single source of truth for projects and writing. */
 
 /** Query busts GitHub Pages / browser cache when the PDF bytes change. */
-export const resumePdf = '/Rajat_Savdekar_resume.pdf?v=20260922';
+export const resumePdf = '/Rajat_Resume_latest.pdf?v=20261004';
 
 export const site = {
   name: 'Rajat Savdekar',
@@ -9,7 +9,8 @@ export const site = {
   tagline:
     'Plate, field, sphere. Printed proof, named catalogs, spatial instruments.',
   location: 'MS CS @ USC · Los Angeles',
-  availability: 'Available for full-time software engineering roles starting Summer 2026.',
+  availability:
+    'Available immediately. F-1 OPT, STEM-eligible through May 2029. No immediate sponsorship required.',
   email: 'rajatsavdekar@gmail.com',
   links: {
     github: 'https://github.com/RDX-Rajat-Savdekar',
@@ -143,6 +144,26 @@ export const projects = [
         url: 'https://github.com/RDX-Rajat-Savdekar/rdx-dev-creator-lab/tree/main/projects/aura',
       },
     ],
+    live: null,
+    presentation: null,
+    paper: null,
+  },
+  {
+    slug: 'mara',
+    name: 'MARA',
+    featured: true,
+    filter: 'tools',
+    tagline: 'Multi-agent research dossiers from a planner, scraper, and synthesis graph',
+    description:
+      'Multi-agent orchestration engine on LangGraph and FastAPI. A planner, a web-scraping agent, and a synthesis agent run as a stateful directed graph and write a research dossier.',
+    details:
+      'Execution traces and intermediate outputs stream over WebSockets. ChromaDB semantic search over retrieved citations keeps synthesis on the sources the scrape step actually found. Sep 2026.',
+    tags: ['Python', 'LangGraph', 'FastAPI', 'ChromaDB', 'Docker', 'WebSockets'],
+    badge: 'Sep 2026',
+    projectPath: '/projects/mara',
+    github: 'https://github.com/karthik05k9/MARA-Multi-Agent-Research-Intelligence-Platform',
+    githubSecondary: null,
+    youtube: null,
     live: null,
     presentation: null,
     paper: null,
@@ -512,6 +533,11 @@ const projectProof = {
     'Two on-device ML pipelines, no cloud fallback',
     'Solo code; teammates wrote the README',
   ],
+  mara: [
+    'LangGraph + FastAPI graph of planner, scrape, and synthesis agents',
+    'WebSocket stream of agent traces and intermediate outputs',
+    'ChromaDB search over retrieved citations',
+  ],
   mockpad: [
     '100+ real users',
     'Shared editor, whiteboard, notes, and timer on one Yjs doc',
@@ -622,8 +648,9 @@ export const experience = [
     location: 'Torrance, CA',
     period: 'Aug 2026 – Present',
     bullets: [
-      'Engineered an edge-AI pipeline for junior doctor surgical training, cutting scenario feedback from 22 to 4 minutes by keeping a 4-bit quantized 7B model resident on a local server to bypass the Quest 1’s memory limits.',
-      'Optimized 6 core surgical tool modules for severely constrained hardware (4 GB RAM), automating CI/CD testing to prevent performance regressions and maintain a locked 72 FPS.',
+      'Cut replay pipeline latency from 22 minutes to 15 seconds by engineering an asynchronous FastAPI job runner and Django REST endpoints with React state hooks that memoize event state and stream telemetry data.',
+      'Reduced frame-time spikes by 30% through low-level C# and memory optimizations across surgical simulation subsystems, eliminating garbage collection stalls via object pooling.',
+      'Compressed on-device LLM runtime memory to under 4 GB RAM by applying 4-bit AWQ quantization and KV-cache optimizations for real-time low-latency inference.',
     ],
   },
   {
@@ -636,14 +663,35 @@ export const experience = [
     ],
   },
   {
-    role: 'Software Engineer',
-    org: 'Jalgaon Fruit Sales Cooperative Ltd (JFSS)',
+    role: 'Software Engineer II',
+    org: 'Jalgaon Fruit Sales Cooperative Ltd (JFSS) – AgriTech Supply Chain ERP',
     location: 'Jalgaon, India',
     period: 'May 2023 – May 2024',
     bullets: [
-      'Doubled peak harvest write throughput by architecting an isolated write path that eliminated the 10–15 minute MyISAM table-lock freezes stalling the platform every season, sustaining growth from $100K to $200K in transaction volume.',
-      'Decomposed a legacy PHP monolith into modular Python Flask microservices on PostgreSQL, running both paths in parallel with cron-based state sync until cutover, cutting query latency 40% across 1,000+ daily truck transactions.',
-      'Delivered a web procurement platform with REST APIs and live analytics dashboards, migrating 150 daily clerks across 5 warehouses off manual logbooks.',
+      'Doubled peak harvest write throughput by decomposing a legacy PHP monolith into Python Flask microservices on PostgreSQL, eliminating MyISAM table locks and cutting query latency 40%.',
+      'Architected a semantic vector search service over 150K+ procurement records using ChromaDB and OpenAI embeddings, cutting average document retrieval latency from 3 minutes to under 20 seconds.',
+      'Deployed containerized services with Docker to AWS EC2 via GitHub Actions CI/CD pipelines monitored with CloudWatch alerts.',
+      'Engineered an asynchronous reconciliation pipeline for 1,000+ daily invoices using Redis queues with exponential retry backoff, isolating third-party banking rate limits.',
+    ],
+  },
+  {
+    role: 'Software Engineer I',
+    org: 'Jalgaon Fruit Sales Cooperative Ltd (JFSS) – AgriTech Supply Chain ERP',
+    location: 'Jalgaon, India',
+    period: 'Jan 2022 – May 2023',
+    bullets: [
+      'Architected idempotent transactional REST APIs in Python Flask with SQLAlchemy ORM to ingest real-time weighbridge scale metrics and calculate multi-tier farmer disbursement payouts under ACID guarantees.',
+      'Built distributed batch reconciliation workers with Celery, Redis, and cron to parse multi-bank statement streams, executing double-entry ledger settlement against internal journal entries to eliminate reconciliation drift.',
+      'Reduced slow-query latency spikes by 35% across high-volume harvest ledgers by designing B-tree composite indices, rewriting nested subqueries into indexed JOINs, and tuning PostgreSQL query execution plans.',
+    ],
+  },
+  {
+    role: 'Software Engineering Intern',
+    org: 'Softaid Computers',
+    location: 'Jalgaon, India',
+    period: 'Jul 2021 – Dec 2021',
+    bullets: [
+      'Automated shift scheduling and multi-branch ledger aggregation by developing RESTful services in JavaScript and MySQL for the E-Attendance and E-Vikas modules, cutting administrative reporting lag by 65%.',
     ],
   },
 ];
@@ -816,6 +864,7 @@ export const lookMeta = {
 const looksBySlug = {
   'headcount-vouch': 'overprint',
   caliberate: 'overprint',
+  mara: 'overprint',
   stitch: 'overprint',
   emojicode: 'overprint',
   'creator-lab': 'overprint',
