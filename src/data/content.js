@@ -1,7 +1,7 @@
 /** Single source of truth for projects and writing. */
 
 /** Query busts GitHub Pages / browser cache when the PDF bytes change. */
-export const resumePdf = '/Rajat_Resume_latest.pdf?v=20261004';
+export const resumePdf = '/Rajat_Savdekar_Resume_new.pdf?v=20261014';
 
 export const site = {
   name: 'Rajat Savdekar',
