@@ -1,18 +1,287 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Rajat Savdekar, MS CS at USC. Plate, field, sphere: printed proof, named catalogs, spatial instruments." />
-    <meta name="theme-color" content="#08101c" />
-    <title>Rajat Savdekar · Software Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;700;800&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rajat Savdekar</title>
+    <meta
+      name="description"
+      content="Rajat Savdekar, software engineer in Los Angeles. MS Computer Science at USC. Currently building a surgical trainer on Meta Quest."
+    />
+    <meta name="theme-color" content="#f7f3ea" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <main>
+      <div class="column">
+      <header class="who">
+        <img src="/rajat.jpg" width="200" height="200" alt="Rajat Savdekar" />
+        <div>
+          <h1>Rajat Savdekar</h1>
+          <p class="tagline">Software engineer in Los Angeles · <time id="la-time">Pacific time</time></p>
+        </div>
+      </header>
+
+      <p>
+        I write software. Right now that is
+        <a href="#mediverse">Mediverse</a>, a surgical trainer on Meta Quest, at
+        Easley-Dunn Productions in Torrance. I am in the MS Computer Science
+        program at USC. From 2022 to 2024 I worked on an ERP for a fruit-sales
+        cooperative in Jalgaon, India.
+      </p>
+      <p>I can start now. F-1 OPT, STEM-eligible through May 2029.</p>
+
+      <p class="contact">
+        <a id="email" href="mailto:rajatsavdekar@gmail.com">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.5 2h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm.4 1.2 6.1 4.1 6.1-4.1H1.9zM14.5 13V4.7L8.4 8.8a.7.7 0 0 1-.8 0L1.5 4.7V13h13z"/></svg>
+          rajatsavdekar@gmail.com
+        </a>
+        <button type="button" id="copy-email">copy</button>
+      </p>
+      <p class="links">
+        <a href="https://github.com/RDX-Rajat-Savdekar">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/rajatsavdekar">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1.5 1.5h13v13h-13v-13zM4.7 12.2V6.6H2.9v5.6h1.8zm-.9-6.4a1.05 1.05 0 1 0 0-2.1 1.05 1.05 0 0 0 0 2.1zm8.1 6.4V9.1c0-1.64-.35-2.9-2.27-2.9-1.02 0-1.7.56-1.98 1.1h-.03V6.6H6.05c.02.5 0 5.6 0 5.6h1.8V9.2c0-.16.01-.32.06-.43.13-.32.43-.65.93-.65.66 0 .92.5.92 1.23v2.85h1.84z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://medium.com/@rajatsavdekar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          Medium
+        </a>
+        <a href="/Rajat_Resume_latest.pdf">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3.5 1h6.1L13 4.4V14a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm5.6 1.2V5h2.8L9.1 2.2zM4.4 7.2h7.2v1.1H4.4V7.2zm0 2.2h7.2v1.1H4.4V9.4zm0 2.2h4.6v1.1H4.4v-1.1z"/></svg>
+          Resume
+        </a>
+      </p>
+
+      <nav>
+        <a href="#school">School</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+      </nav>
+
+      <h2 id="school">School</h2>
+
+      <article class="job">
+        <p class="when">Aug 2024 – May 2026</p>
+        <div>
+          <h3>MS in Computer Science</h3>
+          <p class="place">University of Southern California · Los Angeles · GPA 3.63</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <p class="when">Aug 2019 – May 2023</p>
+        <div>
+          <h3>BE in Computer Engineering</h3>
+          <p class="place">University of Mumbai · GPA 9.4/10</p>
+          <p>
+            Four undergraduate papers. The one people cited is a GLCM
+            image-texture tool, 10 citations.
+            <a href="https://scholar.google.com/citations?user=ynyXTd8AAAAJ&hl=en">Scholar</a>
+            ·
+            <a href="https://github.com/RDX-Rajat-Savdekar/Research-Papers">code</a>
+          </p>
+        </div>
+      </article>
+
+      <h2 id="work">Work</h2>
+
+      <article class="job">
+        <p class="when">Aug 2026 – now</p>
+        <div>
+          <h3>Software Developer, Easley-Dunn Productions</h3>
+          <p class="place">Torrance, CA · Mediverse</p>
+          <p>
+            A surgical trainer for Meta Quest. Session replay went from 22
+            minutes to 15 seconds. Frame-time spikes in the simulation dropped
+            30%. The on-device model fits in under 4 GB of RAM.
+          </p>
+        </div>
+      </article>
+
+      <article class="job">
+        <p class="when">May 2025 – Jul 2025</p>
+        <div>
+          <h3>Teaching Assistant, USC Summer Programs</h3>
+          <p class="place">Los Angeles, CA</p>
+          <p>
+            Python, Git, debugging, and REST for 150 students. I reviewed code
+            for 20 teams taking a spec through to a hardware demo.
+          </p>
+        </div>
+      </article>
+
+      <article class="job">
+        <p class="when">May 2023 – May 2024</p>
+        <div>
+          <h3>Software Engineer II, Jalgaon Fruit Sales Cooperative</h3>
+          <p class="place">Jalgaon, India · AgriTech supply-chain ERP</p>
+          <p>
+            I split a PHP monolith into Flask services on PostgreSQL. Peak
+            harvest writes doubled, and query latency dropped 40%. Search over
+            150k procurement records went from 3 minutes to under 20 seconds.
+            The services run in Docker on AWS, and I demoed the work to the
+            people using it.
+          </p>
+        </div>
+      </article>
+
+      <article class="job">
+        <p class="when">Jan 2022 – May 2023</p>
+        <div>
+          <h3>Software Engineer I, Jalgaon Fruit Sales Cooperative</h3>
+          <p class="place">Jalgaon, India</p>
+          <p>
+            I built the weighbridge payout APIs in Flask, and reconciliation
+            workers in Celery and Redis that settle bank statements against
+            the ledger. Slow-query latency on the harvest ledgers dropped 35%.
+          </p>
+        </div>
+      </article>
+
+      <article class="job">
+        <p class="when">Jul 2021 – Dec 2021</p>
+        <div>
+          <h3>Software Engineering Intern, Softaid Computers</h3>
+          <p class="place">Jalgaon, India</p>
+          <p>
+            Shift scheduling and multi-branch ledgers for the attendance and
+            accounts modules. Administrative reporting lag dropped 65%.
+          </p>
+        </div>
+      </article>
+      </div>
+
+      <h2 id="projects">Projects</h2>
+
+      <div class="grid">
+      <article class="project">
+        <video class="shot" src="/projects/stitch/celestia/exports/loop.mp4" width="560" height="316" autoplay muted loop playsinline title="CelestiaVR"></video>
+        <h3>CelestiaVR</h3>
+        <p>Quest 3 sky for a USC team. About 9,000 stars, first place at RealityShift.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/CelestiaVR">code</a> · <a href="https://www.youtube.com/watch?v=QzRTp0EtUsQ">video</a> · <a href="https://rdx-rajat-savdekar.github.io/Celestia_Presentation/">slides</a></p>
+      </article>
+
+      <article class="project">
+        <video class="shot" src="/projects/stitch/aura-visionos/exports/loop.mp4" width="560" height="316" autoplay muted loop playsinline title="Aura"></video>
+        <h3>Aura</h3>
+        <p>On-device captions and sound awareness for Vision Pro. Second place at LA Tech Week.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/Aura-Vision-Pro">code</a> · <a href="https://www.youtube.com/watch?v=3KEH2BCODBo&t=24s">postmortem</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/mockpad/media/mockpad-demo.gif" width="960" height="600" alt="MockPad interview pad" />
+        <h3>MockPad</h3>
+        <p>Shared interview pad on one Yjs document per room. 100+ people have used it.</p>
+        <p class="more"><a href="https://mockpad-kappa.vercel.app/">live</a> · <a href="https://github.com/RDX-Rajat-Savdekar/mockpad">code</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/headcount-vouch/poster.png" width="1440" height="900" alt="Headcount call console" />
+        <h3>Headcount &amp; Vouch</h3>
+        <p>Two phone agents. Voicemail is not a person reached, and Vouch will not dial without consent.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/caller-ai">code</a> · <a href="https://youtu.be/-Xsi651IdK8">video</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/stitch/exports/opt/preview.gif" alt="Stitch opening a patch" />
+        <h3>Stitch</h3>
+        <p>A CI failure comes in and a patch pull request goes out. OpenAI Build Week.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/openai_build_week">code</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/emojicode/exports/preview.gif" alt="EmojiCode game" />
+        <h3>EmojiCode</h3>
+        <p>Five-emoji ciphers posted on Reddit and guessed in the comments.</p>
+        <p class="more"><a href="https://developers.reddit.com/apps/emojicode">live</a> · <a href="https://github.com/Khushalsarode/EmojiCode">code</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/main-gamesmiths/exports/preview.gif" alt="AfterImage ghost replay" />
+        <h3>AfterImage</h3>
+        <p>Co-op puzzle game. Round 2 replays round 1 as a ghost.</p>
+        <p class="more"><a href="https://csci-526.github.io/main-gamesmiths/gold/">live</a> · <a href="https://github.com/CSCI-526/main-gamesmiths">code</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/splitit/media/exports/preview.gif" alt="SplitIt expenses" />
+        <h3>SplitIt</h3>
+        <p>Group expenses, splits, and settle-up. React and Express.</p>
+        <p class="more"><a href="https://splitit-frontend-vite.vercel.app/login">live</a> · <a href="https://github.com/RDX-Rajat-Savdekar/splitit-frontend-vite">code</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/trojanmind/exports/preview.gif" alt="TrojanMind plan" />
+        <h3>TrojanMind</h3>
+        <p>A calendar goes in. Burnout risk and a 7-day plan come out.</p>
+        <p class="more"><a href="https://github.com/pavan-r411/TrojanMind">code</a> · <a href="https://www.youtube.com/watch?v=QOkA36npHNo">video</a></p>
+      </article>
+
+      <article class="project">
+        <img class="shot" src="/projects/stitch/rdx-dev-creator-lab/media/demo.gif" alt="Creator Lab demo" />
+        <h3>Creator Lab</h3>
+        <p>Manim, Remotion, Godot, and a few other tools for explainers.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/rdx-dev-creator-lab">code</a></p>
+      </article>
+
+      <article class="project">
+        <video class="shot" src="/projects/stitch/astro/media/exports/f1-loop.mp4" width="560" height="316" autoplay muted loop playsinline title="F1 scroll sequence"></video>
+        <h3>F1</h3>
+        <p>Scroll is the playhead on a lap. A GSAP lab piece.</p>
+        <p class="more"><a href="https://gsap-lab-a8153b.webflow.io/">live</a></p>
+      </article>
+
+      <article class="project">
+        <video class="shot" src="/projects/stitch/astro/media/exports/iron-man-loop.mp4" width="560" height="316" autoplay muted loop playsinline title="Iron Man HUD"></video>
+        <h3>Iron Man</h3>
+        <p>A HUD tied to scroll. The other piece from the same lab.</p>
+        <p class="more"><a href="https://gsap-lab-a8153b.webflow.io/">live</a></p>
+      </article>
+
+      <article class="project" id="mediverse">
+        <h3>Mediverse</h3>
+        <p>The Quest surgical trainer from the job above. Replay, frame time, and the on-device model.</p>
+      </article>
+
+      <article class="project">
+        <h3>Caliberate</h3>
+        <p>Hidden tests score LLM patches. The judge is checked against my labels first. In progress.</p>
+        <p class="more"><a href="https://github.com/RDX-Rajat-Savdekar/Caliberate">code</a></p>
+      </article>
+
+      <article class="project">
+        <h3>MARA</h3>
+        <p>A planner, a scraper, and a synthesis agent write a research dossier.</p>
+        <p class="more"><a href="https://github.com/karthik05k9/MARA-Multi-Agent-Research-Intelligence-Platform">code</a></p>
+      </article>
+      </div>
+
+      <p class="note">Updated October 2026. One HTML file, one stylesheet, one script.</p>
+    </main>
+
+    <script src="/site.js"></script>
+    <!-- Cloudflare Web Analytics. Loaded only on the public hosts so local dev is not counted. -->
+    <script>
+      if (
+        location.hostname === "rajatsavdekar.dev" ||
+        location.hostname === "www.rajatsavdekar.dev" ||
+        location.hostname === "rdx-rajat-savdekar.github.io"
+      ) {
+        const beacon = document.createElement("script");
+        beacon.type = "module";
+        beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+        beacon.setAttribute(
+          "data-cf-beacon",
+          '{"token": "515c997a4fdc43cc85c5832fa0bd4763"}',
+        );
+        document.body.appendChild(beacon);
+      }
+    </script>
   </body>
 </html>
