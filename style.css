@@ -1,0 +1,214 @@
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  background: #f7f3ea;
+  color: #221e1a;
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color-scheme: light;
+}
+
+main {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4.5rem;
+}
+
+.column {
+  max-width: 40rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+h2 {
+  margin: 2.25rem 0 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #ddd4c6;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0.7rem 0;
+}
+
+a {
+  color: #8a5410;
+}
+
+a:visited {
+  color: #6d4a28;
+}
+
+.who {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.who img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 1px solid #ddd4c6;
+  flex: none;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  color: #6f675c;
+  font-style: italic;
+}
+
+.contact,
+.links,
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 1.25rem;
+  margin: 0;
+}
+
+.contact {
+  margin-top: 1.25rem;
+}
+
+.links {
+  margin-top: 0.35rem;
+}
+
+.contact a,
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.contact svg,
+.links svg {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #6f675c;
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+nav {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.job {
+  display: grid;
+  grid-template-columns: 10.5rem 1fr;
+  column-gap: 1rem;
+  margin: 0 0 1.25rem;
+}
+
+.when {
+  margin: 0.15rem 0 0;
+  color: #6f675c;
+  font-size: 0.9rem;
+}
+
+.place {
+  margin: 0 0 0.35rem;
+  color: #6f675c;
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem 1.25rem;
+}
+
+.project {
+  margin: 0;
+}
+
+.project p {
+  margin: 0.35rem 0 0;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin: 0 0 0.45rem;
+  background: #efe8dc;
+  border: 1px solid #ddd4c6;
+}
+
+.more {
+  margin: 0.2rem 0 0;
+}
+
+.note {
+  margin-top: 2rem;
+  color: #6f675c;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 720px) {
+  main {
+    padding-top: 2rem;
+  }
+
+  .who img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .who {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .who img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .job {
+    display: block;
+  }
+
+  .when {
+    margin-bottom: 0.2rem;
+  }
+}
