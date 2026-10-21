@@ -5,11 +5,13 @@
   "type": "module",
   "homepage": "https://rajatsavdekar.dev",
   "scripts": {
+    "predev": "node scripts/publish-current-resume.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/publish-current-resume.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "vite build && cp dist/index.html dist/404.html && echo rajatsavdekar.dev > dist/CNAME",
+    "predeploy": "npm run build && cp dist/index.html dist/404.html && echo rajatsavdekar.dev > dist/CNAME && node scripts/publish-current-resume.mjs dist/resume.pdf",
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {

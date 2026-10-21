@@ -675,10 +675,21 @@ export const experience = [
     ],
   },
   {
+    role: 'Software Engineer I',
+    org: 'Jalgaon Fruit Sales Cooperative Ltd (JFSS) – AgriTech Supply Chain ERP',
+    location: 'Jalgaon, India',
+    period: 'May 2022 – May 2023',
+    bullets: [
+      'Architected idempotent transactional REST APIs in Python Flask with SQLAlchemy ORM to ingest real-time weighbridge scale metrics and calculate multi-tier farmer disbursement payouts under ACID guarantees.',
+      'Built distributed batch reconciliation workers with Celery, Redis, and cron to parse multi-bank statement streams, executing double-entry ledger settlement against internal journal entries to eliminate reconciliation drift.',
+      'Reduced slow-query latency spikes by 35% across high-volume harvest ledgers by designing B-tree composite indices, rewriting nested subqueries into indexed JOINs, and tuning PostgreSQL query execution plans.',
+    ],
+  },
+  {
     role: 'Software Engineering Intern',
     org: 'Softaid Computers',
     location: 'Jalgaon, India',
-    period: 'Jan 2023 – Apr 2023',
+    period: 'Jul 2021 – Dec 2021',
     bullets: [
       'Automated shift scheduling and multi-branch ledger aggregation by developing RESTful services in JavaScript and MySQL for the E-Attendance and E-Vikas modules, cutting administrative reporting lag by 65%.',
     ],

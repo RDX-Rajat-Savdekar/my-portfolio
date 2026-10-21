@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Copied from the one public/*_current.pdf at dev/build time
+public/resume.pdf
+
 # Heavy media intermediates (keep out of deploy)
 public/projects/**/raw/
 public/projects/**/*.mov
